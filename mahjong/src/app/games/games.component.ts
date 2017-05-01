@@ -1,6 +1,6 @@
 //Modules
 import { Component, OnInit } from '@angular/core';
-//import { Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 //Models
 import { Game } from '../models/game';
@@ -17,9 +17,9 @@ import { GameService } from '../services/game.service';
 export class GamesComponent implements OnInit {
 
   games: Game[];
-  selectedGame: Game;
+
   constructor(
-  //   private router: Router,
+     private router: Router,
      private gameService: GameService){ }
 
   ngOnInit() {
@@ -30,6 +30,9 @@ export class GamesComponent implements OnInit {
     this.gameService.getGames().then(games => this.games = games);
   }
 
+  goToDetail(game: Game): void {
+    if(game.state == "open" && game.maxPlayers > game.players.length) this.router.navigate(['/games', game._id]);
+  }
 
 
 }

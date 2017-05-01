@@ -27,7 +27,7 @@ export class GamesComponent implements OnInit {
   }
 
   getGames(): void {
-    this.gameService.getGames("st.vandermeer@student.avans.nl").then(games => this.games = games);
+    this.gameService.getGames().then(games => this.games = games);
   }
 
 

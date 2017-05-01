@@ -1,4 +1,4 @@
-<h1 class="gameListTitle">Games</h1>
+<h2>Games</h2>
 
 <!--Game list-->
 <!--<ul class="games">
@@ -11,9 +11,9 @@
 
 <div class="grid grid-pad">
   <a *ngFor="let game of games" class="col-1-4">
-    <div [class.open]="game.maxPlayers > game.players.length && game.state == 'open'" class="module">
-      <h3>{{game.gameTemplate.id}} ({{game.state}})</h3>
-      <h3>nr. of players: {{game.players.length}}/{{game.maxPlayers}}</h3>
+    <div [class.open]="game.state == 'open'" class="module">
+      <h4>{{game.gameTemplate.id}} ({{game.state}})</h4>
+      <h4>nr. of players: {{game.players.length}}/{{game.maxPlayers}}</h4>
     </div>
   </a>
 </div>

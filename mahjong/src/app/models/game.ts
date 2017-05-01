@@ -6,7 +6,7 @@ export class Game {
     maxPlayers: number;
     createdOn: string;
     endedOn: string;
-    state: state;
+    state: string;
     gameTemplate: string;  // Reference to gameTemplate model using its id  //TODO population?
 
     players:
@@ -21,11 +21,4 @@ export class Game {
         name: string
     }
 }
-
-enum state {
-    open,
-    finished,
-    playing
-}
-
 

@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+//Models
+import { Game } from '../models/game';
 
 @Component({
   selector: 'app-game-detail',
@@ -7,7 +11,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GameDetailComponent implements OnInit {
 
-  constructor() { }
+  @Input() game: Game;
+
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }

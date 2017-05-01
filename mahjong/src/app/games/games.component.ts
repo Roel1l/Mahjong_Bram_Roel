@@ -1,4 +1,13 @@
+//Modules
 import { Component, OnInit } from '@angular/core';
+//import { Router } from '@angular/router';
+
+//Models
+import { Game } from '../models/game';
+
+//Services
+import { GameService } from '../services/game.service';
+
 
 @Component({
   selector: 'app-games',
@@ -7,9 +16,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GamesComponent implements OnInit {
 
-  constructor() { }
+  games: Game[];
+  selectedGame: Game;
+  constructor(
+  //   private router: Router,
+     private gameService: GameService){ }
 
   ngOnInit() {
+    this.getGames();
   }
+
+  getGames(): void {
+    this.gameService.getGames().then(games => this.games = games);
+  }
+
+
 
 }

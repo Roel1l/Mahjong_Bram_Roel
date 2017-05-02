@@ -17,41 +17,39 @@ import { GameService } from '../services/game.service';
 })
 export class GamesComponent implements OnInit {
 
-  public allGames: Game[];
-  public filteredGames: Game[];
+  allGames: Game[];
+  filteredGames: Game[];
+  date: Date;
 
   constructor(
-     private router: Router,
-     private gameService: GameService){ }
+    private router: Router,
+    private gameService: GameService) { }
 
   ngOnInit() {
+    this.date = new Date();
     this.getGames();
   }
 
   getGames(): void {
     var self = this;
     this.gameService.getGames().then(
-      function(games)
-      {
+      function (games) {
         self.allGames = games;
         self.filteredGames = games;
       });
   }
 
   goToDetail(game: Game): void {
-    if(game.state == "open" && game.maxPlayers > game.players.length) this.router.navigate(['/games', game._id]);
   }
 
-  search(term: string): void { 
+  search(term: string): void {
     this.filteredGames = [];
     term = term.toUpperCase();
     for (var game of this.allGames) {
-        if(game.createdBy.name.toUpperCase().includes(term) || game.gameTemplate._id.toUpperCase().includes(term) || game.state.toUpperCase().includes(term)){
-            this.filteredGames.push(game);
-        }
+      if (game.createdBy.name.toUpperCase().includes(term) || game.gameTemplate._id.toUpperCase().includes(term) || game.state.toUpperCase().includes(term)) {
+        this.filteredGames.push(game);
+      }
     }
-
-
   }
 
 }

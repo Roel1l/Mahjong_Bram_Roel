@@ -6,7 +6,7 @@ export class Game {
     constructor(minPlayers: number, maxPlayers: number, gameTemplate: string){
         this.minPlayers = minPlayers;
         this.maxPlayers = maxPlayers;
-        this.gameTemplate._id = gameTemplate;
+        this.gameTemplate = {_id: gameTemplate, id: gameTemplate}
     }
 
 

@@ -5,9 +5,11 @@ import { Location } from '@angular/common';
 
 //Services
 import { GameService } from '../services/game.service';
+import { TemplateService } from '../services/game-template.service';
 
 //Models
 import { Game } from '../models/game';
+import { GameTemplate } from '../models/game-template';
 
 @Component({
   selector: 'app-new-game',
@@ -21,16 +23,26 @@ export class NewGameComponent implements OnInit {
   submitted = false;
   onSubmit() { this.submitted = true; }
 
-
-  newGame(){
-    //TODO Send current model data + user name to gameservice and create a new game
-    alert('Creating game : ' + this.model.gameTemplate  + " - " + this.model.minPlayers + " - "+this.model.maxPlayers );
+  constructor(private router: Router, private gameService: GameService, private templateService: TemplateService) { 
   }
 
-
-  constructor(private router: Router,private gameService: GameService){ }
+  newGame() {
+    //TODO Send current model data + user name to gameservice and create a new game
+    alert('Creating game : ' + this.model.gameTemplate + " - " + this.model.minPlayers + " - " + this.model.maxPlayers);
+  }
 
   ngOnInit() {
+    this.getTemplates();
   }
 
+  getTemplates(): void {
+    var self = this;
+    this.templateService.getTemplates().then(
+      function (templates) {
+        self.templates = [];
+        for (var template of templates) {
+          self.templates.push(template._id);
+        }
+      });
+  }
 }

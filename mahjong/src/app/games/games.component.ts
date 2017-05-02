@@ -40,6 +40,7 @@ export class GamesComponent implements OnInit {
   }
 
   goToDetail(game: Game): void {
+    this.router.navigate(['/games', game._id]);
   }
 
   search(term: string): void {

@@ -6,10 +6,11 @@ import 'rxjs/add/operator/switchMap';
 
 //Models
 import { Game } from '../models/game';
+import { User } from '../models/user';
 
 //Services
 import { GameService } from '../services/game.service';
-
+import { UserService } from '../services/user.service';
 
 
 @Component({
@@ -23,6 +24,7 @@ export class GameDetailComponent implements OnInit {
 
   constructor(
     private gameService: GameService,
+    private userService: UserService,
     private route: ActivatedRoute,
     private location: Location
     ) { }
@@ -38,6 +40,16 @@ export class GameDetailComponent implements OnInit {
   }
 
   joinGame(): void {
-    console.log(this.game);
+    var user: User = this.userService.getUser();
+    this.route.params.subscribe((params: Params) => {
+        this.gameService.joinGame(params['id'], user);
+    });
+  }
+
+  leaveGame(): void {
+    var user: User = this.userService.getUser();
+    this.route.params.subscribe((params: Params) => {
+        this.gameService.leaveGame(params['id'], user);
+    });
   }
 }

@@ -1,6 +1,5 @@
 label {
-  width: 3em;
-  margin: .5em 0;
+  display: inline-block;
   color: #607D8B;
   font-weight: bold;
 }

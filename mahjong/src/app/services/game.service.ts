@@ -44,6 +44,19 @@ Returns an  RxJS Observable (is converted to a promise with)
     return Promise.reject(error.message || error);
   }
 
+  getGame(gameId: string): Promise<Game> {
+    var url = this.baseUrl + "/games/" + gameId;
+    return this.http.get(url)
+      .toPromise()
+      //Promises' then callback
+      //use responses json.data method to extract json from the response
+      .then(function (response) {
+        return response.json() as Game;
+      })
+      //Catch errors and passrt hem to an errorhandler 
+      .catch(this.handleError);
+  }
+
 // //GET hero by id
 // getHero(id: number): Promise<Hero> {
 //   const url = `${this.heroesUrl}/${id}`;

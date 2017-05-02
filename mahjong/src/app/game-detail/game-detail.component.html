@@ -1,3 +1,27 @@
-<p>
-  game-detail works!
-</p>
+<div *ngIf="game">
+  <h2>{{game.gameTemplate._id}} details</h2>
+  <div><label>Created By: </label>{{game.createdBy.name}}</div>
+  <div><label>State: </label>{{game.state}}</div>
+  <br />
+  <div><label>Minimum players: </label>{{game.minPlayers}}</div>
+  <div><label>Maximum players: </label>{{game.maxPlayers}}</div>
+  <div><label>Current amount of players: </label>{{game.players.length}}</div>
+  <br />
+  <div><label>Created on: </label>{{game.createdOn}}</div>
+  <div *ngIf="game.startedOn != undefined"><label>Started on: </label>{{game.startedOn}}</div>
+  <div *ngIf="game.startedOn == undefined"><label>Started on: </label>Game did not start yet</div>
+  <div *ngIf="game.endedOn != undefined"><label>Ended on: </label>{{game.endedOn}}</div>
+  <div *ngIf="game.endedOn == undefined"><label>Ended on: </label>Game did not end yet</div>
+  <br />
+
+  <div><label>Players:</label>
+  <ul class="players">
+      <li *ngFor="let player of game.players">
+        {{player.name}}
+      </li>
+  </ul>
+  </div>
+  <br />
+  <button (click)="goBack()">Back</button>
+  <button (click)="joinGame()">Join</button>
+</div>

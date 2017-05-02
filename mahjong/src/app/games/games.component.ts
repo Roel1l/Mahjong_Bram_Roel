@@ -1,9 +1,11 @@
 //Modules
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 //Models
 import { Game } from '../models/game';
+import { User } from '../models/user';
 
 //Services
 import { GameService } from '../services/game.service';

@@ -84,7 +84,7 @@ export class GameService {
       function (error) {
         console.log(error);
       }
-    );
+      );
   }
 
   //DELETES
@@ -111,8 +111,7 @@ export class GameService {
     }).catch(
       function (error) {
         console.log(error);
-      }
-      );
+      });
   }
 
 

@@ -8,6 +8,7 @@ import { GamesComponent } from './games/games.component';
 import { GameDetailComponent } from './game-detail/game-detail.component';
 import { GameService } from './services/game.service';
 import { UserService } from './services/user.service';
+import { TemplateService } from './services/game-template.service';
 
 //RoutingModule
 import { AppRoutingModule } from './app-routing.module';
@@ -29,7 +30,7 @@ import { LoginComponent } from './login/login.component';
     AppRoutingModule,
 
   ],
-  providers: [GameService, UserService],
+  providers: [GameService, UserService, TemplateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

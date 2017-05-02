@@ -8,27 +8,51 @@ h2 {
   margin-top: 0;
   padding-top: 0;
 }
-nav a {
-  padding: 5px 10px;
-  text-decoration: none;
-  margin-top: 10px;
-  display: inline-block;
-  background-color: #eee;
-  border-radius: 4px;
+
+nav ul {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    list-style-type: none;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    overflow: hidden;
+    background-color: #333;
 }
-nav a:visited, a:link {
-  color: #607D8B;
+
+nav li {
+    float: left;
 }
-nav a:hover {
-  color: #039be5;
-  background-color: #CFD8DC;
+
+nav li a {
+    margin: 1em 0 1em 0;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-weight: bold;
 }
-nav a.active {
-  color: #039be5;
+
+nav li:hover {
+    background-color: #111;
 }
-.currentuser{
- position: absolute;
- right:0;
- top:0;
- font-weight: bold;
+
+nav .active {
+    background-color: #4CAF50;
+}
+
+/* Navigation Bar Button Colors */
+nav .games{
+  background: #ff6600;
+}
+
+nav .create{
+  background: #9999ff;
+}
+
+nav .login{
+  float: right !important;
+  background: #009900;
 }

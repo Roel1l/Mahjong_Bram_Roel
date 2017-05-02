@@ -1,9 +1,9 @@
 <nav>
-    <a routerLink="/login">Login</a>
-    <a routerLink="/games/new">Create a new game</a>
-    <a routerLink="/games">View existing games</a>
+    <ul>
+        <li class="create"><a routerLink="/games/new">Create a new game</a></li>
+        <li class="games"><a routerLink="/games">View existing games</a></li>
+        <li class="login"><a routerLink="/login">Login</a></li>
+    </ul>
 </nav>
-<div class ="currentuser">
-    <h2>Hoi</h2>
-</div>
+
 <router-outlet></router-outlet>

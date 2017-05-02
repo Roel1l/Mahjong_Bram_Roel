@@ -2,13 +2,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
+
 //Models
 import { Game } from '../models/game';
 import { User } from '../models/user';
+import { GameTemplate } from '../models/game-template';
 
 //Services
 import { GameService } from '../services/game.service';
-
+import { TemplateService } from '../services/game-template.service';
 
 @Component({
   selector: 'app-games',
@@ -19,15 +21,20 @@ export class GamesComponent implements OnInit {
 
   allGames: Game[];
   filteredGames: Game[];
-  date: Date;
+
+  templates = ['Any', 'Dragon','Monkey','Ox','Ram','Rooster','Shanghai','Snake'];
+  states = ['Any','Open','Playing','Finished'];
+  selectedTemplate: string = 'any';
+  selectedState: string = 'any';
 
   constructor(
     private router: Router,
-    private gameService: GameService) { }
+    private gameService: GameService,
+    private templateService: TemplateService) { }
 
   ngOnInit() {
-    this.date = new Date();
     this.getGames();
+    this.getTemplates();
   }
 
   getGames(): void {
@@ -39,18 +46,32 @@ export class GamesComponent implements OnInit {
       });
   }
 
+  getTemplates(): void {
+    var self = this;
+    this.templateService.getTemplates().then(
+      function (templates) {
+        self.templates = [];
+        self.templates.push("Any");
+        for (var template of templates) {
+          self.templates.push(template._id);
+        }
+      });
+  }
+
   goToDetail(game: Game): void {
     this.router.navigate(['/games', game._id]);
   }
 
-  search(term: string): void {
+  filter(): void {
     this.filteredGames = [];
-    term = term.toUpperCase();
     for (var game of this.allGames) {
-      if (game.createdBy.name.toUpperCase().includes(term) || game.gameTemplate._id.toUpperCase().includes(term) || game.state.toUpperCase().includes(term)) {
-        this.filteredGames.push(game);
-      }
+        if(game.gameTemplate._id.toUpperCase().includes(this.selectedTemplate.toUpperCase()) || this.selectedTemplate.toUpperCase() == "ANY") {
+          if(game.state.toUpperCase().includes(this.selectedState.toUpperCase()) || this.selectedState.toUpperCase() == "ANY"){
+            this.filteredGames.push(game);
+          }
+        }
     }
   }
+
 
 }

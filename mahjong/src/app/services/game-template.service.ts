@@ -29,4 +29,17 @@ export class TemplateService {
       .catch(this.handleError);
   }
 
+  getGameStates(): Promise<Object[]> {
+    var url = this.baseUrl + "/gamestates";
+    return this.http.get(url)
+      .toPromise()
+      //Promises' then callback
+      //use responses json.data method to extract json from the response
+      .then(function (response) {
+        return response.json() as Object[];
+      })
+      //Catch errors and passrt hem to an errorhandler 
+      .catch(this.handleError);
+  }
+
 }

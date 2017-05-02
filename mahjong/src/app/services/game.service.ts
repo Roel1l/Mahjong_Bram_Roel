@@ -136,8 +136,10 @@ export class GameService {
   //     .catch(this.handleError);
   // }
 
-  // //POST create new hero
-  // create(name: string): Promise<Hero> {
+  //TODO: implement POST create new game
+  // create(name: string): Promise<Game> {
+
+
   //   return this.http
   //     .post(this.heroesUrl, JSON.stringify({name: name}), {headers: this.headers})
   //     .toPromise()

@@ -10,12 +10,14 @@ import { GameService } from './services/game.service';
 
 //RoutingModule
 import { AppRoutingModule } from './app-routing.module';
+import { NewGameComponent } from './new-game/new-game.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GamesComponent,
     GameDetailComponent,
+    NewGameComponent,
   ],
   imports: [
     BrowserModule,

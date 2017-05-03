@@ -1,6 +1,6 @@
 export class GameTemplate {
     
-    _id: template;
+    _id: string;
     
     tiles : 
         [{
@@ -8,14 +8,4 @@ export class GameTemplate {
             yPos: number,
             zPos: number
         }] 
-}
-
-enum template{
-    Dragon,
-    Monkey,
-    Ox,
-    Ram,
-    Rooster,
-    Shanghai,
-    Snake
 }

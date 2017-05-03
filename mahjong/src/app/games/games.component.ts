@@ -6,10 +6,11 @@ import { Location } from '@angular/common';
 //Models
 import { Game } from '../models/game';
 import { User } from '../models/user';
+import { GameTemplate } from '../models/game-template';
 
 //Services
 import { GameService } from '../services/game.service';
-
+import { TemplateService } from '../services/game-template.service';
 
 @Component({
   selector: 'app-games',
@@ -18,22 +19,58 @@ import { GameService } from '../services/game.service';
 })
 export class GamesComponent implements OnInit {
 
-  games: Game[];
+  allGames: Game[];
+  filteredGames: Game[];
+
+  templates = ['Any', 'Dragon','Monkey','Ox','Ram','Rooster','Shanghai','Snake'];
+  states = ['Any','Open','Playing','Finished'];
+  selectedTemplate: string = 'any';
+  selectedState: string = 'any';
 
   constructor(
-     private router: Router,
-     private gameService: GameService){ }
+    private router: Router,
+    private gameService: GameService,
+    private templateService: TemplateService) { }
 
   ngOnInit() {
     this.getGames();
+    this.getTemplates();
   }
 
   getGames(): void {
-    this.gameService.getGames().then(games => this.games = games);
+    var self = this;
+    this.gameService.getGames().then(
+      function (games) {
+        self.allGames = games;
+        self.filteredGames = games;
+      });
+  }
+
+  getTemplates(): void {
+    var self = this;
+    this.templateService.getTemplates().then(
+      function (templates) {
+        self.templates = [];
+        self.templates.push("Any");
+        for (var template of templates) {
+          self.templates.push(template._id);
+        }
+      });
   }
 
   goToDetail(game: Game): void {
-    if(game.state == "open" && game.maxPlayers > game.players.length) this.router.navigate(['/games', game._id]);
+    this.router.navigate(['/games', game._id]);
+  }
+
+  filter(): void {
+    this.filteredGames = [];
+    for (var game of this.allGames) {
+        if(game.gameTemplate._id.toUpperCase().includes(this.selectedTemplate.toUpperCase()) || this.selectedTemplate.toUpperCase() == "ANY") {
+          if(game.state.toUpperCase().includes(this.selectedState.toUpperCase()) || this.selectedState.toUpperCase() == "ANY"){
+            this.filteredGames.push(game);
+          }
+        }
+    }
   }
 
 

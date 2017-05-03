@@ -84,7 +84,7 @@ export class GameService {
       function (error) {
         console.log(error);
       }
-    );
+      );
   }
     /*
     Used to generate Headers object with username and token
@@ -156,8 +156,7 @@ export class GameService {
     }).catch(
       function (error) {
         console.log(error);
-      }
-      );
+      });
   }
 
 

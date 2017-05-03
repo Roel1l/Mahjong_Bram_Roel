@@ -26,10 +26,12 @@
 
        <div class="form-group">
         <label for="gameTemplate">Choose a Template</label>
-        <select class="form-control" id="power" required>
-          <option *ngFor="let gameTemplate of templates" [value]="gameTemplate">{{gameTemplate}}</option>
+        <select class="form-control" id="template" required>
+          <option *ngFor="let gameTemplate of templates" [value]="gameTemplate">{{gameTemplate._id}}</option>
         </select>
       </div>
+
+      
 
 
       <div [hidden]="model.minPlayers > 32 || model.minPlayers < 1 || model.maxPlayers > 32 || model.maxPlayers <= model.minPlayers">

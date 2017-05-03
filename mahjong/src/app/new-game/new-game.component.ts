@@ -28,11 +28,13 @@ export class NewGameComponent implements OnInit {
      ){ }
 
   templates = [];
-  model = new Game(1, 11,this.templates[0]);
+  model = new Game(1, 11,'Ox');
   submitted = false;
   
-  onSubmit() { this.submitted = true; }
-
+  onSubmit() { 
+    this.submitted = true; 
+    console.log('submit');
+  }
 
   newGame(){
     //TODO move getting user to gameservice
@@ -54,8 +56,9 @@ export class NewGameComponent implements OnInit {
       function (templates) {
         self.templates = [];
         for (var template of templates) {
-          self.templates.push(template._id);
+          self.templates.push(template);
         }
+         self.model = new Game(1, 11,self.templates[0]._id);
       });
   }
 }

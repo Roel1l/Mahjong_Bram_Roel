@@ -99,7 +99,7 @@ export class GameService {
 
     create(user: User, game: Game): Promise<Game> {
     var url = this.baseUrl + "/games";
-
+console.log(user,game.gameTemplate);
      var basicOptions: RequestOptionsArgs = {
       url: this.baseUrl + "/games",
       method: RequestMethod.Post,
@@ -113,7 +113,7 @@ export class GameService {
       ),
       body:
         {
-          templateName: game.gameTemplate,
+          templateName: game.gameTemplate._id,
           minPlayers: game.minPlayers,
           maxPlayers: game.maxPlayers
         }

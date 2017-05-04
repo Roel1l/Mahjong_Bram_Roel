@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { UserDependendComponent } from "app/core/UserDependend.base";
 import { UserService } from "app/services/user.service";
 import { User } from '../models/user';
@@ -17,7 +17,8 @@ export class AppComponent extends UserDependendComponent implements OnInit {
   constructor(
     private router: Router,
     private location: Location,
-    userService: UserService
+    userService: UserService,
+    private activatedRoute: ActivatedRoute
   ) {
     super(userService); 
   };
@@ -35,8 +36,17 @@ export class AppComponent extends UserDependendComponent implements OnInit {
     username = this.router.parseUrl(this.router.url).queryParams['username'];
     token = this.router.parseUrl(this.router.url).queryParams['token'];
 
+    
+   // username = this.QueryString().username;
+    
+   // console.log(this.QueryString());
+
+
     if(username && token)
     {
+      console.log("hoi");
+     
+
        var loggedInUserInfo: User = {
          _id: username,
          name: "",
@@ -44,14 +54,36 @@ export class AppComponent extends UserDependendComponent implements OnInit {
        }
 
        this.userService.User.next(loggedInUserInfo);
+       var x: string[] = this.location.path().split('?');
+       this.location.replaceState(x[0]);
     }
 
-    
-    //this.location.replaceState("/");
   }
 
   logout(): void {
     this.userService.User.next(null);
   }
 
+  QueryString(){
+    // This function is anonymous, is executed immediately and 
+    // the return value is assigned to QueryString!
+    var query_string = {};
+    var query = window.location.search.substring(1);
+    var vars = query.split("&");
+    for (var i = 0; i < vars.length; i++) {
+      var pair = vars[i].split("=");
+      // If first entry with this name
+      if (typeof query_string[pair[0]] === "undefined") {
+        query_string[pair[0]] = decodeURIComponent(pair[1]);
+        // If second entry with this name
+      } else if (typeof query_string[pair[0]] === "string") {
+        var arr = [query_string[pair[0]], decodeURIComponent(pair[1])];
+        query_string[pair[0]] = arr;
+        // If third or later entry with this name
+      } else {
+        query_string[pair[0]].push(decodeURIComponent(pair[1]));
+      }
+    }
+    return query_string;
+  }
 }

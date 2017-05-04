@@ -7,7 +7,7 @@
   <select [(ngModel)]="selectedState" (change)="filter()">
       <option *ngFor="let state of states" [value]="state">{{state}}</option>
   </select>
-  <input [(ngModel)]="showMyGamesOnly" (change)="filter()" type="checkbox" /> Show my games only
+  <input [(ngModel)]="showMyGamesOnly" (change)="filter()" type="checkbox" /> Only display games i have joined
   </div>
 </div>
 
@@ -18,9 +18,10 @@
 
 <div class="grid grid-pad">
   <a *ngFor="let game of filteredGames" class="col-1-4">
-    <div (click)="goToDetail(game)" class="search-result" [class.open]="game.maxPlayers > game.players.length && game.state == 'open'" class="module">
+    <div (click)="goToDetail(game)" class="gameModule" [class.open]="game.maxPlayers > game.players.length && game.state == 'open'" class="module">
       <h4>{{game.gameTemplate.id}} ({{game.state}})</h4>
       <h4>nr. of players: {{game.players.length}}/{{game.maxPlayers}}</h4>
+      <h4>Created by: {{game.createdBy.name}}</h4>
     </div>
   </a>
 </div>

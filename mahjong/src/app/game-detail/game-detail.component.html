@@ -1,4 +1,5 @@
-<div *ngIf="game">
+
+<div class="container" *ngIf="game">
   <h2>{{game.gameTemplate._id}} details</h2>
   <div><label>Created By: </label>{{game.createdBy.name}}</div>
   <div><label>State: </label>{{game.state}}</div>
@@ -22,7 +23,12 @@
   </ul>
   </div>
   <br />
-  <button (click)="goBack()">Back</button>
-  <button (click)="joinGame()">Join</button>
-  <button (click)="leaveGame()">Leave</button>
+  <button type="button" class="btn btn-info" (click)="goBack()">Back</button>
+  <button type="button" class="btn btn-success" (click)="joinGame()">Join</button>
+  <button type="button" class="btn btn-warning" (click)="leaveGame()">Leave</button>
+  <div *ngIf="currentUser.name == game.createdBy.name">
+    <button type="button" class="btn btn-danger" (click)="deleteGame()">Delete</button>
+  </div>
 </div>
+
+<!--TODO pleur boolean in component, die kijkt bij init of de huidige user deel van de game is enzo, check de boolean dan heirin-->

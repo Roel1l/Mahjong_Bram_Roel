@@ -3,7 +3,7 @@ import { Headers, Http, Request, RequestOptions, RequestOptionsArgs, RequestMeth
 import 'rxjs/add/operator/toPromise';  //import to we can use the toPromise() operator
 import { Game } from '../models/game';
 import { User } from '../models/user';
-
+import { UserService } from '../services/user.service';
 @Injectable()
 export class GameService {
 

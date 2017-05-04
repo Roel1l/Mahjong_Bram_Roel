@@ -18,6 +18,7 @@ import { TemplateService } from './services/game-template.service';
 
 //RoutingModule
 import { AppRoutingModule } from './app-routing.module';
+import { MyGamesComponent } from './my-games/my-games.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { AppRoutingModule } from './app-routing.module';
     GameDetailComponent,
     NewGameComponent,
     LoginComponent,
+    MyGamesComponent,
   ],
   imports: [
     BrowserModule,

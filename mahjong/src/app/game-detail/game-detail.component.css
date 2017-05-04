@@ -4,7 +4,7 @@ label {
   color: #607D8B;
   font-weight: bold;
 }
-button {
+/*button {
   margin-top: 20px;
   font-family: Arial;
   background-color: #eee;
@@ -13,12 +13,12 @@ button {
   border-radius: 4px;
   cursor: pointer; cursor: hand;
   font-weight: bold;
-}
-button:hover {
+}*/
+/*button:hover {
   background-color: #cfd8dc;
 }
 button:disabled {
   background-color: #eee;
   color: #ccc; 
   cursor: auto;
-}
+}*/

@@ -5,10 +5,12 @@ import { Location } from '@angular/common';
 
 //Services
 import { GameService } from '../services/game.service';
+import { UserService } from '../services/user.service';
 import { TemplateService } from '../services/game-template.service';
 
 //Models
 import { Game } from '../models/game';
+import { User } from '../models/user';
 import { GameTemplate } from '../models/game-template';
 
 @Component({
@@ -18,18 +20,35 @@ import { GameTemplate } from '../models/game-template';
 })
 export class NewGameComponent implements OnInit {
 
-  templates = ['Dragon','Monkey','Ox','Ram','Rooster','Shanghai','Snake'];
-  model = new Game(1, 32, 'Ox');
+   constructor(
+     private router: Router,
+     private gameService: GameService,
+     private userService: UserService,
+     private templateService: TemplateService
+     ){ }
+
+  templates = [];
+  model = new Game(1, 11,'Ox');
   submitted = false;
-  onSubmit() { this.submitted = true; }
+  selectedTemplate: string;
 
-  constructor(private router: Router, private gameService: GameService, private templateService: TemplateService) { 
+  onSubmit() { 
+    this.submitted = true; 
+    console.log('submit');
   }
 
-  newGame() {
-    //TODO Send current model data + user name to gameservice and create a new game
-    alert('Creating game : ' + this.model.gameTemplate + " - " + this.model.minPlayers + " - " + this.model.maxPlayers);
+  newGame(){
+    //TODO move getting user to gameservice
+     var user: User = this.userService.getUser();
+     this.model.gameTemplate._id = this.selectedTemplate;
+     this.model.gameTemplate.id = this.selectedTemplate;
+
+     this.gameService.createGame(user, this.model)
+    .then(game => {
+      this.router.navigate(['/games', game._id]);
+    });
   }
+
 
   ngOnInit() {
     this.getTemplates();
@@ -41,8 +60,9 @@ export class NewGameComponent implements OnInit {
       function (templates) {
         self.templates = [];
         for (var template of templates) {
-          self.templates.push(template._id);
+          self.templates.push(template);
         }
+         self.model = new Game(1, 11,self.templates[0]._id);
       });
   }
 }

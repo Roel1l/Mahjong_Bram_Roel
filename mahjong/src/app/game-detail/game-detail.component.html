@@ -1,4 +1,5 @@
-<div *ngIf="game">
+
+<div class="container" *ngIf="game">
   <h2>{{game.gameTemplate._id}} details</h2>
   <div><label>Created By: </label>{{game.createdBy.name}}</div>
   <div><label>State: </label>{{game.state}}</div>
@@ -7,10 +8,10 @@
   <div><label>Maximum players: </label>{{game.maxPlayers}}</div>
   <div><label>Current amount of players: </label>{{game.players.length}}</div>
   <br />
-  <div><label>Created on: </label>{{game.createdOn}}</div>
-  <div *ngIf="game.startedOn != undefined"><label>Started on: </label>{{game.startedOn}}</div>
+  <div><label>Created on: </label>{{game.createdOn.substring(0, 10)}}</div>
+  <div *ngIf="game.startedOn != undefined"><label>Started on: </label>{{game.startedOn.substring(0, 10)}}</div>
   <div *ngIf="game.startedOn == undefined"><label>Started on: </label>Game did not start yet</div>
-  <div *ngIf="game.endedOn != undefined"><label>Ended on: </label>{{game.endedOn}}</div>
+  <div *ngIf="game.endedOn != undefined"><label>Ended on: </label>{{game.endedOn.substring(0, 10)}}</div>
   <div *ngIf="game.endedOn == undefined"><label>Ended on: </label>Game did not end yet</div>
   <br />
 
@@ -22,7 +23,18 @@
   </ul>
   </div>
   <br />
-  <button (click)="goBack()">Back</button>
-  <button (click)="joinGame()">Join</button>
-  <button (click)="leaveGame()">Leave</button>
+  <button type="button" class="btn btn-info" (click)="goBack()">Back</button>
+   
+   <div *ngIf="!isInGame">
+  <button type="button" class="btn btn-success" (click)="joinGame()">Join</button>
+   </div>
+   
+  <div *ngIf="isInGame">
+  <button type="button" class="btn btn-warning" (click)="leaveGame()">Leave</button>
+  </div>
+  
+  <div *ngIf="isAdmin">
+    <button type="button" class="btn btn-danger" (click)="deleteGame()">Delete</button>
+  </div>
 </div>
+

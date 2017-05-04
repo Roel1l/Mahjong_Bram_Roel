@@ -8,6 +8,7 @@ export class Game {
         this.maxPlayers = maxPlayers;
         this.gameTemplate = {_id: gameTemplate, id: gameTemplate}
     }
+    
 
 
     _id: string;
@@ -27,7 +28,8 @@ export class Game {
     players:
     [
         {
-            username: string
+            _id: string;
+            name: string;
         }
     ]
     

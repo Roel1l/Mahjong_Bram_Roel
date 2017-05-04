@@ -26,7 +26,7 @@ export class GameDetailComponent implements OnInit {
   isInGame: Boolean;
   isAdmin: Boolean;
   players: Array<String>;
-
+  loading: Boolean;
   constructor(
      private router: Router,
     private gameService: GameService,

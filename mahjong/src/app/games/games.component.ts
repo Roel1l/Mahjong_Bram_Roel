@@ -46,6 +46,7 @@ export class GamesComponent implements OnInit {
 
   getGames(): void {
     var self = this;
+  
     this.gameService.getGames().then(
       function (games) {
         self.allGames = games;

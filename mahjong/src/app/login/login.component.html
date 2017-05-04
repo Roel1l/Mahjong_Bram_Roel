@@ -1,10 +1,10 @@
 <div>
   <div *ngIf="!loggedIn">
-  <button (click)="login()">Login</button>
-  <button disabled>Logout</button>
+    <a href="https://mahjongmayhem.herokuapp.com/auth/avans/?callbackUrl=http://localhost:420/login"><button>Login</button></a>
+    <button disabled>Logout</button>
   </div>
   <div *ngIf="loggedIn">
-  <button disabled>Login</button>
-  <button (click)="logout()">Logout</button>
+    <button disabled>Login</button>
+    <button (click)="logout()">Logout</button>
   </div>
 </div>

@@ -43,7 +43,6 @@ export class GamesComponent extends UserDependendComponent implements OnInit  {
     super.ngOnInit();
     this.getGames();
     this.getTemplates();
-    console.log(this.user);
   }
 
   getGames(): void {

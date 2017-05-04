@@ -9,7 +9,6 @@ import { AppComponent } from './app/app.component';
 import { GamesComponent } from './games/games.component';
 import { GameDetailComponent } from './game-detail/game-detail.component';
 import { NewGameComponent } from './new-game/new-game.component';
-import { LoginComponent } from './login/login.component';
 
 //Services
 import { GameService } from './services/game.service';
@@ -26,7 +25,6 @@ import { AppRoutingModule } from './app-routing.module';
     GamesComponent,
     GameDetailComponent,
     NewGameComponent,
-    LoginComponent
   ],
   imports: [
     BrowserModule,

@@ -22,7 +22,13 @@ nav ul {
 }
 
 nav li {
-    float: left;
+  float: left;
+}
+
+nav .user{
+  float: right;
+  font-weight: bold;
+  margin-right: 1em;
 }
 
 nav li a {
@@ -35,7 +41,7 @@ nav li a {
     font-weight: bold;
 }
 
-nav li:hover {
+nav .button:hover {
     background-color: #111;
 }
 
@@ -57,8 +63,13 @@ nav .create{
 }
 
 nav .login{
-  float: right !important;
+  float: right;
   background: #009900;
 }
 
+nav .logout{
+  cursor: pointer; cursor: hand;
+  float: right;
+  background: #ff3300;
+}
 

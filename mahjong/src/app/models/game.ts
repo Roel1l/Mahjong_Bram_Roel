@@ -28,7 +28,8 @@ export class Game {
     players:
     [
         {
-            username: string
+            _id: string;
+            name: string;
         }
     ]
     

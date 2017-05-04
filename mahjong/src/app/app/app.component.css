@@ -30,7 +30,9 @@ nav li a {
     display: block;
     color: white;
     text-align: center;
-    padding: 14px 16px;
+    /*padding: 14px 16px;*/
+    padding-right: 10px;
+    padding-left: 10px;
     text-decoration: none;
     font-weight: bold;
 }
@@ -48,8 +50,12 @@ nav .games{
   background: #ff6600;
 }
 
+nav .myGames{
+  background: darkred;
+}
+
 nav .create{
-  background: #9999ff;
+  background: lightsalmon;
 }
 
 nav .login{

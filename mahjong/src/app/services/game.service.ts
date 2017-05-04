@@ -3,7 +3,7 @@ import { Headers, Http, Request, RequestOptions, RequestOptionsArgs, RequestMeth
 import 'rxjs/add/operator/toPromise';  //import to we can use the toPromise() operator
 import { Game } from '../models/game';
 import { User } from '../models/user';
-
+import { UserService } from '../services/user.service';
 @Injectable()
 export class GameService {
 
@@ -86,6 +86,51 @@ export class GameService {
       }
       );
   }
+    /*
+    Used to generate Headers object with username and token
+    More stuff can be appended by using the return value of this method.append()
+    */
+    getAuthHeaders(user: User): Headers{
+      var headers = new Headers();
+      headers.append('x-username',user._id);
+      headers.append('x-token',user.token);
+      return headers;
+    }
+
+    create(user: User, game: Game): Promise<Game> {
+    var url = this.baseUrl + "/games";
+console.log(user,game.gameTemplate);
+     var basicOptions: RequestOptionsArgs = {
+      url: this.baseUrl + "/games",
+      method: RequestMethod.Post,
+      search: null,
+      headers: new Headers(
+        {
+          //'Content-Type': 'application/json',
+          'x-username': user._id,
+          'x-token': user.token
+        }
+      ),
+      body:
+        {
+          templateName: game.gameTemplate._id,
+          minPlayers: game.minPlayers,
+          maxPlayers: game.maxPlayers
+        }
+    };
+
+    var reqOptions = new RequestOptions(basicOptions);
+    var req = new Request(reqOptions);
+
+    return this.http.request(req).toPromise().then(function (response) {
+      console.log("success");
+      return response.json() as Game;
+    }).catch(
+      function (error) {
+        console.log(error);
+      }
+    );
+  }
 
   //DELETES
   leaveGame(gameId: string, user: User): void {
@@ -136,15 +181,7 @@ export class GameService {
   // }
 
   //TODO: implement POST create new game
-  // create(name: string): Promise<Game> {
 
-
-  //   return this.http
-  //     .post(this.heroesUrl, JSON.stringify({name: name}), {headers: this.headers})
-  //     .toPromise()
-  //     .then(res => res.json().data as Hero)
-  //     .catch(this.handleError);
-  // }
 
   // //DELETE hero 
   // delete(id: number): Promise<void> {

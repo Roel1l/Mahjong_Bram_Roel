@@ -24,9 +24,16 @@
   </div>
   <br />
   <button type="button" class="btn btn-info" (click)="goBack()">Back</button>
+   
+   <div *ngIf="!isInGame">
   <button type="button" class="btn btn-success" (click)="joinGame()">Join</button>
+   </div>
+   
+  <div *ngIf="isInGame">
   <button type="button" class="btn btn-warning" (click)="leaveGame()">Leave</button>
-  <div *ngIf="currentUser.name == game.createdBy.name">
+  </div>
+  
+  <div *ngIf="isAdmin">
     <button type="button" class="btn btn-danger" (click)="deleteGame()">Delete</button>
   </div>
 </div>

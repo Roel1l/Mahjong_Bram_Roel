@@ -1,18 +1,25 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Headers, Http, Request, RequestOptions, RequestOptionsArgs, RequestMethod } from '@angular/http';
 import 'rxjs/add/operator/toPromise';  //import to we can use the toPromise() operator
 import { Game } from '../models/game';
 import { User } from '../models/user';
 import { UserService } from '../services/user.service';
+import { UserDependendComponent } from "app/core/UserDependend.base";
 @Injectable()
-export class GameService {
+export class GameService extends UserDependendComponent {
 
-  
+
   /*
     UTILITY
   */
   private baseUrl = 'http://mahjongmayhem.herokuapp.com';  // URL to web api
-  constructor(private http: Http) { }
+  constructor(
+    private http: Http,
+    userService: UserService
+  ) {
+    super(userService);
+    super.ngOnInit();
+  }
 
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error); // for demo purposes only
@@ -23,18 +30,18 @@ export class GameService {
     Used to generate Headers object with username and token
     More stuff can be appended by using the return value of this method.append()
     */
-    getAuthHeaders(user: User): Headers{
-      var headers = new Headers();
-      headers.append('x-username',user._id);
-      headers.append('x-token',user.token);
-      return headers;
-    }
+  getAuthHeaders(): Headers {
+    var headers = new Headers();
+    headers.append('x-username', this.user._id);
+    headers.append('x-token', this.user.token);
+    return headers;
+  }
 
   /*
     GETS
   */
-  getGamesByUser(playerId: string): Promise<Game[]> {
-    var url = this.baseUrl + "/games/?player=" + playerId;
+  getGamesByUser(): Promise<Game[]> {
+    var url = this.baseUrl + "/games/?player=" + this.user._id;
     return this.http.get(url)
       .toPromise()
       //Promises' then callback
@@ -75,7 +82,7 @@ export class GameService {
   /*
   POSTS
   */
-  joinGame(gameId: string, user: User): Promise<void> {
+  joinGame(gameId: string): Promise<void> {
     var basicOptions: RequestOptionsArgs = {
       url: this.baseUrl + "/games/" + gameId + "/players",
       method: RequestMethod.Post,
@@ -83,8 +90,8 @@ export class GameService {
       headers: new Headers(
         {
           //'Content-Type': 'application/json',
-          'x-username': user._id,
-          'x-token': user.token
+          'x-username': this.user._id,
+          'x-token': this.user.token
         }
       ),
       body: null
@@ -94,51 +101,49 @@ export class GameService {
     var req = new Request(reqOptions);
 
     return this.http.request(req).toPromise().then(function (response) {
-      console.log(response);
     }).catch(
       function (error) {
         console.log(error);
       }
       );
   }
-  
-    createGame(user: User, game: Game): Promise<Game> {
+
+  createGame(game: Game): Promise<Game> {
     var url = this.baseUrl + "/games";
-console.log(user,game.gameTemplate);
-     var basicOptions: RequestOptionsArgs = {
+
+    var basicOptions: RequestOptionsArgs = {
       url: this.baseUrl + "/games",
       method: RequestMethod.Post,
       search: null,
       headers: new Headers(
         {
           //'Content-Type': 'application/json',
-          'x-username': user._id,
-          'x-token': user.token
+          'x-username': this.user._id,
+          'x-token': this.user.token
         }
       ),
       body:
-        {
-          templateName: game.gameTemplate._id,
-          minPlayers: game.minPlayers,
-          maxPlayers: game.maxPlayers
-        }
+      {
+        templateName: game.gameTemplate._id,
+        minPlayers: game.minPlayers,
+        maxPlayers: game.maxPlayers
+      }
     };
 
     var reqOptions = new RequestOptions(basicOptions);
     var req = new Request(reqOptions);
 
     return this.http.request(req).toPromise().then(function (response) {
-      console.log("success");
       return response.json() as Game;
     }).catch(
       function (error) {
         console.log(error);
       }
-    );
+      );
   }
 
   //DELETES
-  leaveGame(gameId: string, user: User): Promise<void> {
+  leaveGame(gameId: string): Promise<void> {
     var basicOptions: RequestOptionsArgs = {
       url: this.baseUrl + "/games/" + gameId + "/players",
       method: RequestMethod.Delete,
@@ -146,8 +151,8 @@ console.log(user,game.gameTemplate);
       headers: new Headers(
         {
           //'Content-Type': 'application/json',
-          'x-username': user._id,
-          'x-token': user.token
+          'x-username': this.user._id,
+          'x-token': this.user.token
         }
       ),
       body: null
@@ -164,8 +169,8 @@ console.log(user,game.gameTemplate);
       });
   }
 
- deleteGame(gameId: string, user: User): Promise<void> {
-    
+  deleteGame(gameId: string): Promise<void> {
+
     var basicOptions: RequestOptionsArgs = {
       url: this.baseUrl + "/games/" + gameId,
       method: RequestMethod.Delete,
@@ -173,8 +178,8 @@ console.log(user,game.gameTemplate);
       headers: new Headers(
         {
           //'Content-Type': 'application/json',
-          'x-username': user._id,
-          'x-token': user.token
+          'x-username': this.user._id,
+          'x-token': this.user.token
         }
       ),
       body: null
@@ -188,8 +193,8 @@ console.log(user,game.gameTemplate);
     }).catch(
       function (error) {
         console.log(error);
-    });
- }
+      });
+  }
 
 
 

@@ -5,22 +5,21 @@ import { Location } from '@angular/common';
 
 //Models
 import { Game } from '../models/game';
-import { User } from '../models/user';
 import { GameTemplate } from '../models/game-template';
 
 //Services
 import { GameService } from '../services/game.service';
 import { TemplateService } from '../services/game-template.service';
 import { UserService } from '../services/user.service';
+import { UserDependendComponent } from "app/core/UserDependend.base";
 
 @Component({
   selector: 'app-games',
   templateUrl: './games.component.html',
   styleUrls: ['./games.component.css']
 })
-export class GamesComponent implements OnInit {
+export class GamesComponent extends UserDependendComponent implements OnInit  {
   
-  user: User;
   allGames: Game[];
   filteredGames: Game[];
 
@@ -34,14 +33,16 @@ export class GamesComponent implements OnInit {
     private router: Router,
     private gameService: GameService,
     private templateService: TemplateService,
-    private userService: UserService) { }
+    userService: UserService
+   ) 
+   {
+     super(userService);
+   }
 
   ngOnInit() {
+    super.ngOnInit();
     this.getGames();
     this.getTemplates();
-    this.userService.User.subscribe((user) => {
-        this.user = user;
-    })
   }
 
   getGames(): void {
@@ -75,13 +76,13 @@ export class GamesComponent implements OnInit {
         if(game.gameTemplate._id.toUpperCase().includes(this.selectedTemplate.toUpperCase()) || this.selectedTemplate.toUpperCase() == "ANY") {
           if(game.state.toUpperCase().includes(this.selectedState.toUpperCase()) || this.selectedState.toUpperCase() == "ANY"){
             if(this.showMyGamesOnly){
-              if(game.createdBy._id == this.userService.getUser()._id){
+              if(game.createdBy._id == this.user._id){
                   //Check if current logged in user created game
                   this.filteredGames.push(game);
               }
               else{
                 for (var player of game.players) {
-                  if(player._id == this.userService.getUser()._id){
+                  if(player._id == this.user._id){
                      //Check if current logged in user is  playing in the game
                      this.filteredGames.push(game);
                   }

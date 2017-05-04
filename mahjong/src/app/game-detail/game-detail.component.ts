@@ -12,6 +12,7 @@ import { User } from '../models/user';
 //Services
 import { GameService } from '../services/game.service';
 import { UserService } from '../services/user.service';
+import { UserDependendComponent } from "app/core/UserDependend.base";
 
 
 @Component({
@@ -19,51 +20,51 @@ import { UserService } from '../services/user.service';
   templateUrl: './game-detail.component.html',
   styleUrls: ['./game-detail.component.css']
 })
-export class GameDetailComponent implements OnInit {
+export class GameDetailComponent extends UserDependendComponent implements OnInit {
 
   @Input() game: Game;
-  currentUser: User;
   isInGame: Boolean;
   isAdmin: Boolean;
   players: Array<String>;
 
   constructor(
-     private router: Router,
+    private router: Router,
     private gameService: GameService,
-    private userService: UserService,
     private route: ActivatedRoute,
-    private location: Location
-    ) { }
-
-  ngOnInit() {
-     this.route.params
-      .switchMap((params: Params) => this.gameService.getGame(params['id']))
-      .subscribe(game =>
-       {
-         this.game = game;
-         console.log(this.game);
-         this.checkParticipation();
-
-      });
-      this.currentUser = this.userService.getUser();
+    private location: Location,
+    userService: UserService
+  ) {
+    super(userService);
   }
 
-  checkParticipation(){
+  ngOnInit() {
+    super.ngOnInit();
+    this.route.params
+      .switchMap((params: Params) => this.gameService.getGame(params['id']))
+      .subscribe(game => {
+        this.game = game;
+        console.log(this.game);
+        this.checkParticipation();
+
+      });
+  }
+
+  checkParticipation() {
     var self = this;
 
     //Set to default values
     self.isAdmin = false;
-    self.isInGame  = false;
+    self.isInGame = false;
 
     //Check if user is in game/admin
-    this.game.players.forEach(function(player){
-      if(player._id == self.currentUser._id){
+    this.game.players.forEach(function (player) {
+      if (player._id == self.user._id) {
         //User exists in game, set isInGame to true
         self.isInGame = true;
       }
     });
-    if(self.currentUser.name == self.game.createdBy.name){
-        self.isAdmin = true;
+    if (self.user.name == self.game.createdBy.name) {
+      self.isAdmin = true;
     }
     console.log(this.isAdmin);
 
@@ -74,21 +75,21 @@ export class GameDetailComponent implements OnInit {
   }
 
   joinGame(): void {
-     this.gameService.joinGame(this.game._id,this.currentUser).then(() => {
-            var player = {"_id":this.currentUser._id,"name":this.currentUser.name}
-            this.game.players.push(player);
-          })
+    this.gameService.joinGame(this.game._id).then(() => {
+      var player = { "_id": this.user._id, "name": this.user.name }
+      this.game.players.push(player);
+    })
   }
 
   leaveGame(): void {
-    this.gameService.leaveGame(this.game._id,this.currentUser).then(() => {
-             this.router.navigate(['/games']);  
-      });
+    this.gameService.leaveGame(this.game._id).then(() => {
+      this.router.navigate(['/games']);
+    });
   }
 
-  deleteGame(): void { 
-    this.gameService.deleteGame(this.game._id, this.currentUser).then(() => {
-             this.router.navigate(['/games']);  
-      });
+  deleteGame(): void {
+    this.gameService.deleteGame(this.game._id).then(() => {
+      this.router.navigate(['/games']);
+    });
   }
 }

@@ -23,7 +23,6 @@ export class NewGameComponent implements OnInit {
    constructor(
      private router: Router,
      private gameService: GameService,
-     private userService: UserService,
      private templateService: TemplateService
      ){ }
 
@@ -39,11 +38,10 @@ export class NewGameComponent implements OnInit {
 
   newGame(){
     //TODO move getting user to gameservice
-     var user: User = this.userService.getUser();
      this.model.gameTemplate._id = this.selectedTemplate;
      this.model.gameTemplate.id = this.selectedTemplate;
 
-     this.gameService.createGame(user, this.model)
+     this.gameService.createGame(this.model)
     .then(game => {
       this.router.navigate(['/games', game._id]);
     });

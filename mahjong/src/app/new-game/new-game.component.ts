@@ -30,7 +30,8 @@ export class NewGameComponent implements OnInit {
   templates = [];
   model = new Game(1, 11,'Ox');
   submitted = false;
-  
+  selectedTemplate: string;
+
   onSubmit() { 
     this.submitted = true; 
     console.log('submit');
@@ -39,6 +40,9 @@ export class NewGameComponent implements OnInit {
   newGame(){
     //TODO move getting user to gameservice
      var user: User = this.userService.getUser();
+     this.model.gameTemplate._id = this.selectedTemplate;
+     this.model.gameTemplate.id = this.selectedTemplate;
+
      this.gameService.create(user, this.model)
     .then(game => {
       this.router.navigate(['/games', game._id]);

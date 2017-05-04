@@ -19,7 +19,8 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./games.component.css']
 })
 export class GamesComponent implements OnInit {
-
+  
+  user: User;
   allGames: Game[];
   filteredGames: Game[];
 
@@ -38,6 +39,9 @@ export class GamesComponent implements OnInit {
   ngOnInit() {
     this.getGames();
     this.getTemplates();
+    this.userService.User.subscribe((user) => {
+        this.user = user;
+    })
   }
 
   getGames(): void {

@@ -5,4 +5,8 @@
         <li class="login"><a routerLink="/login">Login</a></li>
     </ul>
 </nav>
-<router-outlet></router-outlet>
+
+<button (click)="popToast()">pop toast</button>`
+  <toaster-container [toasterconfig]="toasterconfig">
+        </toaster-container><router-outlet></router-outlet>
+           

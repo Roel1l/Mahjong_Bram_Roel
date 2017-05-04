@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import {ToasterModule, ToasterService} from 'angular2-toaster';
 
 //Components
 import { AppComponent } from './app/app.component';
@@ -33,9 +34,10 @@ import { AppRoutingModule } from './app-routing.module';
     FormsModule,
     HttpModule,
     AppRoutingModule,
+    ToasterModule
 
   ],
-  providers: [GameService, UserService, TemplateService],
+  providers: [GameService, UserService, TemplateService, ToasterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

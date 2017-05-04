@@ -59,6 +59,11 @@ export class GameService {
       .catch(this.handleError);
   }
 
+  
+
+
+
+
   //POSTS
   joinGame(gameId: string, user: User): void {
     var basicOptions: RequestOptionsArgs = {
@@ -160,6 +165,7 @@ console.log(user,game.gameTemplate);
   }
 
 
+
   // //GET hero by id
   // getHero(id: number): Promise<Hero> {
   //   const url = `${this.heroesUrl}/${id}`;
@@ -191,6 +197,34 @@ console.log(user,game.gameTemplate);
   //     .then(() => null)
   //     .catch(this.handleError);
   // }
+
+ delete(gameId: string, user: User): Promise<void> {
+    
+    var basicOptions: RequestOptionsArgs = {
+      url: this.baseUrl + "/games/" + gameId,
+      method: RequestMethod.Delete,
+      search: null,
+      headers: new Headers(
+        {
+          //'Content-Type': 'application/json',
+          'x-username': user._id,
+          'x-token': user.token
+        }
+      ),
+      body: null
+    };
+
+    var reqOptions = new RequestOptions(basicOptions);
+    var req = new Request(reqOptions);
+
+    return this.http.request(req).toPromise().then(function (response) {
+      console.log(response);
+    }).catch(
+      function (error) {
+        console.log(error);
+    });
+ }
+
 
 
 

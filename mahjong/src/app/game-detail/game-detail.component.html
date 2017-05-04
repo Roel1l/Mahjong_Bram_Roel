@@ -1,4 +1,9 @@
 
+<!--Loader-->
+<div *ngIf="!game">
+  <div id="loader" class="loader"></div>
+</div>
+
 <div class="container" *ngIf="game">
   <h2>{{game.gameTemplate._id}} details</h2>
   <div><label>Created By: </label>{{game.createdBy.name}}</div>
@@ -11,7 +16,7 @@
   <div><label>Created on: </label>{{game.createdOn.substring(0, 10)}}</div>
   <div *ngIf="game.startedOn != undefined"><label>Started on: </label>{{game.startedOn.substring(0, 10)}}</div>
   <div *ngIf="game.startedOn == undefined"><label>Started on: </label>Game did not start yet</div>
-  <div *ngIf="game.endedOn != undefined"><label>Ended on: </label>{{game.endedOn.substring(0, 10)}}</div>
+  <div *ngIf="game.endedOn != undefined"><label>Ended on: </label>{{game.endedOn}}</div>
   <div *ngIf="game.endedOn == undefined"><label>Ended on: </label>Game did not end yet</div>
   <br />
 

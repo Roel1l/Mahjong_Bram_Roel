@@ -47,6 +47,7 @@ export class GamesComponent extends UserDependendComponent implements OnInit  {
 
   getGames(): void {
     var self = this;
+  
     this.gameService.getGames().then(
       function (games) {
         self.allGames = games;

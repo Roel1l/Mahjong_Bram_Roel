@@ -27,7 +27,7 @@ export class NewGameComponent implements OnInit {
      ){ }
 
   templates = [];
-  model = new Game(1, 11,'Ox');
+  model = new Game(2, 10,'Ox');
   submitted = false;
   selectedTemplate: string;
 
@@ -60,7 +60,7 @@ export class NewGameComponent implements OnInit {
         for (var template of templates) {
           self.templates.push(template);
         }
-         self.model = new Game(1, 11,self.templates[0]._id);
+         self.model = new Game(2, 10,self.templates[0]._id);
       });
   }
 }

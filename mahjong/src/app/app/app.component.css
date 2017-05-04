@@ -26,13 +26,11 @@ nav li {
 }
 
 nav li a {
-    margin: 1em 0 1em 0;
     display: block;
     color: white;
     text-align: center;
     /*padding: 14px 16px;*/
-    padding-right: 10px;
-    padding-left: 10px;
+    padding: 1em 10px 1em 10px;
     text-decoration: none;
     font-weight: bold;
 }

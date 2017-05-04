@@ -30,7 +30,7 @@
   <br />
   <button type="button" class="btn btn-info" (click)="goBack()">Back</button>
    
-   <div *ngIf="!isInGame">
+   <div *ngIf="!isInGame && game.players.length < game.maxPlayers && game.state == 'open'">
   <button type="button" class="btn btn-success" (click)="joinGame()">Join</button>
    </div>
    

@@ -43,7 +43,7 @@ export class NewGameComponent implements OnInit {
      this.model.gameTemplate._id = this.selectedTemplate;
      this.model.gameTemplate.id = this.selectedTemplate;
 
-     this.gameService.create(user, this.model)
+     this.gameService.createGame(user, this.model)
     .then(game => {
       this.router.navigate(['/games', game._id]);
     });

@@ -74,21 +74,20 @@ export class GameDetailComponent implements OnInit {
   }
 
   joinGame(): void {
-    var user: User = this.userService.getUser();
-    this.route.params.subscribe((params: Params) => {
-        this.gameService.joinGame(params['id'], user);
-    });
+     this.gameService.joinGame(this.game._id,this.currentUser).then(() => {
+            var player = {"_id":this.currentUser._id,"name":this.currentUser.name}
+            this.game.players.push(player);
+          })
   }
 
   leaveGame(): void {
-    var user: User = this.userService.getUser();
-    this.route.params.subscribe((params: Params) => {
-        this.gameService.leaveGame(params['id'], user);
-    });
+    this.gameService.leaveGame(this.game._id,this.currentUser).then(() => {
+             this.router.navigate(['/games']);  
+      });
   }
 
   deleteGame(): void { 
-    this.gameService.delete(this.game._id, this.currentUser).then(() => {
+    this.gameService.deleteGame(this.game._id, this.currentUser).then(() => {
              this.router.navigate(['/games']);  
       });
   }

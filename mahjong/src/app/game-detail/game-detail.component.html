@@ -38,6 +38,11 @@
   <button type="button" class="btn btn-warning" (click)="leaveGame()">Leave</button>
   </div>
   
+  <div *ngIf="isAdmin && game.state == 'open' && game.players.length >= game.minPlayers">
+        <button type="button" class="btn btn-success" (click)="startGame()">Start</button>
+  </div>
+
+
   <div *ngIf="isAdmin">
     <button type="button" class="btn btn-danger" (click)="deleteGame()">Delete</button>
   </div>

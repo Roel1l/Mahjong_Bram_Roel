@@ -43,9 +43,7 @@ export class GameDetailComponent extends UserDependendComponent implements OnIni
       .switchMap((params: Params) => this.gameService.getGame(params['id']))
       .subscribe(game => {
         this.game = game;
-        console.log(this.game);
         this.checkParticipation();
-
       });
   }
 
@@ -66,8 +64,6 @@ export class GameDetailComponent extends UserDependendComponent implements OnIni
     if (self.user.name == self.game.createdBy.name) {
       self.isAdmin = true;
     }
-    console.log(this.isAdmin);
-
   }
 
   goBack(): void {

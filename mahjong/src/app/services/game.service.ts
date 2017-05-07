@@ -82,7 +82,34 @@ export class GameService extends UserDependendComponent {
   /*
   POSTS
   */
-  joinGame(gameId: string): Promise<void> {
+  startGame(gameId: string): Promise<void> {
+    var basicOptions: RequestOptionsArgs = {
+      url: this.baseUrl + "/games/" + gameId + "/start",
+      method: RequestMethod.Post,
+      search: null,
+      headers: new Headers(
+        {
+          //'Content-Type': 'application/json',
+          'x-username': this.user._id,
+          'x-token': this.user.token
+        }
+      ),
+      body: null
+    };
+
+    var reqOptions = new RequestOptions(basicOptions);
+    var req = new Request(reqOptions);
+    
+    return this.http.request(req).toPromise().then(function (response) {
+      console.log(response);
+      console.log('game started');
+    }).catch(
+      function (error) {
+        console.log(error);
+      });
+  }
+
+   joinGame(gameId: string): Promise<void> {
     var basicOptions: RequestOptionsArgs = {
       url: this.baseUrl + "/games/" + gameId + "/players",
       method: RequestMethod.Post,
@@ -142,7 +169,9 @@ export class GameService extends UserDependendComponent {
       );
   }
 
-  //DELETES
+  /*
+  DELETES
+  */
   leaveGame(gameId: string): Promise<void> {
     var basicOptions: RequestOptionsArgs = {
       url: this.baseUrl + "/games/" + gameId + "/players",
@@ -168,6 +197,8 @@ export class GameService extends UserDependendComponent {
         console.log(error);
       });
   }
+
+  
 
   deleteGame(gameId: string): Promise<void> {
 

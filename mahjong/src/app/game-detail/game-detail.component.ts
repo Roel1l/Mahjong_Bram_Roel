@@ -70,6 +70,12 @@ export class GameDetailComponent extends UserDependendComponent implements OnIni
     this.location.back();
   }
 
+startGame(): void {
+    this.gameService.startGame(this.game._id).then(() => {
+      location.reload();
+    })
+  }
+
   joinGame(): void {
     this.gameService.joinGame(this.game._id).then(() => {
       var player = { "_id": this.user._id, "name": this.user.name }

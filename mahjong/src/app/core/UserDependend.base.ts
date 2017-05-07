@@ -6,7 +6,7 @@ export class UserDependendComponent implements OnInit {
 
   public user: User;
 
-  constructor(private userService: UserService) { }
+  constructor(public userService: UserService) { }
 
   ngOnInit() {
     this.userService.User.subscribe((user) => {

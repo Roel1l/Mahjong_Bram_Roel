@@ -4,6 +4,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 import 'rxjs/add/operator/switchMap';
 import { Router } from '@angular/router';
+import { TileComponent } from "app/tile/tile.component";
 
 //Models
 import { Game } from '../models/game';
@@ -14,10 +15,9 @@ import { GameService } from '../services/game.service';
 import { UserService } from '../services/user.service';
 import { UserDependendComponent } from "app/core/UserDependend.base";
 
-
 @Component({
   selector: 'app-game-detail',
-  templateUrl: './game-detail.component.html',
+  templateUrl: './game-detail.component.html', 
   styleUrls: ['./game-detail.component.css']
 })
 export class GameDetailComponent extends UserDependendComponent implements OnInit {
@@ -27,6 +27,7 @@ export class GameDetailComponent extends UserDependendComponent implements OnIni
   isAdmin: Boolean;
   players: Array<String>;
   loading: Boolean;
+  
   constructor(
     private router: Router,
     private gameService: GameService,

@@ -52,13 +52,13 @@ export class AppComponent extends UserDependendComponent implements OnInit {
     //If username and token were found login
     if(username && token)
     {
-       var loggedInUserInfo: User = {
+       var loggedInUser: User = {
          _id: username,
          name: "",
          token: token
        }
 
-       this.userService.User.next(loggedInUserInfo);
+       this.userService.User.next(loggedInUser);
 
        console.log(this.userService.User);
        var x: string[] = this.location.path().split('?');

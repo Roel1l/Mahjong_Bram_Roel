@@ -15,6 +15,7 @@ import { NewGameComponent } from './new-game/new-game.component';
 import { GameService } from './services/game.service';
 import { UserService } from './services/user.service';
 import { TemplateService } from './services/game-template.service';
+import { ToastService } from './services/toast.service'; //Custom toasterservice with configured toast
 
 //RoutingModule
 import { AppRoutingModule } from './app-routing.module';
@@ -37,7 +38,7 @@ import { TileComponent } from './tile/tile.component';
     ToasterModule
 
   ],
-  providers: [GameService, UserService, TemplateService, ToasterService],
+  providers: [GameService, UserService, TemplateService, ToasterService,ToastService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

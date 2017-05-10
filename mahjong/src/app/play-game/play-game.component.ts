@@ -48,7 +48,7 @@ export class PlayGameComponent extends UserDependendComponent implements OnInit 
 
   getTiles(){
     var self = this;
-    this.tileService.getTylesByGame(this.game._id,false).then(
+    this.tileService.getTilesByGame(this.game._id,false).then(
       function(response){
         console.log(response);
         self.tiles = response;

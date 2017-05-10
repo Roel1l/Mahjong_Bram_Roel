@@ -20,6 +20,7 @@ import { ToastService } from './services/toast.service'; //Custom toasterservice
 //RoutingModule
 import { AppRoutingModule } from './app-routing.module';
 import { TileComponent } from './tile/tile.component';
+import { PlayGameComponent } from './play-game/play-game.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { TileComponent } from './tile/tile.component';
     GameDetailComponent,
     NewGameComponent,
     TileComponent,
+    PlayGameComponent,
   ],
   imports: [
     BrowserModule,

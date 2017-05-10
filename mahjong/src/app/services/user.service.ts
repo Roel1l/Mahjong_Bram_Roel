@@ -18,7 +18,7 @@ export class UserService {
   public User: BehaviorSubject<User>;
 
   constructor(private http: Http) { 
-    this.User = new BehaviorSubject<User>(this.user);
+    this.User = new BehaviorSubject<User>(null);
     //this.User.next(this.user);
     //this.User.lift
   }

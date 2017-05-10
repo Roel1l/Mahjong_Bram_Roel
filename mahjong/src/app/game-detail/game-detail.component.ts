@@ -4,7 +4,6 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 import 'rxjs/add/operator/switchMap';
 import { Router } from '@angular/router';
-import { TileComponent } from "app/tile/tile.component";
 
 //Models
 import { Game } from '../models/game';
@@ -25,7 +24,6 @@ export class GameDetailComponent extends UserDependendComponent implements OnIni
   @Input() game: Game;
   isInGame: Boolean;
   isAdmin: Boolean;
-  players: Array<String>;
   loading: Boolean;
   
   constructor(
@@ -73,7 +71,7 @@ export class GameDetailComponent extends UserDependendComponent implements OnIni
 
 startGame(): void {
     this.gameService.startGame(this.game._id).then(() => {
-      location.reload();
+      this.router.navigate(['/games/' + this.game._id + '/play']);
     })
   }
 

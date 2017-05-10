@@ -24,6 +24,8 @@ export class PlayGameComponent extends UserDependendComponent implements OnInit 
 
   @Input() game: Game;
   tiles: Tile[];
+  tileInstance: Tile;
+
   constructor(
     private router: Router,
     private gameService: GameService,
@@ -46,12 +48,21 @@ export class PlayGameComponent extends UserDependendComponent implements OnInit 
 
   getTiles(){
     var self = this;
-    this.tileService.getTylesByGame(this.game._id,false).then(
+    this.tileService.getTilesByGame(this.game._id,false).then(
       function(response){
         console.log(response);
         self.tiles = response;
+        self.tileInstance = response[0];
+        console.log(self.tileInstance);
       }
     )
+  }
+
+  drawBoard(){
+    //get max X/Y so we know size of the board
+    //Generate table with css styiling 
+    //Fill all Cells with ?? 
+    
   }
 
 }

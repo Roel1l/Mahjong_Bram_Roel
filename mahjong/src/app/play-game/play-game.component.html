@@ -1,6 +1,16 @@
-<p>
-  play-game works!
 
+<!--<table>
+<template *ngFor="tiles; let i = index">
+  <tile-outlet [tile]="tiles[i]"></tile-outlet>
+</template>
+</table>-->
+
+<ng-template ngFor let-item [ngForOf]="tiles" let-i="index">
+  <tile-outlet [tile]="item"></tile-outlet>
+</ng-template>
+
+
+   
     <button type="button"(click)="getTiles()">GEt tiles</button>
 
-</p>
+

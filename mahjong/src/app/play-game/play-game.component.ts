@@ -23,7 +23,7 @@ import { TileService } from '../services/tile.service';
 export class PlayGameComponent extends UserDependendComponent implements OnInit {
 
   @Input() game: Game;
-  
+  tiles: Tile[];
   constructor(
     private router: Router,
     private gameService: GameService,
@@ -45,9 +45,11 @@ export class PlayGameComponent extends UserDependendComponent implements OnInit 
   }
 
   getTiles(){
+    var self = this;
     this.tileService.getTylesByGame(this.game._id,false).then(
       function(response){
         console.log(response);
+        self.tiles = response;
       }
     )
   }

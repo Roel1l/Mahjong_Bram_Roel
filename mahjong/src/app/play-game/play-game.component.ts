@@ -23,8 +23,7 @@ import { TileService } from '../services/tile.service';
 export class PlayGameComponent extends UserDependendComponent implements OnInit {
 
   @Input() game: Game;
-  tiles: Tile[];
-  tileInstance: Tile;
+  tiles: Tile[]
 
   constructor(
     private router: Router,
@@ -43,6 +42,7 @@ export class PlayGameComponent extends UserDependendComponent implements OnInit 
       .switchMap((params: Params) => this.gameService.getGame(params['id']))
       .subscribe(game => {
         this.game = game;
+        this.getTiles();
       });
   }
 
@@ -50,19 +50,9 @@ export class PlayGameComponent extends UserDependendComponent implements OnInit 
     var self = this;
     this.tileService.getTilesByGame(this.game._id,false).then(
       function(response){
-        console.log(response);
         self.tiles = response;
-        self.tileInstance = response[0];
-        console.log(self.tileInstance);
       }
     )
   }
-
-  drawBoard(){
-    //get max X/Y so we know size of the board
-    //Generate table with css styiling 
-    //Fill all Cells with ?? 
-    
-  }
-
+  
 }

@@ -15,5 +15,8 @@ export class TileComponent implements OnInit {
   ngOnInit() {
   
   }
-
+ 
+  logTile(): void{
+    console.log(this.tile);
+  }
 }

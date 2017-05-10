@@ -28,26 +28,13 @@
   </ul>
   </div>
   <br />
-  <button type="button" class="btn btn-info" (click)="goBack()">Back</button>
-   
-   <div *ngIf="!isInGame && game.players.length < game.maxPlayers && game.state == 'open'">
-  <button type="button" class="btn btn-success" (click)="joinGame()">Join</button>
-   </div>
-   
-  <div *ngIf="isInGame">
-  <button type="button" class="btn btn-warning" (click)="leaveGame()">Leave</button>
-  </div>
-  
-  <div *ngIf="isAdmin && game.state == 'open' && game.players.length >= game.minPlayers">
-        <button type="button" class="btn btn-success" (click)="startGame()">Start</button>
-  </div>
-
-  <div *ngIf="isInGame && game.state == 'playing'">
-      <button type="button" class="btn btn-success" (click)="playGame()">Play</button>
-  </div>
-
-  <div *ngIf="isAdmin">
-    <button type="button" class="btn btn-danger" (click)="deleteGame()">Delete</button>
+  <div>
+    <button type="button" class="btn btn-info" (click)="goBack()">Back</button>
+    <button  *ngIf="!isInGame && game.players.length < game.maxPlayers && game.state == 'open'" type="button" class="btn btn-success" (click)="joinGame()">Join</button>
+    <button *ngIf="isInGame" type="button" class="btn btn-warning" (click)="leaveGame()">Leave</button>
+    <button *ngIf="isAdmin && game.state == 'open' && game.players.length >= game.minPlayers" type="button" class="btn btn-success" (click)="startGame()">Start</button>
+    <button  *ngIf="isInGame && game.state == 'playing'" type="button" class="btn btn-success" (click)="playGame()">Play</button>
+    <button *ngIf="isAdmin" type="button" class="btn btn-danger" (click)="deleteGame()">Delete</button>
   </div>
 </div>
 

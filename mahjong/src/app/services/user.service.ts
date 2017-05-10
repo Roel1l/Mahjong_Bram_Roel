@@ -20,6 +20,6 @@ export class UserService {
   constructor(private http: Http) { 
     this.User = new BehaviorSubject<User>(this.user);
     //this.User.next(this.user);
-    //this.User.lift
+    //do you even this.User.lift 
   }
 }

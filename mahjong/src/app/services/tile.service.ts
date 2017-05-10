@@ -27,7 +27,7 @@ export class TileService extends UserDependendComponent {
   }
 
 
-  getTylesByGame(gameId: string, matched: boolean): Promise<Tile[]> {
+  getTilesByGame(gameId: string, matched: boolean): Promise<Tile[]> {
     var url = this.baseUrl + "/games/" + gameId + "/tiles/?matched=" + matched;
     return this.http.get(url)
       .toPromise()

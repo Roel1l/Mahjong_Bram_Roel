@@ -29,6 +29,7 @@ nav .user{
   float: right;
   font-weight: bold;
   margin-right: 1em;
+  margin-top: 12.5px;
 }
 
 nav li a {

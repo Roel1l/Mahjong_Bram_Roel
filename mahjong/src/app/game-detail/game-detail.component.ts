@@ -62,7 +62,7 @@ export class GameDetailComponent extends UserDependendComponent implements OnIni
         self.isInGame = true;
       }
     });
-    if (self.user.name == self.game.createdBy.name) {
+    if (self.user._id == self.game.createdBy._id) {
       self.isAdmin = true;
     }
   }
@@ -79,7 +79,7 @@ startGame(): void {
 
   joinGame(): void {
     this.gameService.joinGame(this.game._id).then(() => {
-      var player = { "_id": this.user._id, "name": this.user.name }
+      var player = { "_id": "1", name: "you" }
       this.game.players.push(player);
     })
   }

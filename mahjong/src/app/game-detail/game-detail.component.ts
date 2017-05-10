@@ -69,10 +69,14 @@ export class GameDetailComponent extends UserDependendComponent implements OnIni
     this.location.back();
   }
 
-startGame(): void {
+  startGame(): void {
     this.gameService.startGame(this.game._id).then(() => {
       this.router.navigate(['/games/' + this.game._id + '/play']);
     })
+  }
+
+  playGame(): void{
+     this.router.navigate(['/games/' + this.game._id + '/play']);
   }
 
   joinGame(): void {

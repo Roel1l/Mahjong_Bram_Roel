@@ -21,7 +21,7 @@ import { UserDependendComponent } from "app/core/UserDependend.base";
 })
 export class PlayGameComponent extends UserDependendComponent implements OnInit {
 
- @Input() game: Game;
+  @Input() game: Game;
   
   constructor(
     private router: Router,

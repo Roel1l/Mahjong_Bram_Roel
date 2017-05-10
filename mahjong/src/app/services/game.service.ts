@@ -2,7 +2,6 @@ import { Injectable, OnInit } from '@angular/core';
 import { Headers, Http, Request, RequestOptions, RequestOptionsArgs, RequestMethod } from '@angular/http';
 import 'rxjs/add/operator/toPromise';  //import to we can use the toPromise() operator
 import { Game } from '../models/game';
-import { User } from '../models/user';
 import { UserService } from '../services/user.service';
 import { ToastService } from '../services/toast.service';
 import { UserDependendComponent } from "app/core/UserDependend.base";

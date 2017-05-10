@@ -103,7 +103,7 @@ export class GameService extends UserDependendComponent {
     var req = new Request(reqOptions);
     
     return this.http.request(req).toPromise().then(function (response) {
-      self.toastService.showSuccess("Game created","");
+      self.toastService.showSuccess("Game started","");
     }) .catch(this.handleError);
   }
 

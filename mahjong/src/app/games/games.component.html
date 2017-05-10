@@ -7,7 +7,7 @@
   <select [(ngModel)]="selectedState" (change)="filter()">
       <option *ngFor="let state of states" [value]="state">{{state}}</option>
   </select>
-  <input [(ngModel)]="showMyGamesOnly" (change)="filter()" type="checkbox" /> Only display games i have joined
+  <input [(ngModel)]="showMyGamesOnly" (change)="filter()" type="checkbox" /> Only display my games
   </div>
 </div>
 

@@ -4,7 +4,7 @@ import { UserDependendComponent } from "app/core/UserDependend.base";
 import { UserService } from "app/services/user.service";
 import { User } from '../models/user';
 import {Location} from '@angular/common';
-import {ToasterModule, ToasterService, ToasterConfig} from 'angular2-toaster';
+import { ToastService } from '../services/toast.service';
 
 @Component({
   selector: 'app-root',
@@ -20,7 +20,7 @@ export class AppComponent extends UserDependendComponent implements OnInit {
     private location: Location,
     userService: UserService,
     private activatedRoute: ActivatedRoute,
-    private toasterService: ToasterService
+    private toastService: ToastService
   ) {
     super(userService); 
   };
@@ -70,14 +70,8 @@ export class AppComponent extends UserDependendComponent implements OnInit {
     this.userService.User.next(null);
   }
 
- public toasterconfig : ToasterConfig = 
-        new ToasterConfig({
-            showCloseButton: false, 
-            tapToDismiss: true, 
-            timeout: 1500
-        });
+  toast(): void {
+    this.toastService.showInfo("a","a");
+  }
 
- popToast() {
-        this.toasterService.pop('success', 'Args Title', 'Args Body');
-    }
 }

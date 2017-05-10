@@ -79,7 +79,7 @@ startGame(): void {
 
   joinGame(): void {
     this.gameService.joinGame(this.game._id).then(() => {
-      var player = { "_id": this.user._id, "name": this.user.name }
+      var player = { "_id": "1", name: "You" }
       this.game.players.push(player);
     })
   }

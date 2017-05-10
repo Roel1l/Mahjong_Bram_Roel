@@ -1,0 +1,26 @@
+.piece{
+    position: absolute;
+    width: 80px;
+    height:120px;
+    border:1px solid #000000;
+    text-align: center;
+    vertical-align: middle;
+    color: black;
+    font-weight: bold;
+}
+
+.layer0{
+    background-color:#FA8072;
+}
+
+.layer1{
+    background-color:#6495ED;
+}
+
+.layer2{
+    background-color:#FF0000;
+}
+
+.layer3{
+    background-color:#4682b4;
+}

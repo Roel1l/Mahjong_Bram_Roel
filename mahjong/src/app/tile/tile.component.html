@@ -1,8 +1,4 @@
-<!--<svg width="400" height="110">
-  <rect width="300" height="100" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)" />
-</svg>-->
+<div *ngIf="tile" (click)="logTile()">
+    <div class="piece layer{{tile.zPos}}" [style.z-index]="tile.zPos" [style.margin-top.px]="tile.yPos*60" [style.margin-left.px]="tile.xPos*40">{{tile.zPos}}</div>
+</div>
 
-
- <div *ngIf="tile">
-      <h2>{{tile.xPos}} </h2>
-  </div>

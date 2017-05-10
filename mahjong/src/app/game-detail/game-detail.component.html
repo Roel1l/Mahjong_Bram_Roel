@@ -42,6 +42,9 @@
         <button type="button" class="btn btn-success" (click)="startGame()">Start</button>
   </div>
 
+  <div *ngIf="isInGame && game.state == 'playing'">
+      <button type="button" class="btn btn-success" (click)="playGame()">Play</button>
+  </div>
 
   <div *ngIf="isAdmin">
     <button type="button" class="btn btn-danger" (click)="deleteGame()">Delete</button>

@@ -9,16 +9,18 @@ export class UserService {
 
   private baseUrl = 'http://mahjongmayhem.herokuapp.com';  // URL to web api
   
-  private user: User = {
-        _id: 'raa.guerand@student.avans.nl',
-        name: 'Roel Guerand',
-        token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.InJhYS5ndWVyYW5kQHN0dWRlbnQuYXZhbnMubmwi.BG5tdMN3exflQILsKuPNryDDG024_GBNIM1w00gIpoA"
-  };
+  // private user: User = {
+  //       _id: 'raa.guerand@student.avans.nl',
+  //       name: 'Roel Guerand',
+  //       token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.InJhYS5ndWVyYW5kQHN0dWRlbnQuYXZhbnMubmwi.BG5tdMN3exflQILsKuPNryDDG024_GBNIM1w00gIpoA"
+  // };
 
   public User: BehaviorSubject<User>;
 
   constructor(private http: Http) { 
-    this.User = new BehaviorSubject<User>(this.user);
+    var user: User = JSON.parse(localStorage.getItem('user'));
+
+    this.User = new BehaviorSubject<User>(user);
     //this.User.next(this.user);
     //do you even this.User.lift 
   }

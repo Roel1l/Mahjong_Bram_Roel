@@ -7,7 +7,7 @@
         <label for="minPlayers">Choose min. Players (1-32)</label>
         <input type="text" class="form-control" id="minPlayers" required
         [(ngModel)]="model.minPlayers" name="minPlayers">
-          <div [hidden]="model.minPlayers <= 32 && model.minPlayers >= 1 || model.minPlayers.pristine"
+          <div [hidden]="model.minPlayers <= 32 && model.minPlayers >= 1"
              class="alert alert-danger">
              Min players must be >= 1 && <= 32.
           </div>
@@ -17,7 +17,7 @@
         <label for="maxPlayers">Choose max. Players ({{model.minPlayers}}-32)</label>
         <input type="text" class="form-control" id="maxPlayers" required
         [(ngModel)]="model.maxPlayers" name="maxPlayers">
-          <div [hidden]="model.maxPlayers <= 32 && model.maxPlayers >= model.minPlayers || model.maxPlayers.pristine"
+          <div [hidden]="model.maxPlayers <= 32 && model.maxPlayers >= model.minPlayers"
              class="alert alert-danger">
              Max players must be > min players && <= 32.
           </div>

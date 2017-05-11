@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Tile } from "app/models/tile";
+import { ToastService } from "app/services/toast.service";
 
 @Component({
   selector: 'tile-outlet',
@@ -10,13 +11,14 @@ export class TileComponent implements OnInit {
 
   @Input() tile: Tile;
   
-  constructor() { }
+  constructor(private toastService: ToastService) { }
 
   ngOnInit() {
   
   }
  
   logTile(): void{
+    this.toastService.showInfo(this.tile.tile.name,this.tile.xPos + " - " + this.tile.yPos + " - " + this.tile.zPos + " -  " + this.tile.tile.suit);
     console.log(this.tile);
   }
 }

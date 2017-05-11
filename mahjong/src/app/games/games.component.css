@@ -63,11 +63,11 @@ h4 {
 }
 
 /*Open game*/
-.open {
+.playing {
   background-color: darkorange;
 }
 
-.playing {
+.open {
   background-color: #2D882D;
 }
 

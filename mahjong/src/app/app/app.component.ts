@@ -59,8 +59,8 @@ export class AppComponent extends UserDependendComponent implements OnInit {
        }
 
        this.userService.User.next(loggedInUser);
+       localStorage.setItem('user', JSON.stringify(loggedInUser));
 
-       console.log(this.userService.User);
        var x: string[] = this.location.path().split('?');
        this.location.replaceState(x[0]);
     }
@@ -68,6 +68,7 @@ export class AppComponent extends UserDependendComponent implements OnInit {
 
   logout(): void {
     this.userService.User.next(null);
+    localStorage.setItem('user', null);
   }
 
   toast(): void {

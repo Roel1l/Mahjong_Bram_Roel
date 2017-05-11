@@ -1,0 +1,14 @@
+<nav>
+    <ul>
+        <li class="create button"><a routerLink="/games/new">Create a new game</a></li>
+        <li class="games button"><a routerLink="/games">All games</a></li>
+        <li *ngIf="!user" class="login button"><a [attr.href]="authUrl +  this.location.path()">Login</a></li>
+        <li *ngIf="user" class="logout button" (click)="logout()"><a>Logout</a></li>
+        <li *ngIf="user" class="user">{{user._id}}</li>
+    </ul>
+</nav>
+
+<!--<button (click)="toast()">pop toast</button>-->
+  <toaster-container [toasterconfig]="toasterconfig"></toaster-container> 
+  <router-outlet></router-outlet>
+           

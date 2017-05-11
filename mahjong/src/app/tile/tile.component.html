@@ -1,0 +1,4 @@
+<div *ngIf="tile" (click)="logTile()">
+    <div class="piece layer{{tile.zPos}}" [style.z-index]="tile.zPos" [style.margin-top.px]="tile.yPos*60" [style.margin-left.px]="tile.xPos*40">{{tile.zPos}}</div>
+</div>
+

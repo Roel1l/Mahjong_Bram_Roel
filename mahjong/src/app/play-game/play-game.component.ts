@@ -58,10 +58,21 @@ export class PlayGameComponent extends UserDependendComponent implements OnInit 
   }
 
   handleTileClicked(tile: Tile): void{
-    console.log("Tile clicked: ");
+    if(this.clickedTile1 == null) {
+      this.clickedTile1 = tile;
+      console.log("Chose first tile");
+    }
+    else if(this.clickedTile2 == null)
+    { 
+      this.clickedTile2 = tile;
+      console.log("Chose second tile");
+    }
+    else{
+      this.clickedTile1 = null;
+      this.clickedTile2 = null;
+      console.log("Chosen tiles reset (temporarily happens when you choose a third tile)");
+    }
     console.log(tile);
-    if(this.clickedTile1 == null) this.clickedTile1 = tile;
-    else if(this.clickedTile2 == null) this.clickedTile2 = tile;
   }
   
 }

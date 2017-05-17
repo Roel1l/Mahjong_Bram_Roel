@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, } from '@angular/core';
 import { Tile } from "app/models/tile";
 import { ToastService } from "app/services/toast.service";
 
@@ -10,15 +10,17 @@ import { ToastService } from "app/services/toast.service";
 export class TileComponent implements OnInit {
 
   @Input() tile: Tile;
-  
-  constructor(private toastService: ToastService) { }
+  @Output() tileClicked = new EventEmitter();
+
+
+  constructor(private toastService: ToastService) { 
+  }
 
   ngOnInit() {
   
   }
  
-  logTile(): void{
-    this.toastService.showInfo(this.tile.tile.name,this.tile.xPos + " - " + this.tile.yPos + " - " + this.tile.zPos + " -  " + this.tile.tile.suit);
-    console.log(this.tile);
+  clickTile(): void{
+    this.tileClicked.emit(this.tile);
   }
 }

@@ -24,6 +24,8 @@ export class PlayGameComponent extends UserDependendComponent implements OnInit 
 
   @Input() game: Game;
   tiles: Tile[]
+  clickedTile1: Tile = null;
+  clickedTile2: Tile = null;
 
   constructor(
     private router: Router,
@@ -53,6 +55,24 @@ export class PlayGameComponent extends UserDependendComponent implements OnInit 
         self.tiles = response;
       }
     )
+  }
+
+  handleTileClicked(tile: Tile): void{
+    if(this.clickedTile1 == null) {
+      this.clickedTile1 = tile;
+      console.log("Chose first tile");
+    }
+    else if(this.clickedTile2 == null)
+    { 
+      this.clickedTile2 = tile;
+      console.log("Chose second tile");
+    }
+    else{
+      this.clickedTile1 = null;
+      this.clickedTile2 = null;
+      console.log("Chosen tiles reset (temporarily happens when you choose a third tile)");
+    }
+    console.log(tile);
   }
   
 }

@@ -8,10 +8,6 @@ import { UserDependendComponent } from "app/core/UserDependend.base";
 @Injectable()
 export class GameService extends UserDependendComponent {
 
-
-  /*
-    UTILITY
-  */
   private baseUrl = 'http://mahjongmayhem.herokuapp.com';  // URL to web api
   constructor(
     private http: Http,
@@ -23,7 +19,7 @@ export class GameService extends UserDependendComponent {
   }
 
   private handleError(error: any): void {
-    this.toastService.showError("An error occurred.","Check browser logs for more info.");
+    this.toastService.showError("An error occurred.");
     console.error('An error occurred', error); // for demo purposes only
   }
 
@@ -103,7 +99,7 @@ export class GameService extends UserDependendComponent {
     var req = new Request(reqOptions);
     
     return this.http.request(req).toPromise().then(function (response) {
-      self.toastService.showSuccess("Game started","");
+      self.toastService.showSuccess("Game started");
     }) .catch(this.handleError);
   }
 
@@ -125,7 +121,7 @@ export class GameService extends UserDependendComponent {
 
     var reqOptions = new RequestOptions(basicOptions);
     var req = new Request(reqOptions);
-    self.toastService.showSuccess("Game joined.","");
+    self.toastService.showSuccess("Game joined.");
     return this.http.request(req).toPromise().then(function (response) {
     }).catch(this.handleError);
   }
@@ -157,7 +153,7 @@ export class GameService extends UserDependendComponent {
     var req = new Request(reqOptions);
 
     return this.http.request(req).toPromise().then(function (response) {
-      self.toastService.showSuccess("Game created.","");
+      self.toastService.showSuccess("Game created.");
       return response.json() as Game;
     }).catch(this.handleError);
   }
@@ -210,7 +206,7 @@ export class GameService extends UserDependendComponent {
     var req = new Request(reqOptions);
 
     return this.http.request(req).toPromise().then(function (response) {
-      self.toastService.showSuccess("Game deleted","");
+      self.toastService.showSuccess("Game deleted");
     }).catch(this.handleError);
   }
 

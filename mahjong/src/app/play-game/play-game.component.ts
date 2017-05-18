@@ -62,8 +62,7 @@ export class PlayGameComponent extends UserDependendComponent implements OnInit 
       this.clickedTile1 = tile;
       console.log("Chose first tile");
     }
-    else if(this.clickedTile2 == null)
-    { 
+    else if(this.clickedTile2 == null){ 
       this.clickedTile2 = tile;
       console.log("Chose second tile");
     }

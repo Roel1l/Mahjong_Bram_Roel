@@ -21,6 +21,7 @@ import { TileService } from './services/tile.service';
 import { AppRoutingModule } from './app-routing.module';
 import { TileComponent } from './tile/tile.component';
 import { PlayGameComponent } from './play-game/play-game.component';
+import { MyGamesPipe } from "app/pipes/my-games.pipe";
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { PlayGameComponent } from './play-game/play-game.component';
     NewGameComponent,
     TileComponent,
     PlayGameComponent,
+    MyGamesPipe
   ],
   imports: [
     BrowserModule,
@@ -40,7 +42,7 @@ import { PlayGameComponent } from './play-game/play-game.component';
     ToasterModule
 
   ],
-  providers: [GameService, UserService, TemplateService, ToasterService,ToastService,TileService],
+  providers: [GameService, UserService, TemplateService, ToasterService,ToastService,TileService, MyGamesPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

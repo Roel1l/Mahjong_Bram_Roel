@@ -7,8 +7,5 @@
         <li *ngIf="user" class="user">{{user._id}}</li>
     </ul>
 </nav>
-
-<!--<button (click)="toast()">pop toast</button>-->
-  <toaster-container [toasterconfig]="toasterconfig"></toaster-container> 
-  <router-outlet></router-outlet>
-           
+<router-outlet></router-outlet>
+<app-toast></app-toast>

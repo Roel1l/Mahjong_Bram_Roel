@@ -70,9 +70,4 @@ export class AppComponent extends UserDependendComponent implements OnInit {
     this.userService.User.next(null);
     localStorage.setItem('user', null);
   }
-
-  toast(): void {
-    this.toastService.showInfo("a","a");
-  }
-
 }

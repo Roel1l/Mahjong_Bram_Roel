@@ -1,25 +1,24 @@
-
 <div *ngIf="filteredGames">
+
   <div>
-  <select [(ngModel)]="selectedTemplate" >
+    <select [(ngModel)]="selectedTemplate">
       <option *ngFor="let template of templates" [value]="template">{{template}}</option>
   </select>
-  <select [(ngModel)]="selectedState" >
+    <select [(ngModel)]="selectedState">
       <option *ngFor="let state of states" [value]="state">{{state}}</option>
   </select>
-  <input [(ngModel)]="showMyGamesOnly"  type="checkbox" /> Only display my games
+    <input [(ngModel)]="showMyGamesOnly" type="checkbox" /> Only display my games
   </div>
 
-<div class="grid grid-pad">
-  <a *ngFor="let game of (filteredGames | myGames : selectedTemplate:selectedState:showMyGamesOnly)" class="col-1-4">
-    <div (click)="goToDetail(game)" class="module {{game.state}}">
-      <h4>{{game.gameTemplate.id}} ({{game.state}})</h4>
-      <h4>nr. of players: {{game.players.length}}/{{game.maxPlayers}}</h4>
-      <h4>Created by: {{game.createdBy.name}}</h4>
-    </div>
-  </a>
-</div>
-
+  <div class="grid grid-pad">
+    <a *ngFor="let game of (filteredGames | myGames : selectedTemplate:selectedState:showMyGamesOnly)" class="col-1-4">
+      <div (click)="goToDetail(game)" class="module {{game.state}}">
+        <h4>{{game.gameTemplate.id}} ({{game.state}})</h4>
+        <h4>nr. of players: {{game.players.length}}/{{game.maxPlayers}}</h4>
+        <h4>Created by: {{game.createdBy.name}}</h4>
+      </div>
+    </a>
+  </div>
 
 </div>
 
@@ -27,4 +26,3 @@
 <div *ngIf="!filteredGames">
   <div id="loader" class="loader"></div>
 </div>
-

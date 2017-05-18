@@ -1,33 +1,23 @@
 import { Injectable, OnInit } from '@angular/core';
-import {ToasterModule, ToasterService, ToasterConfig} from 'angular2-toaster';
+import { ToastComponent } from "app/toast/toast.component";
+import { Subject } from "rxjs/Subject";
 
 @Injectable()
 export class ToastService {
-    
-constructor(
-    private toasterService: ToasterService
-){ };
 
- public toasterconfig : ToasterConfig = 
-        new ToasterConfig({
-            showCloseButton: false, 
-            tapToDismiss: true, 
-            timeout: 1500
-        });
+    constructor( ) { };
 
- public showSuccess(title: string,message: string): void {
-     //types: success
-        this.toasterService.pop("success", title, message);
+    public toast: Subject<string> = new Subject<string>();
+
+    public showSuccess(title: string): void {
+        this.toast.next(title);
     }
 
-    public showError(title: string,message: string): void {
-     //types: success
-        this.toasterService.pop("error", title, message);
+    public showError(title: string): void {
+        this.toast.next(title);
     }
 
-     public showInfo(title: string,message: string): void {
-     //types: success
-        this.toasterService.pop("info", title, message);
+    public showInfo(title: string): void {
+        this.toast.next(title);
     }
-
 }

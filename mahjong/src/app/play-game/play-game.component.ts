@@ -78,7 +78,7 @@ export class PlayGameComponent extends UserDependendComponent implements OnInit 
   }
 
   /*
-    //TODO 
+    TODO 
     - dit is echt dikke stront beter zorgrn we er gewoon voor dat je tiles met neigbours uberhaupt niet aan kan klikken ofzo 
     - Tile equality wordt bepaald aan de hand van naam/suit, is dit genoeg?
     - Check toevoegen voor 2 keer zelfde tile aanklikken  <<NIET HIET MAAR IN HANDLECLICKED
@@ -88,22 +88,15 @@ export class PlayGameComponent extends UserDependendComponent implements OnInit 
 
     if (a == b) { console.log("Smerige cheater"); return false }; //Return false if user clicked the same tile twice
 
-    var matchValid = true;
-    var aNeighBourFound = false;
+    var matchValid = true;          //Keep track of wether match is valid
+    var aNeighBourFound = false;    //Used to detect if a tile has multiple neighbours
     var bNeighBourFound = false;
 
-    /*
-      LOOP trough all tiles
-      IF we find an upper neighbour for a/b OR a left AND right neighbour for a/b return false
-      IF we havent found one of these during the loop check if tiles are equal
-    */
     allTiles.forEach(function (tile) {
 
       var x = tile.xPos;
       var y = tile.yPos;
       var z = tile.zPos;
-
-
 
       //Check a for upper neighbours
       if (x == a.xPos || x == a.xPos - 1 || x == a.xPos + 1) {      //Tile overlaps a's x 

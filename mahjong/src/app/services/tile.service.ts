@@ -22,7 +22,7 @@ export class TileService extends UserDependendComponent {
   }
 
   private handleError(error: any): void {
-    this.toastService.showError("An error occurred.", "Check browser logs for more info.");
+    this.toastService.showError("An error occurred, Check browser logs for more info.");
     console.error('An error occurred', error); // for demo purposes only
   }
 

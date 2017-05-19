@@ -65,10 +65,7 @@ export class PlayGameComponent extends UserDependendComponent implements OnInit 
     else if (this.clickedTile2 == null) {
       this.clickedTile2 = tile;
       console.log("Chose second tile");
-      console.log(this.validateMatch(this.clickedTile1, this.clickedTile2, this.tiles));
-      //TODO 
-      //clear tiles 
-      //Make api call based on return value of validateMatch
+      console.log(this.validateMatch(this.clickedTile1, this.clickedTile2, this.tiles)); //TODO api call based on return value of validateMatch
       this.clickedTile1 = null;
       this.clickedTile2 = null;
     }

@@ -50,6 +50,7 @@ export class PlayGameComponent extends UserDependendComponent implements OnInit 
 
   getTiles() {
     var self = this;
+    self.tiles = [];
     this.tileService.getTilesByGame(this.game._id, false).then(
       function (response) {
         self.tiles = response;
@@ -65,16 +66,17 @@ export class PlayGameComponent extends UserDependendComponent implements OnInit 
     else if (this.clickedTile2 == null) {
       this.clickedTile2 = tile;
       console.log("Chose second tile");
-      console.log(this.validateMatch(this.clickedTile1, this.clickedTile2, this.tiles)); //TODO api call based on return value of validateMatch
+      if(this.validateMatch(this.clickedTile1, this.clickedTile2, this.tiles)){
+        this.tileService.matchTile(this.game._id,this.clickedTile1._id,this.clickedTile2._id);
+        var index= this.tiles.indexOf(this.clickedTile1);
+        this.tiles.splice(index,1);
+        index = this.tiles.indexOf(this.clickedTile2);
+        this.tiles.splice(index,2);
+      } 
       this.clickedTile1 = null;
       this.clickedTile2 = null;
     }
-    else {
-      this.clickedTile1 = null;
-      this.clickedTile2 = null;
-      console.log("Chosen tiles reset (temporarily happens when you choose a third tile)");
-    }
-    console.log(tile);
+    //console.log(tile);
   }
 
   /*

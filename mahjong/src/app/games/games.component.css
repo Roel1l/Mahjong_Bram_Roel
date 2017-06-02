@@ -64,12 +64,12 @@ h4 {
 
 .playing {
   background-color: darkorange;
-  box-shadow: 5px 5px 2.5px grey;
+  box-shadow: 5px 5px 2.5px black;
 }
 
 .open {
   background-color: #2D882D;
-  box-shadow: 5px 5px 2.5px grey;
+  box-shadow: 5px 5px 2.5px black;
 }
 
 

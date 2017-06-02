@@ -11,7 +11,6 @@ h2, h3 {
   font-weight: lighter;
 }
 body {
-background-color: darkred;
   margin: 2em;
   margin-top: 7em;
   
@@ -47,9 +46,5 @@ body, input[text], button {
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
-}
-
-html { 
-  background-color: darkred;
 }
 

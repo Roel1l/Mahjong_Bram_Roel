@@ -1,12 +1,5 @@
-
-<!--<table>
-<template *ngFor="tiles; let i = index">
-  <tile-outlet [tile]="tiles[i]"></tile-outlet>
-</template>
-</table>-->
-
 <ng-template ngFor let-item [ngForOf]="tiles" let-i="index">
-  <tile-outlet [tile]="item"></tile-outlet>
+  <tile-outlet (tileClicked)="handleTileClicked($event)" [tile]="item"></tile-outlet>
 </ng-template>
 
 

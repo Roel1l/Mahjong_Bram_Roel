@@ -8,10 +8,6 @@ import { UserDependendComponent } from "app/core/UserDependend.base";
 @Injectable()
 export class GameService extends UserDependendComponent {
 
-
-  /*
-    UTILITY
-  */
   private baseUrl = 'http://mahjongmayhem.herokuapp.com';  // URL to web api
   constructor(
     private http: Http,
@@ -22,8 +18,8 @@ export class GameService extends UserDependendComponent {
     super.ngOnInit();
   }
 
-  private handleError(error: any): void {
-    this.toastService.showError("An error occurred.","Check browser logs for more info.");
+  handleError(error: any, ts: GameService): void {
+    ts.toastService.showError("An error occurred, Check browser logs for more info.");
     console.error('An error occurred', error); // for demo purposes only
   }
 
@@ -42,6 +38,7 @@ export class GameService extends UserDependendComponent {
     GETS
   */
   getGamesByUser(): Promise<Game[]> {
+    var self = this;
     var url = this.baseUrl + "/games/?player=" + this.user._id;
     return this.http.get(url)
       .toPromise()
@@ -49,12 +46,12 @@ export class GameService extends UserDependendComponent {
       //use responses json.data method to extract json from the response
       .then(function (response) {
         return response.json() as Game[];
-      })
-      //Catch errors and passrt hem to an errorhandler 
-      .catch(this.handleError);
+      }).catch(error => self.handleError(error, self));
+
   }
 
   getGames(): Promise<Game[]> {
+    var self = this;
     var url = this.baseUrl + "/games";
     return this.http.get(url)
       .toPromise()
@@ -62,12 +59,12 @@ export class GameService extends UserDependendComponent {
       //use responses json.data method to extract json from the response
       .then(function (response) {
         return response.json() as Game[];
-      })
-      //Catch errors and passrt hem to an errorhandler 
-      .catch(this.handleError);
+      }).catch(error => self.handleError(error, self));
+
   }
 
   getGame(gameId: string): Promise<Game> {
+    var self = this;
     var url = this.baseUrl + "/games/" + gameId;
     return this.http.get(url)
       .toPromise()
@@ -75,9 +72,8 @@ export class GameService extends UserDependendComponent {
       //use responses json.data method to extract json from the response
       .then(function (response) {
         return response.json() as Game;
-      })
-      //Catch errors and passrt hem to an errorhandler 
-      .catch(this.handleError);
+      }).catch(error => self.handleError(error, self));
+
   }
 
   /*
@@ -101,13 +97,14 @@ export class GameService extends UserDependendComponent {
 
     var reqOptions = new RequestOptions(basicOptions);
     var req = new Request(reqOptions);
-    
+
     return this.http.request(req).toPromise().then(function (response) {
-      self.toastService.showSuccess("Game started","");
-    }) .catch(this.handleError);
+      self.toastService.showSuccess("Game started");
+    }).catch(error => self.handleError(error, self));
+
   }
 
-   joinGame(gameId: string): Promise<void> {
+  joinGame(gameId: string): Promise<void> {
     var self = this;
     var basicOptions: RequestOptionsArgs = {
       url: this.baseUrl + "/games/" + gameId + "/players",
@@ -125,9 +122,10 @@ export class GameService extends UserDependendComponent {
 
     var reqOptions = new RequestOptions(basicOptions);
     var req = new Request(reqOptions);
-    self.toastService.showSuccess("Game joined.","");
+    self.toastService.showSuccess("Game joined.");
     return this.http.request(req).toPromise().then(function (response) {
-    }).catch(this.handleError);
+    }).catch(error => self.handleError(error, self));
+
   }
 
   createGame(game: Game): Promise<Game> {
@@ -157,15 +155,17 @@ export class GameService extends UserDependendComponent {
     var req = new Request(reqOptions);
 
     return this.http.request(req).toPromise().then(function (response) {
-      self.toastService.showSuccess("Game created.","");
+      self.toastService.showSuccess("Game created.");
       return response.json() as Game;
-    }).catch(this.handleError);
+    }).catch(error => self.handleError(error, self));
+
   }
 
   /*
   DELETES
   */
   leaveGame(gameId: string): Promise<void> {
+    var self = this;
     var basicOptions: RequestOptionsArgs = {
       url: this.baseUrl + "/games/" + gameId + "/players",
       method: RequestMethod.Delete,
@@ -185,10 +185,11 @@ export class GameService extends UserDependendComponent {
 
     return this.http.request(req).toPromise().then(function (response) {
       console.log(response);
-    }).catch(this.handleError);
+    }).catch(error => self.handleError(error, self));
+
   }
 
-  
+
 
   deleteGame(gameId: string): Promise<void> {
     var self = this;
@@ -210,8 +211,9 @@ export class GameService extends UserDependendComponent {
     var req = new Request(reqOptions);
 
     return this.http.request(req).toPromise().then(function (response) {
-      self.toastService.showSuccess("Game deleted","");
-    }).catch(this.handleError);
+      self.toastService.showSuccess("Game deleted");
+    }).catch(error => self.handleError(error, self));
+
   }
 
 

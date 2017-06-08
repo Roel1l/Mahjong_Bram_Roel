@@ -16,7 +16,7 @@ import { GameTemplate } from '../models/game-template';
 @Component({
   selector: 'app-new-game',
   templateUrl: './new-game.component.html',
-  styleUrls: ['./new-game.component.css']
+  styleUrls: ['./new-game.component.scss']
 })
 export class NewGameComponent implements OnInit {
 

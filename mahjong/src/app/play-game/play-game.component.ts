@@ -18,7 +18,7 @@ import { TileService } from '../services/tile.service';
 @Component({
   selector: 'app-play-game',
   templateUrl: './play-game.component.html',
-  styleUrls: ['./play-game.component.css']
+  styleUrls: ['./play-game.component.scss']
 })
 export class PlayGameComponent extends UserDependendComponent implements OnInit {
 

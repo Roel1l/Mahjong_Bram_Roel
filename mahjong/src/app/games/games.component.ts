@@ -16,7 +16,7 @@ import { UserDependendComponent } from "app/core/UserDependend.base";
 @Component({
   selector: 'app-games',
   templateUrl: './games.component.html',
-  styleUrls: ['./games.component.css']
+  styleUrls: ['./games.component.scss']
 })
 export class GamesComponent extends UserDependendComponent implements OnInit  {
   

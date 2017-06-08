@@ -33,7 +33,7 @@ h4 {
   min-width: 120px;
   background-color: #2a2c30;
   border-radius: 2px;
-    min-height: 125px;
+  min-height: 125px;
 }
 .module:hover {
   background-color: #EEE;

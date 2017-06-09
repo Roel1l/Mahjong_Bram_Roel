@@ -1,7 +1,11 @@
 $box-shadow: 10px 10px 5px grey;
 $box-shadow-light: 10px 10px 5px lightgrey;
+
+// Background colours depending on game state
 $open-background-color: #2D882D;
+$open-background-color-light: lightgreen;
 $playing-background-color: darkorange;
+$playing-background-color-light: #f4d442;
 $base-background-color: #2a2c30;
 
 /*
@@ -11,9 +15,8 @@ $base-background-color: #2a2c30;
   float: left;
   padding-right: 20px;
   padding-bottom: 20px;
-    width: 25%;
+  width: 25%;
 
- 
   :last-of-type{
   padding-right: 0;
   }
@@ -34,18 +37,24 @@ $base-background-color: #2a2c30;
 
   &.playing {
   background-color: $playing-background-color;
+    &:hover {
+      box-shadow: $box-shadow-light;
+      background-color: $playing-background-color-light;
+      cursor: pointer;
+      color:black;
+    }
   }
 
   &.open {
     background-color: $open-background-color;
+      &:hover {
+      box-shadow: $box-shadow-light;
+      background-color: $open-background-color-light;
+      cursor: pointer;
+      color:black;
+    }
   }  
 
-  &:hover {
-    box-shadow: $box-shadow-light;
-     background-color: #EEE;
-    cursor: pointer;
-    color:black;
-  }
 }
 
 .grid-pad {

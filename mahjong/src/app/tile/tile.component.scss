@@ -1,30 +1,79 @@
+$base-left: -76px;
+$base-top: -10px;
+$tile-left: -61.5px;
+$tile-width: 65px;
+$tile-heigth: 82px;
+$list-layer-color: (blue,green,yellow,darkorange,darkred);
+$border-color : black;
+$text-color : black;
+//Id's komen wel overeen tussen templates, maar is kut om te vinden in de spritesheet 
+
+
 .piece{
     position: absolute;
-    width: 80px;
-    height:120px;
-    border:1px solid #000000;
+    width: $tile-width;
+    height: $tile-heigth;
+    border:1px solid $border-color;
     text-align: center;
     vertical-align: middle;
-    color: black;
+    color: $text-color;
     font-weight: bold;
+    border-radius: 10px;
 }
 
 .layer0{
-    background-color:blue;
+    background-color: nth($list-layer-color,1);
 }
 
 .layer1{
-    background-color:green;
+    background-color: nth($list-layer-color,2);
 }
 
 .layer2{
-    background-color: yellow;
+    background-color: nth($list-layer-color,3);
 }
 
 .layer3{
-    background-color: darkorange;
+    background-color: nth($list-layer-color,4);
 }
 
 .layer4{
-    background-color: darkred;
+    background-color: nth($list-layer-color,5);
 }
+
+
+
+
+
+
+// .layer0{
+//     //background-color:blue;\
+//     width: $tile-width;
+//     height:$tile-heigth;
+//     background: url(../core/Tiles_sprite1.jpg) $base-left $base-top;
+// }
+
+// .layer1{
+//     background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left $base-top;
+//     width: $tile-width;
+//     height:$tile-heigth;
+// }
+
+// .layer2{
+//     background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*2 $base-top;
+//     width: $tile-width;
+//     height:$tile-heigth;
+// }
+
+// .layer3{
+//     background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*3 $base-top;
+//     width: $tile-width;
+//     height:$tile-heigth;
+// }
+
+// .layer4{
+//     background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*4 $base-top;
+//     width: $tile-width;
+//     height:$tile-heigth;
+// }
+

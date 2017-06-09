@@ -1,15 +1,6 @@
-h1 {
-  font-size: 1.2em;
-  color: #999;
-  margin-bottom: 0;
-}
-h2 {
-  font-size: 2em;
-  margin-top: 0;
-  padding-top: 0;
-}
+nav {
 
-nav ul {
+  ul {
     position: absolute;
     top: 0;
     left: 0;
@@ -19,58 +10,64 @@ nav ul {
     padding: 0 0 0 0;
     overflow: hidden;
     background-color: #333;
-}
+  }
 
-nav li {
-  float: left;
-}
+  li {
+    float: left;
+      a{
+        display: block;
+        color: white;
+        text-align: center;
+        /*padding: 14px 16px;*/
+        padding: 1em 10px 1em 10px;
+        text-decoration: none;
+        font-weight: bold;
+      }
+  }
 
-nav .user{
-  float: right;
-  font-weight: bold;
-  margin-right: 1em;
-  margin-top: 12.5px;
-}
-
-nav li a {
-    display: block;
-    color: white;
-    text-align: center;
-    /*padding: 14px 16px;*/
-    padding: 1em 10px 1em 10px;
-    text-decoration: none;
+  .user{
+    float: right;
     font-weight: bold;
+    margin-right: 1em;
+    margin-top: 12.5px;
+  }
+
+  .button:hover {
+      background-color: #111;
+  }
+
+  .active {
+      background-color: #4CAF50;
+  }
+
+  /* Navigation Bar Button Colors */
+  .games{
+    background: #ff6600;
+  }
+
+  .myGames{
+    background: darkred;
+  }
+
+  .create{
+    background: lightsalmon;
+  }
+
+  .login{
+    float: right;
+    background: #009900;
+  }
+
+  .logout{
+    cursor: pointer; cursor: hand;
+    float: right;
+    background: #ff3300;
+  }
+
 }
 
-nav .button:hover {
-    background-color: #111;
-}
 
-nav .active {
-    background-color: #4CAF50;
-}
 
-/* Navigation Bar Button Colors */
-nav .games{
-  background: #ff6600;
-}
 
-nav .myGames{
-  background: darkred;
-}
 
-nav .create{
-  background: lightsalmon;
-}
-
-nav .login{
-  float: right;
-  background: #009900;
-}
-
-nav .logout{
-  cursor: pointer; cursor: hand;
-  float: right;
-  background: #ff3300;
-}
 

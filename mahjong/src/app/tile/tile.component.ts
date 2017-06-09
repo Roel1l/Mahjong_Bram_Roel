@@ -5,7 +5,7 @@ import { ToastService } from "app/services/toast.service";
 @Component({
   selector: 'tile-outlet',
   templateUrl: './tile.component.html',
-  styleUrls: ['./tile.component.css']
+  styleUrls: ['./tile.component.scss']
 })
 export class TileComponent implements OnInit {
 

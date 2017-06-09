@@ -17,11 +17,11 @@ import { UserDependendComponent } from "app/core/UserDependend.base";
 @Component({
   selector: 'app-game-detail',
   templateUrl: './game-detail.component.html', 
-  styleUrls: ['./game-detail.component.css']
+  styleUrls: ['./game-detail.component.scss']
 })
 export class GameDetailComponent extends UserDependendComponent implements OnInit {
 
-  @Input() game: Game;
+  game: Game;
   isInGame: Boolean;
   isAdmin: Boolean;
   loading: Boolean;

@@ -24,7 +24,5 @@ export class TileComponent implements OnInit {
     this.tileClicked.emit(this.tile);
   }
 
-  over(input): void{
-    console.log(input);
-  }
+
 }

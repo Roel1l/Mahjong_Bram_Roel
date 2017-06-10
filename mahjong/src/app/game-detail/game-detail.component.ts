@@ -14,9 +14,13 @@ import { GameService } from '../services/game.service';
 import { UserService } from '../services/user.service';
 import { UserDependendComponent } from "app/core/UserDependend.base";
 
+//Socket
+import * as io from '../../socket.io.js';
+import { ToastService } from "app/services/toast.service";
+
 @Component({
   selector: 'app-game-detail',
-  templateUrl: './game-detail.component.html', 
+  templateUrl: './game-detail.component.html',
   styleUrls: ['./game-detail.component.scss']
 })
 export class GameDetailComponent extends UserDependendComponent implements OnInit {
@@ -25,13 +29,15 @@ export class GameDetailComponent extends UserDependendComponent implements OnIni
   isInGame: Boolean;
   isAdmin: Boolean;
   loading: Boolean;
-  
+  private socket: any;
+
   constructor(
     private router: Router,
     private gameService: GameService,
     private route: ActivatedRoute,
     private location: Location,
-    userService: UserService
+    userService: UserService,
+    private toastService: ToastService
   ) {
     super(userService);
   }
@@ -42,7 +48,9 @@ export class GameDetailComponent extends UserDependendComponent implements OnIni
       .switchMap((params: Params) => this.gameService.getGame(params['id']))
       .subscribe(game => {
         this.game = game;
+        this.socket = io("http://mahjongmayhem.herokuapp.com?gameId=" + this.game._id);
         this.checkParticipation();
+        this.setSocketMessages();
       });
   }
 
@@ -65,30 +73,56 @@ export class GameDetailComponent extends UserDependendComponent implements OnIni
     }
   }
 
+  setSocketMessages() {
+    this.socket.on('start', (data) => {
+      this.reloadGame();
+      this.toastService.showSuccess("Game started");
+    });
+    this.socket.on('end', (data) => {
+      this.reloadGame();
+      this.toastService.showSuccess("Game ended");
+    });
+    this.socket.on('playerJoined', (data) => {
+      this.reloadGame();
+      this.toastService.showSuccess("Player joined");
+    });
+  }
+
+  reloadGame(): void {
+    this.route.params
+      .switchMap((params: Params) => this.gameService.getGame(params['id']))
+      .subscribe(game => {
+
+        this.game = game;
+        this.checkParticipation();
+      });
+  }
+
   goBack(): void {
     this.location.back();
   }
 
   startGame(): void {
     this.gameService.startGame(this.game._id).then(() => {
-      this.router.navigate(['/games/' + this.game._id + '/play']);
+      // this.router.navigate(['/games/' + this.game._id + '/play']);
     })
   }
 
-  playGame(): void{
-     this.router.navigate(['/games/' + this.game._id + '/play']);
+  playGame(): void {
+    this.router.navigate(['/games/' + this.game._id + '/play']);
   }
 
   joinGame(): void {
     this.gameService.joinGame(this.game._id).then(() => {
-      var player = { "_id": "1", name: "you" }
-      this.game.players.push(player);
-    })
+    });
   }
 
   leaveGame(): void {
     this.gameService.leaveGame(this.game._id).then(() => {
-      this.router.navigate(['/games']);
+      this.isInGame = false;
+      for (var i = 0; i < this.game.players.length; i++) {
+        if (this.game.players[i]._id == this.user._id) this.game.players.splice(i, 1);
+      }
     });
   }
 

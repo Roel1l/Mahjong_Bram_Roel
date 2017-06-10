@@ -15,9 +15,11 @@ import { GameService } from '../services/game.service';
 import { UserService } from '../services/user.service';
 import { UserDependendComponent } from "app/core/UserDependend.base";
 import { TileService } from '../services/tile.service';
-
-import * as io from '../../socket.io.js';
 import { ToastService } from "app/services/toast.service";
+
+//Socket
+import * as io from '../../socket.io.js';
+
 
 @Component({
   selector: 'app-play-game',
@@ -58,15 +60,15 @@ export class PlayGameComponent extends UserDependendComponent implements OnInit 
 
   setSocketMessages() {
     this.socket.on('start', (data) => {
-        console.log('Socket says GameStarted');
-        console.log(data);
+      console.log('Socket says GameStarted');
+      console.log(data);
     });
     this.socket.on('match', (data) => {
-        this.toastService.showInfo('Another player got a match!');
-        this.removeTileById(data[0]._id);
-        this.removeTileById(data[1]._id);
+      this.toastService.showInfo('Another player got a match!');
+      this.removeTileById(data[0]._id);
+      this.removeTileById(data[1]._id);
     });
-  } 
+  }
 
 
   getTiles() {
@@ -85,12 +87,12 @@ export class PlayGameComponent extends UserDependendComponent implements OnInit 
     }
     else if (this.clickedTile2 == null) {
       this.clickedTile2 = tile;
-      if(this.validateMatch(this.clickedTile1, this.clickedTile2, this.tiles)){
-        this.tileService.matchTile(this.game._id,this.clickedTile1._id,this.clickedTile2._id);
+      if (this.validateMatch(this.clickedTile1, this.clickedTile2, this.tiles)) {
+        this.tileService.matchTile(this.game._id, this.clickedTile1._id, this.clickedTile2._id);
         this.removeTileById(this.clickedTile1._id);
         this.removeTileById(this.clickedTile2._id);
-      } 
-      else{
+      }
+      else {
         this.toastService.showError("Invalid Match");
       }
       this.clickedTile1 = null;
@@ -98,13 +100,13 @@ export class PlayGameComponent extends UserDependendComponent implements OnInit 
     }
   }
 
-  removeTileById(id: string): void{
-        for (var i = 0; i < this.tiles.length; i++) { 
-          if(this.tiles[i]._id == id){
-              this.tiles.splice(i,1);
-              return;
-          }
-        }   
+  removeTileById(id: string): void {
+    for (var i = 0; i < this.tiles.length; i++) {
+      if (this.tiles[i]._id == id) {
+        this.tiles.splice(i, 1);
+        return;
+      }
+    }
   }
   /*
     TODO 
@@ -177,6 +179,9 @@ export class PlayGameComponent extends UserDependendComponent implements OnInit 
 
     if (matchValid) {
       console.log('Tiles valid for matching, checking equality');
+      if (a.tile.matchesWholeSuit) {
+        return (a.tile.suit == b.tile.suit);
+      };
       return (a.tile.name == b.tile.name && a.tile.suit == b.tile.suit); //Return tiles' equality
     }
     return false;

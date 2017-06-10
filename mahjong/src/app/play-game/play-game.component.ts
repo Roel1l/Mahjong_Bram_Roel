@@ -15,6 +15,10 @@ import { GameService } from '../services/game.service';
 import { UserService } from '../services/user.service';
 import { UserDependendComponent } from "app/core/UserDependend.base";
 import { TileService } from '../services/tile.service';
+
+import * as io from '../../socket.io.js';
+import { ToastService } from "app/services/toast.service";
+
 @Component({
   selector: 'app-play-game',
   templateUrl: './play-game.component.html',
@@ -26,6 +30,7 @@ export class PlayGameComponent extends UserDependendComponent implements OnInit 
   tiles: Tile[]
   clickedTile1: Tile = null;
   clickedTile2: Tile = null;
+  private socket: any;
 
   constructor(
     private router: Router,
@@ -33,7 +38,8 @@ export class PlayGameComponent extends UserDependendComponent implements OnInit 
     private route: ActivatedRoute,
     private location: Location,
     userService: UserService,
-    private tileService: TileService
+    private tileService: TileService,
+    public toastService: ToastService
   ) {
     super(userService);
   }
@@ -45,8 +51,23 @@ export class PlayGameComponent extends UserDependendComponent implements OnInit 
       .subscribe(game => {
         this.game = game;
         this.getTiles();
+        this.socket = io("http://mahjongmayhem.herokuapp.com?gameId=" + this.game._id);
+        this.setSocketMessages();
       });
   }
+
+  setSocketMessages() {
+    this.socket.on('start', (data) => {
+        console.log('Socket says GameStarted');
+        console.log(data);
+    });
+    this.socket.on('match', (data) => {
+        this.toastService.showInfo('Another player got a match!');
+        this.removeTileById(data[0]._id);
+        this.removeTileById(data[1]._id);
+    });
+  } 
+
 
   getTiles() {
     var self = this;
@@ -61,24 +82,30 @@ export class PlayGameComponent extends UserDependendComponent implements OnInit 
   handleTileClicked(tile: Tile): void {
     if (this.clickedTile1 == null) {
       this.clickedTile1 = tile;
-      console.log("Chose first tile");
     }
     else if (this.clickedTile2 == null) {
       this.clickedTile2 = tile;
-      console.log("Chose second tile");
       if(this.validateMatch(this.clickedTile1, this.clickedTile2, this.tiles)){
         this.tileService.matchTile(this.game._id,this.clickedTile1._id,this.clickedTile2._id);
-        var index= this.tiles.indexOf(this.clickedTile1);
-        this.tiles.splice(index,1);
-        index = this.tiles.indexOf(this.clickedTile2);
-        this.tiles.splice(index,2);
+        this.removeTileById(this.clickedTile1._id);
+        this.removeTileById(this.clickedTile2._id);
       } 
+      else{
+        this.toastService.showError("Invalid Match");
+      }
       this.clickedTile1 = null;
       this.clickedTile2 = null;
     }
-    //console.log(tile);
   }
 
+  removeTileById(id: string): void{
+        for (var i = 0; i < this.tiles.length; i++) { 
+          if(this.tiles[i]._id == id){
+              this.tiles.splice(i,1);
+              return;
+          }
+        }   
+  }
   /*
     TODO 
     - dit is echt dikke stront beter zorgrn we er gewoon voor dat je tiles met neigbours uberhaupt niet aan kan klikken ofzo 

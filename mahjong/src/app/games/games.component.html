@@ -11,8 +11,8 @@
   </div>
 
   <div class="grid grid-pad">
-    <a *ngFor="let game of (filteredGames | myGames : selectedTemplate:selectedState:showMyGamesOnly)" class="col-1-4">
-      <div (click)="goToDetail(game)" class="module {{game.state}}">
+    <a *ngFor="let game of (filteredGames | myGames : selectedTemplate:selectedState:showMyGamesOnly)" class="col-1-4 gameModuleWrapper">
+      <div (click)="goToDetail(game)" class="gameModule {{game.state}}">
         <h4>{{game.gameTemplate.id}} ({{game.state}})</h4>
         <h4>nr. of players: {{game.players.length}}/{{game.maxPlayers}}</h4>
         <h4>Created by: {{game.createdBy.name}}</h4>

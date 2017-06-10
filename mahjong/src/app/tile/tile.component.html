@@ -1,4 +1,3 @@
 <div *ngIf="tile" (click)="clickTile()">
-    <div id="{{tile.tile._id}}" class="piece layer{{tile.zPos}}" [style.z-index]="tile.zPos" [style.margin-top.px]="tile.yPos*82/2" [style.margin-left.px]="tile.xPos*65/2">{{tile.tile.suit}} <br> {{tile.tile.name}} <br> {{tile.tile._id}}</div>
+    <div id="t_{{tile.tile._id}}" class="piece layer{{tile.zPos}}" [style.z-index]="tile.zPos" [style.margin-top.px]="tile.yPos*82.5/2" [style.margin-left.px]="tile.xPos*61.5/2"></div>
 </div>
-

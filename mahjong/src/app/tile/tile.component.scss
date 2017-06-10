@@ -1,14 +1,12 @@
-$base-left: -76px;
-$base-top: -10px;
-$tile-left: -61.5px;
-$tile-width: 65px;
-$tile-heigth: 82px;
 $list-layer-color: (blue,green,yellow,darkorange,darkred);
 $border-color : black;
 $text-color : black;
-//Id's komen wel overeen tussen templates, maar is kut om te vinden in de spritesheet 
+$tile-width: 62px;
+$tile-heigth: 82.5px;
 
-
+/*
+    Base tile layout
+*/
 .piece{
     position: absolute;
     width: $tile-width;
@@ -21,24 +19,193 @@ $text-color : black;
     border-radius: 10px;
 }
 
-.layer0{
-    background-color: nth($list-layer-color,1);
+
+/*
+    All tile sprites for template one 
+*/
+//Used to account for the white space in the image
+$base-left: -76.5px;  
+$base-top: -10px;
+
+//Reference to the tiles size in the spritesheet
+$tile-left: -62px;
+$tile-top: -82.5px;
+$extra-margin: 3px; //Compensate in rows that are very far to the right
+
+
+////////////////////////////////CIRCLES 1-9////////////////////////////////
+#t_0,#t_1,#t_2,#t_3{
+    background: url(../core/Tiles_sprite1.jpg) $base-left $base-top;
 }
 
-.layer1{
-    background-color: nth($list-layer-color,2);
+#t_4,#t_5,#t_6,#t_7{
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left $base-top;
 }
 
-.layer2{
-    background-color: nth($list-layer-color,3);
+#t_8,#t_9,#t_10,#t_11{
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*2 $base-top;
 }
 
-.layer3{
-    background-color: nth($list-layer-color,4);
+#t_12,#t_13,#t_14,#t_15{
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*3 $base-top;
 }
 
-.layer4{
-    background-color: nth($list-layer-color,5);
+#t_16,#t_17,#t_18,#t_19{
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*4 $base-top;
+}
+
+#t_20,#t_21,#t_22,#t_23{
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*5 $base-top;
+}
+
+#t_24,#t_25,#t_26,#t_27{
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*6 $base-top;
+}
+
+#t_28,#t_29,#t_30,#t_31{
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*7 $base-top;
+}
+
+#t_32,#t_33,#t_34,#t_35{
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*8 $base-top;
+}
+
+////////////////////////////////BAMBOOZLE 1-9////////////////////////////////
+#t_36,#t_37,#t_38,#t_39{
+    background: url(../core/Tiles_sprite1.jpg) $base-left $base-top+$tile-top*4;
+}
+
+#t_40,#t_41,#t_42,#t_43{
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left $base-top+$tile-top*4;
+}
+
+#t_44,#t_45,#t_46,#t_47{
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*2 $base-top+$tile-top*4;
+}
+
+#t_48,#t_49,#t_50,#t_51{
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*3 $base-top+$tile-top*4;
+}
+
+#t_52,#t_53,#t_54,#t_55{
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*4 $base-top+$tile-top*4;
+}
+
+#t_56,#t_57,#t_58,#t_59{
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*5 $base-top+$tile-top*4;
+}
+
+#t_60,#t_61,#t_62,#t_63{
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*6 $base-top+$tile-top*4;
+}
+
+#t_64,#t_65,#t_66,#t_67{
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*7 $base-top+$tile-top*4;
+}
+
+#t_68,#t_69,#t_70,#t_71{
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*8 $base-top+$tile-top*4;
+}
+
+////////////////////////////////CHARACTERS 1-9////////////////////////////////
+#t_72,#t_73,#t_74,#t_75{
+    background: url(../core/Tiles_sprite1.jpg) $base-left $base-top+$tile-top*8;
+}
+
+#t_76,#t_77,#t_78,#t_79{
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left $base-top+$tile-top*8;
+}
+
+#t_80,#t_81,#t_82,#t_83{
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*2 $base-top+$tile-top*8;
+}
+
+#t_84,#t_85,#t_86,#t_87{
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*3 $base-top+$tile-top*8;
+}
+
+#t_88,#t_89,#t_90,#t_91{
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*4 $base-top+$tile-top*8;
+}
+
+#t_92,#t_93,#t_94,#t_95{
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*5 $base-top+$tile-top*8;
+}
+
+#t_96,#t_97,#t_98,#t_99{
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*6 $base-top+$tile-top*8;
+}
+
+#t_100,#t_101,#t_102,#t_103{
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*7 $base-top+$tile-top*8;
+}
+
+#t_104,#t_105,#t_106,#t_107{
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*8 $base-top+$tile-top*8;
+}
+
+////////////////////////////////WIND////////////////////////////////
+#t_108,#t_109,#t_110,#t_111{ //North
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*12+$extra-margin ($base-top - 3px);
+}
+
+#t_112,#t_113,#t_114,#t_115{ //East
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*9 ($base-top - 3px);
+}
+
+#t_116,#t_117,#t_118,#t_119{ //South
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*11 ($base-top - 3px);
+}
+
+#t_120,#t_121,#t_122,#t_123{ //West
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*10 ($base-top - 3px);
+}
+
+////////////////////////////////DRAGONS////////////////////////////////
+#t_124,#t_125,#t_126,#t_127{ //Red
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*9 $base-top+$tile-top*8;
+}
+
+#t_128,#t_129,#t_130,#t_131{ //Green
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*10 $base-top+$tile-top*8;
+}
+
+#t_132,#t_133,#t_134,#t_135{ //White
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*11 $base-top+$tile-top*8;
+}
+
+////////////////////////////////SEASONS////////////////////////////////
+#t_136{ //Summer
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*11+$extra-margin $base-top+$tile-top*6;
+}
+
+#t_137{ //Winter
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*11++$extra-margin $base-top+$tile-top*4;
+}
+
+#t_138{ //Spring
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*11+$extra-margin $base-top+$tile-top*7;
+}
+
+#t_139{ //Autumn
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*11+$extra-margin $base-top+$tile-top*5;
+}
+
+////////////////////////////////FLOWER////////////////////////////////
+#t_140{ //Plum
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*12+$extra-margin $base-top+$tile-top*6;
+}
+
+#t_141{ //Orchid
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*12+$extra-margin $base-top+$tile-top*6;
+}
+
+#t_142{ //Chrystantememe
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*12+$extra-margin $base-top+$tile-top*6;
+}
+
+#t_143{ //Bamboo
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*12+$extra-margin $base-top+$tile-top*6;
 }
 
 
@@ -46,34 +213,4 @@ $text-color : black;
 
 
 
-// .layer0{
-//     //background-color:blue;\
-//     width: $tile-width;
-//     height:$tile-heigth;
-//     background: url(../core/Tiles_sprite1.jpg) $base-left $base-top;
-// }
-
-// .layer1{
-//     background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left $base-top;
-//     width: $tile-width;
-//     height:$tile-heigth;
-// }
-
-// .layer2{
-//     background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*2 $base-top;
-//     width: $tile-width;
-//     height:$tile-heigth;
-// }
-
-// .layer3{
-//     background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*3 $base-top;
-//     width: $tile-width;
-//     height:$tile-heigth;
-// }
-
-// .layer4{
-//     background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*4 $base-top;
-//     width: $tile-width;
-//     height:$tile-heigth;
-// }
 

@@ -120,8 +120,8 @@ export class PlayGameComponent extends UserDependendComponent implements OnInit 
     if (a == b) { console.log("Smerige cheater"); return false }; //Return false if user clicked the same tile twice
 
     var matchValid = true;          //Keep track of wether match is valid
-    var aNeighBourFound = false;    //Used to detect if a tile has multiple neighbours
-    var bNeighBourFound = false;
+    var aNeighBour = null;    //Used to detect if a tile has multiple neighbours
+    var bNeighBour = null;
 
     allTiles.forEach(function (tile) {
 
@@ -149,15 +149,15 @@ export class PlayGameComponent extends UserDependendComponent implements OnInit 
         }
       }
 
-      //Check a for left/right neighbours
+                            //Check a for left/right neighbours
       if (z == a.zPos) {                                              //Tile is on the same height as a
         if (y == a.yPos || y == a.yPos + 1 || y == a.yPos - 1) {      //Tile is one the same y axis as a
           if (x == a.xPos + 2 || x == a.xPos - 2) {                   //Tile is positioned directly to the right or left of a
-            if (aNeighBourFound) {                                    //A neighbour has already been found, match is invalid
+            if (aNeighBour != null && aNeighBour.xPos != x) {         //A neighbour has already been found, if this neighbours x is not equal to the current neighbours x both sides are surrounded
               console.log("Tile a is surrounded");
               matchValid = false;
             }
-            aNeighBourFound = true;
+            aNeighBour = tile;
           }
         }
       }
@@ -166,11 +166,11 @@ export class PlayGameComponent extends UserDependendComponent implements OnInit 
       if (z == b.zPos) {
         if (y == b.yPos || y == b.yPos + 1 || y == b.yPos - 1) {
           if (x == b.xPos + 2 || x == b.xPos - 2) {
-            if (bNeighBourFound) {
+            if (bNeighBour != null && bNeighBour.xPos != x) {
               console.log("Tile b is surrounded");
               matchValid = false;
             }
-            bNeighBourFound = true;
+            bNeighBour = tile;
           }
         }
       }

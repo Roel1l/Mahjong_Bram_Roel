@@ -11,14 +11,14 @@ nav {
     margin: 0 0 0 0;
     padding: 0 0 0 0;
     overflow: hidden;
-    background-color: #333;
+    background-color: $navbar-background;
   }
 
   li {
     float: left;
       a{
         display: block;
-        color: white;
+        color: $navbar-text;
         text-align: center;
         /*padding: 14px 16px;*/
         padding: 1em 10px 1em 10px;
@@ -35,35 +35,31 @@ nav {
   }
 
   .button:hover {
-      background-color: #111;
+      background-color: $navbar-button-hover;
   }
 
   .active {
-      background-color: #4CAF50;
+      background-color: $active-game
   }
 
   /* Navigation Bar Button Colors */
   .games{
-    background: #ff6600;
-  }
-
-  .myGames{
-    background: darkred;
+    background: $games-button
   }
 
   .create{
-    background: lightsalmon;
+    background: $create-button
   }
 
   .login{
     float: right;
-    background: #009900;
+    background: $login-button
   }
 
   .logout{
     cursor: pointer; cursor: hand;
     float: right;
-    background: #ff3300;
+    background: $logout-button
   }
 
 }

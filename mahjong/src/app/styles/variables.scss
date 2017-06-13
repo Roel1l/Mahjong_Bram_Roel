@@ -1,6 +1,28 @@
-$list-layer-color: (blue,green,yellow,darkorange,darkred);
+//Tiles
 $border-color : black;
 $text-color : black;
 $tile-width: 62px;
 $tile-heigth: 82.5px;
-$backgroundimage: url(../core/background2.jpg) no-repeat center center fixed; 
+
+//Navbar
+$navbar-background: #333;
+$navbar-text: white;
+$navbar-button-hover: #111;
+$games-button: #ff6600;
+$create-button: lightsalmon;
+$login-button: #009900;
+$logout-button: #ff3300;
+
+//Games
+$active-game: #4CAF50;
+$base-game: #ff6600;
+$open-background-color: #2D882D;
+$open-background-color-light: lightgreen;
+$playing-background-color: darkorange;
+$playing-background-color-light: #f4d442;
+$base-background-color: #2a2c30;
+$base-text: #eee;
+$hover-text: black;
+
+$box-shadow: 10px 10px 5px grey;
+$box-shadow-light: 10px 10px 5px lightgrey;

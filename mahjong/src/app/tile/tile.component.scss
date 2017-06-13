@@ -1,9 +1,4 @@
-$list-layer-color: (blue,green,yellow,darkorange,darkred);
-$border-color : black;
-$text-color : black;
-$tile-width: 62px;
-$tile-heigth: 82.5px;
-
+@import '../styles/variables';
 /*
     Base tile layout
 */

@@ -6,7 +6,7 @@ import { configureTests } from '../core/tests.configure';
 import { AppModule } from '../app.module';
 
 describe('NewGameComponent', () => {
-let component: NewGameComponent;
+  let component: NewGameComponent;
   let fixture;
 
   beforeEach(done => {
@@ -21,9 +21,9 @@ let component: NewGameComponent;
       fixture.detectChanges();
       done();
     });
-
-    it('should create', () => {
-      expect(component).toBeTruthy();
-    });
   });
+  it('should create', async(() => {
+    const app = fixture.debugElement.componentInstance;
+    expect(app).toBeTruthy();
+  }));
 });

@@ -20,9 +20,9 @@ describe('GameDetailComponent', () => {
       fixture.detectChanges();
       done();
     });
-
-    it('should create', () => {
-      expect(component).toBeTruthy();
-    });
   });
+  it('should create', async(() => {
+    const app = fixture.debugElement.componentInstance;
+    expect(app).toBeTruthy();
+  }));
 });

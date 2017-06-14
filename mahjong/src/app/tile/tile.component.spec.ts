@@ -22,7 +22,8 @@ describe('TileComponent', () => {
       done();
     });
   });
-      it('should create', () => {
-      expect(0).toEqual(0);
-    });
+    it('should create', async(() => {
+      const app = fixture.debugElement.componentInstance;
+      expect(app).toBeTruthy();
+    }));
 });

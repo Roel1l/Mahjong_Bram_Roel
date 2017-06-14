@@ -22,7 +22,6 @@ describe('AppComponent', () => {
     });
 
   });
-
      it('should create', async(() => {
       const app = fixture.debugElement.componentInstance;
       expect(app).toBeTruthy();

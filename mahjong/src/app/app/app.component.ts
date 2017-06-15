@@ -13,7 +13,7 @@ import { ToastService } from '../services/toast.service';
 })
 export class AppComponent extends UserDependendComponent implements OnInit {
   
-  authUrl: string =  'https://mahjongmayhem.herokuapp.com/auth/avans/?callbackUrl=https://roel1l.github.io/Mahjong_Bram_Roel/';
+ authUrl: string =  'https://mahjongmayhem.herokuapp.com/auth/avans/?callbackUrl=' + window.location.origin;
   
   constructor(
     private router: Router,

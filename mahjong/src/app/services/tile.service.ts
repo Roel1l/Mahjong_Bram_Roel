@@ -9,7 +9,7 @@ import { UserDependendComponent } from "app/core/UserDependend.base";
 @Injectable()
 export class TileService extends UserDependendComponent {
 
-  private baseUrl = 'http://mahjongmayhem.herokuapp.com';
+  private baseUrl = 'https://mahjongmayhem.herokuapp.com';
 
   constructor
     (

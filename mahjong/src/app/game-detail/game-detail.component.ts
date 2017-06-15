@@ -48,7 +48,7 @@ export class GameDetailComponent extends UserDependendComponent implements OnIni
       .switchMap((params: Params) => this.gameService.getGame(params['id']))
       .subscribe(game => {
         this.game = game;
-        this.socket = io("http://mahjongmayhem.herokuapp.com?gameId=" + this.game._id);
+        this.socket = io("https://mahjongmayhem.herokuapp.com?gameId=" + this.game._id);
         this.checkParticipation();
         this.setSocketMessages();
       });

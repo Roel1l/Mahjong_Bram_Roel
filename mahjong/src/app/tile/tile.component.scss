@@ -1,9 +1,4 @@
-$list-layer-color: (blue,green,yellow,darkorange,darkred);
-$border-color : black;
-$text-color : black;
-$tile-width: 62px;
-$tile-heigth: 82.5px;
-
+@import '../styles/variables';
 /*
     Base tile layout
 */
@@ -17,6 +12,14 @@ $tile-heigth: 82.5px;
     color: $text-color;
     font-weight: bold;
     border-radius: 10px;
+    //  box-shadow: 0 10px 6px -6px black;
+    &:hover{
+        border:2px solid $border-color;
+    }
+}
+
+.selected{
+     border:10px solid $border-color;
 }
 
 /*

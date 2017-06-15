@@ -1,12 +1,4 @@
-$box-shadow: 10px 10px 5px grey;
-$box-shadow-light: 10px 10px 5px lightgrey;
-
-// Background colours depending on game state
-$open-background-color: #2D882D;
-$open-background-color-light: lightgreen;
-$playing-background-color: darkorange;
-$playing-background-color-light: #f4d442;
-$base-background-color: #2a2c30;
+@import '../styles/variables';
 
 /*
   Wraps each game module in the list
@@ -28,7 +20,7 @@ $base-background-color: #2a2c30;
 .gameModule {
   padding: 15px;
   text-align: center;
-  color: #eee;
+  color: $base-text;
   min-width: 120px;
   background-color: $base-background-color;
   border-radius: 10px;
@@ -41,7 +33,7 @@ $base-background-color: #2a2c30;
       box-shadow: $box-shadow-light;
       background-color: $playing-background-color-light;
       cursor: pointer;
-      color:black;
+      color:$hover-text;
     }
   }
 
@@ -51,7 +43,7 @@ $base-background-color: #2a2c30;
       box-shadow: $box-shadow-light;
       background-color: $open-background-color-light;
       cursor: pointer;
-      color:black;
+      color:$hover-text;
     }
   }  
 

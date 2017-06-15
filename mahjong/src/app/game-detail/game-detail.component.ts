@@ -114,6 +114,7 @@ export class GameDetailComponent extends UserDependendComponent implements OnIni
 
   joinGame(): void {
     this.gameService.joinGame(this.game._id).then(() => {
+      this.isInGame = true;
     });
   }
 

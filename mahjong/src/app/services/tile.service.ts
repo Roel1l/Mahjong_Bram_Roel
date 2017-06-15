@@ -40,8 +40,6 @@ export class TileService extends UserDependendComponent {
    matchTile(gameId: string, tile1id: string, tile2id: string): Promise<void> {
     var self = this;
     var url = this.baseUrl + "/games/"+gameId+"/tiles/matches";
-    console.log(url);
-    console.log(this.user);
     var basicOptions: RequestOptionsArgs = {
       url: url,
       method: RequestMethod.Post,
@@ -65,7 +63,6 @@ export class TileService extends UserDependendComponent {
 
     return this.http.request(req).toPromise().then(function (response) {
       self.toastService.showSuccess("Tiles Matched.");
-      console.log(response);
       return response.json();
     }).catch(error => self.handleError(error,self));
   }

@@ -26,6 +26,7 @@ import { TileService } from './services/tile.service';
 import { MyGamesPipe } from "app/pipes/my-games.pipe";
 
 
+
 @NgModule({
   declarations: [
     AppComponent,

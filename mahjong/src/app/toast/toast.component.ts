@@ -4,12 +4,12 @@ import { ToastService } from "app/services/toast.service";
 @Component({
   selector: 'app-toast',
   template: `<div id="snackbar" class="{{toastClass}}">{{toastText}}</div>`,
-  styleUrls: ['./toast.component.css']
+  styleUrls: ['./toast.component.scss']
 })
 export class ToastComponent {
 
-  private toastText: string;
-  private toastClass: string;
+  toastText: string;
+  toastClass: string;
 
   constructor(private toastService: ToastService){
     

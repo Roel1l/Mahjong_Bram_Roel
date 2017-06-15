@@ -19,7 +19,7 @@ export class GameService extends UserDependendComponent {
   }
 
   handleError(error: any, ts: GameService): void {
-    ts.toastService.showError("An error occurred, Check browser logs for more info.");
+    //ts.toastService.showError("An error occurred, Check browser logs for more info.");
     console.error('An error occurred', error); // for demo purposes only
   }
 
@@ -99,7 +99,6 @@ export class GameService extends UserDependendComponent {
     var req = new Request(reqOptions);
 
     return this.http.request(req).toPromise().then(function (response) {
-      self.toastService.showSuccess("Game started");
     }).catch(error => self.handleError(error, self));
 
   }
@@ -122,7 +121,7 @@ export class GameService extends UserDependendComponent {
 
     var reqOptions = new RequestOptions(basicOptions);
     var req = new Request(reqOptions);
-    self.toastService.showSuccess("Game joined.");
+    self.toastService.showSuccess("Game joined");
     return this.http.request(req).toPromise().then(function (response) {
     }).catch(error => self.handleError(error, self));
 
@@ -182,7 +181,7 @@ export class GameService extends UserDependendComponent {
 
     var reqOptions = new RequestOptions(basicOptions);
     var req = new Request(reqOptions);
-
+    self.toastService.showSuccess("game left");
     return this.http.request(req).toPromise().then(function (response) {
       console.log(response);
     }).catch(error => self.handleError(error, self));

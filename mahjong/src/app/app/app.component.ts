@@ -9,11 +9,11 @@ import { ToastService } from '../services/toast.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent extends UserDependendComponent implements OnInit {
   
-  authUrl: string =  'https://mahjongmayhem.herokuapp.com/auth/avans/?callbackUrl=http://localhost:420';
+  authUrl: string =  'https://mahjongmayhem.herokuapp.com/auth/avans/?callbackUrl=' + window.location.origin;
   
   constructor(
     private router: Router,
@@ -27,7 +27,6 @@ export class AppComponent extends UserDependendComponent implements OnInit {
 
    ngOnInit() {
     super.ngOnInit();
-
     this.tryProcessCallback();
    }
 

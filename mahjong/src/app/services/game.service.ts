@@ -8,7 +8,7 @@ import { UserDependendComponent } from "app/core/UserDependend.base";
 @Injectable()
 export class GameService extends UserDependendComponent {
 
-  private baseUrl = 'http://mahjongmayhem.herokuapp.com';  // URL to web api
+  private baseUrl = 'https://mahjongmayhem.herokuapp.com';  // URL to web api
   constructor(
     private http: Http,
     userService: UserService,

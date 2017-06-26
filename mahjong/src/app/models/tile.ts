@@ -16,5 +16,6 @@ export class Tile{
         otherTyleId: string;
         foundOn: string;
     }
+    tileIsClicked: boolean;
 
 }

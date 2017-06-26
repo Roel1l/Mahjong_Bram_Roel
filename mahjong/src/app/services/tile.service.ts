@@ -37,7 +37,7 @@ export class TileService extends UserDependendComponent {
     }).catch(error => self.handleError(error,self));
   }
 
-   matchTile(gameId: string, tile1id: string, tile2id: string): Promise<void> {
+   postMatch(gameId: string, tile1id: string, tile2id: string): Promise<void> {
     var self = this;
     var url = this.baseUrl + "/games/"+gameId+"/tiles/matches";
     var basicOptions: RequestOptionsArgs = {

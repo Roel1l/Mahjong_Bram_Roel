@@ -12,7 +12,6 @@ export class TileComponent implements OnInit {
   @Input() tile: Tile;
   @Output() tileClicked = new EventEmitter();
 
-
   constructor(private toastService: ToastService) { 
   }
 
@@ -21,6 +20,7 @@ export class TileComponent implements OnInit {
   }
  
   clickTile(): void{
+    this.tile.tileIsClicked = true;
     this.tileClicked.emit(this.tile);
   }
 

@@ -1,6 +1,6 @@
-<ng-template ngFor let-item [ngForOf]="tiles" let-i="index">
-  <tile-outlet (tileClicked)="handleTileClicked($event)" [tile]="item"></tile-outlet>
-</ng-template>
 
+      <ng-template  ngFor let-item [ngForOf]="tiles" let-i="index">
+        <tile-outlet (tileClicked)="handleTileClicked($event)" [tile]="item"></tile-outlet>
+      </ng-template>
 
-
+    <app-game-matches></app-game-matches>

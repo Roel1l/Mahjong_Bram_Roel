@@ -22,12 +22,11 @@ import { UserService } from './services/user.service';
 import { TemplateService } from './services/game-template.service';
 import { ToastService } from './services/toast.service'; 
 import { TileService } from './services/tile.service';
+import { SocketService } from "app/services/socket.service";
 
 //Utility
 import { MyGamesPipe } from "app/pipes/my-games.pipe";
 import { GameMatchesComponent } from './game-matches/game-matches.component';
-
-
 
 @NgModule({
   declarations: [
@@ -47,7 +46,7 @@ import { GameMatchesComponent } from './game-matches/game-matches.component';
     HttpModule,
     AppRoutingModule,
   ],
-  providers: [GameService, UserService, TemplateService, ToastService,TileService, MyGamesPipe],
+  providers: [GameService, UserService, TemplateService, ToastService,TileService, SocketService, MyGamesPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

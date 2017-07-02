@@ -16,6 +16,7 @@ import { UserService } from '../services/user.service';
 import { UserDependendComponent } from "app/core/UserDependend.base";
 import { TileService } from '../services/tile.service';
 import { ToastService } from "app/services/toast.service";
+import { SocketService } from "app/services/socket.service";
 
 @Component({
   selector: 'app-game-matches',
@@ -31,6 +32,7 @@ export class GameMatchesComponent extends UserDependendComponent implements OnIn
     private location: Location,
     userService: UserService,
     private tileService: TileService,
+    private socketService: SocketService,
     public toastService: ToastService
   ) {
     super(userService);
@@ -49,14 +51,13 @@ ngOnInit() {
       });
   }
 
-  getMatches() {
+  getMatches(): void {
     var self = this;
     self.matches = [];
     this.tileService.getTilesByGame(this.game._id, true).then(
       function (response) {
         self.matches = response;
       }
-    )
+    );
   }
-
 }

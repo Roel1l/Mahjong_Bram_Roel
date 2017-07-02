@@ -1,15 +1,11 @@
-
-
-
-
 <div *ngIf="matches" class="matchWrapper">
   <h1>Matches</h1>
   <div class="panel panel-default">
     <div class="panel-body">
       <div class="btn-group">
-        <button type="button" class="btn btn-success btn-filter" (click)="myFunc(0)">All matches</button>
-        <button type="button" class="btn btn-warning btn-filter" (click)="myFunc(1)">My matches</button>
-        <button type="button" class="btn btn-danger btn-filter"  (click)="myFunc(2)">Enemy matches</button>
+        <button type="button" class="btn btn-success btn-filter" (click)="updateInput(0)">All matches</button>
+        <button type="button" class="btn btn-warning btn-filter" (click)="updateInput(1)">My matches</button>
+        <button type="button" class="btn btn-danger btn-filter" (click)="updateInput(2)">Enemy matches</button>
       </div>
       <div class="table-container">
         <table class="table table-filter">

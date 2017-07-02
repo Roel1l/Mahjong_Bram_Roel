@@ -23,7 +23,6 @@ export class MyGamesPipe extends UserDependendComponent implements PipeTransform
     var self = this;
     self.filteredGames = new Array<Game>();
 
-    self.filteredGames = [];
     for (var game of allGames) {
       if (game.gameTemplate._id.toUpperCase().includes(selectedTemplate.toUpperCase()) || selectedTemplate.toUpperCase() == "ANY") {
         if (game.state.toUpperCase().includes(selectedState.toUpperCase()) || selectedState.toUpperCase() == "ANY") {

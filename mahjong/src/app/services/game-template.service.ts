@@ -7,7 +7,7 @@ import { GameTemplate } from '../models/game-template';
 @Injectable()
 export class TemplateService {
 
-  private baseUrl = 'http://mahjongmayhem.herokuapp.com';  // URL to web api
+  private baseUrl = 'https://mahjongmayhem.herokuapp.com';  // URL to web api
   constructor(private http: Http) { }
 
   private handleError(error: any): Promise<any> {

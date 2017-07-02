@@ -27,6 +27,7 @@ import { TileService } from './services/tile.service';
 import { MyGamesPipe } from "app/pipes/my-games.pipe";
 import { GameMatchesComponent } from './game-matches/game-matches.component';
 import { MyMatchesPipe } from "app/pipes/my-matches.pipe";
+import { MatchHistoryComponent } from './match-history/match-history.component';
 
 
 
@@ -41,7 +42,8 @@ import { MyMatchesPipe } from "app/pipes/my-matches.pipe";
     MyGamesPipe,
     MyMatchesPipe,
     ToastComponent,
-    GameMatchesComponent
+    GameMatchesComponent,
+    MatchHistoryComponent
   ],
   imports: [
     BrowserModule,

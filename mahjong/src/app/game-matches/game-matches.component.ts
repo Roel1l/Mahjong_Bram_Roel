@@ -1,5 +1,5 @@
 //Modules
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, NgZone } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 import 'rxjs/add/operator/switchMap';
@@ -50,12 +50,12 @@ ngOnInit() {
       .subscribe(game => {
         this.game = game;
         this.getMatches();
+        this.subscribeToSocket();
       });
   }
 
   getMatches() : void {
     var self = this;
-    self.matches = [];
     this.tileService.getTilesByGame(this.game._id, true).then(
       function (response) {
         self.matches = response;
@@ -63,9 +63,15 @@ ngOnInit() {
     );
   }
 
-  myFunc(input) : void{
+  updateInput(input) : void{
     this.inputValue = input;
   }
 
+  subscribeToSocket(): void {
+    this.socketService.connectToGame(this.game._id);
+    this.socketService.match.subscribe(data => {
+      this.getMatches();
+    });
+  }
 
 }

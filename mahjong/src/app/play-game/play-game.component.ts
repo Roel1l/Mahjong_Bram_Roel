@@ -61,6 +61,9 @@ export class PlayGameComponent extends UserDependendComponent implements OnInit 
       this.removeTileById(data[0]._id);
       this.removeTileById(data[1]._id);
     });
+    this.socketService.end.subscribe(data => {
+      this.router.navigate(['/games/' + this.game._id]);
+    });
   }
 
 

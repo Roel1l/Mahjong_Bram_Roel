@@ -88,13 +88,15 @@ export class PlayGameComponent extends UserDependendComponent implements OnInit 
     else if (this.clickedTile2 == null) {
       this.clickedTile2 = tile;
       if (this.validateMatch(this.clickedTile1, this.clickedTile2, this.tiles)) {
-        this.tileService.matchTile(this.game._id, this.clickedTile1._id, this.clickedTile2._id);
+        this.tileService.postMatch(this.game._id, this.clickedTile1._id, this.clickedTile2._id);
         this.removeTileById(this.clickedTile1._id);
         this.removeTileById(this.clickedTile2._id);
       }
       else {
         this.toastService.showError("Invalid Match");
       }
+      this.clickedTile1.tileIsClicked = false;
+      this.clickedTile2.tileIsClicked = false;
       this.clickedTile1 = null;
       this.clickedTile2 = null;
     }

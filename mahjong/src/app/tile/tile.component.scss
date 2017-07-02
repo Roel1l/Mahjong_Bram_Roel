@@ -2,6 +2,11 @@
 /*
     Base tile layout
 */
+.clickedTile {
+    border:3px solid $border-color !important;
+}
+
+
 .piece{
     position: absolute;
     width: $tile-width;
@@ -14,12 +19,8 @@
     border-radius: 10px;
     //  box-shadow: 0 10px 6px -6px black;
     &:hover{
-        border:2px solid $border-color;
+        border:3px solid $border-color;
     }
-}
-
-.selected{
-     border:10px solid $border-color;
 }
 
 /*

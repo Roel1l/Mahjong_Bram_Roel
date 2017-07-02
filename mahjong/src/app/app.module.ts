@@ -26,6 +26,7 @@ import { TileService } from './services/tile.service';
 //Utility
 import { MyGamesPipe } from "app/pipes/my-games.pipe";
 import { GameMatchesComponent } from './game-matches/game-matches.component';
+import { MyMatchesPipe } from "app/pipes/my-matches.pipe";
 
 
 
@@ -38,6 +39,7 @@ import { GameMatchesComponent } from './game-matches/game-matches.component';
     TileComponent,
     PlayGameComponent,
     MyGamesPipe,
+    MyMatchesPipe,
     ToastComponent,
     GameMatchesComponent
   ],
@@ -47,7 +49,7 @@ import { GameMatchesComponent } from './game-matches/game-matches.component';
     HttpModule,
     AppRoutingModule,
   ],
-  providers: [GameService, UserService, TemplateService, ToastService,TileService, MyGamesPipe],
+  providers: [GameService, UserService, TemplateService, ToastService,TileService, MyGamesPipe, MyMatchesPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

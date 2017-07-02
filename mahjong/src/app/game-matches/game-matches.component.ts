@@ -38,9 +38,11 @@ export class GameMatchesComponent extends UserDependendComponent implements OnIn
 
   @Input() game: Game;
   matches: Tile[];
+  inputValue: number;
 
 ngOnInit() {
     super.ngOnInit();
+    this.inputValue = 0;
     this.route.params
       .switchMap((params: Params) => this.gameService.getGame(params['id']))
       .subscribe(game => {
@@ -49,7 +51,7 @@ ngOnInit() {
       });
   }
 
-  getMatches() {
+  getMatches() : void {
     var self = this;
     self.matches = [];
     this.tileService.getTilesByGame(this.game._id, true).then(
@@ -58,5 +60,10 @@ ngOnInit() {
       }
     )
   }
+
+  myFunc(input) : void{
+    this.inputValue = input;
+  }
+
 
 }

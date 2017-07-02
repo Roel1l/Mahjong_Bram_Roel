@@ -7,16 +7,16 @@
   <div class="panel panel-default">
     <div class="panel-body">
       <div class="btn-group">
-        <button type="button" class="btn btn-success btn-filter" data-target="all">All matches</button>
-        <button type="button" class="btn btn-warning btn-filter" data-target="mine">My matches</button>
-        <button type="button" class="btn btn-danger btn-filter" data-target="enemy">Enemy matches</button>
+        <button type="button" class="btn btn-success btn-filter" (click)="myFunc(0)">All matches</button>
+        <button type="button" class="btn btn-warning btn-filter" (click)="myFunc(1)">My matches</button>
+        <button type="button" class="btn btn-danger btn-filter"  (click)="myFunc(2)">Enemy matches</button>
       </div>
       <div class="table-container">
         <table class="table table-filter">
           <tbody>
             
             
-            <tr *ngFor="let match of matches" data-status="all mine">
+            <tr *ngFor="let match of (matches | myMatches : inputValue)">
               <td>
                 <div class="media">
                   <div class="media-body">

@@ -12,10 +12,8 @@ import { User } from '../models/user';
 //Services
 import { GameService } from '../services/game.service';
 import { UserService } from '../services/user.service';
+import { SocketService } from '../services/socket.service';
 import { UserDependendComponent } from "app/core/UserDependend.base";
-
-//Socket
-import * as io from '../../socket.io.js';
 import { ToastService } from "app/services/toast.service";
 
 @Component({
@@ -29,7 +27,6 @@ export class GameDetailComponent extends UserDependendComponent implements OnIni
   isInGame: Boolean;
   isAdmin: Boolean;
   loading: Boolean;
-  private socket: any;
 
   constructor(
     private router: Router,
@@ -37,6 +34,7 @@ export class GameDetailComponent extends UserDependendComponent implements OnIni
     private route: ActivatedRoute,
     private location: Location,
     userService: UserService,
+    private socketService: SocketService,
     private toastService: ToastService
   ) {
     super(userService);
@@ -48,9 +46,8 @@ export class GameDetailComponent extends UserDependendComponent implements OnIni
       .switchMap((params: Params) => this.gameService.getGame(params['id']))
       .subscribe(game => {
         this.game = game;
-        this.socket = io("http://mahjongmayhem.herokuapp.com?gameId=" + this.game._id);
         this.checkParticipation();
-        this.setSocketMessages();
+        this.subscribeToSocket();
       });
   }
 
@@ -73,16 +70,17 @@ export class GameDetailComponent extends UserDependendComponent implements OnIni
     }
   }
 
-  setSocketMessages() {
-    this.socket.on('start', (data) => {
+  subscribeToSocket(): void {
+    this.socketService.connectToGame(this.game._id);
+    this.socketService.start.subscribe(data => {
       this.reloadGame();
       this.toastService.showSuccess("Game started");
     });
-    this.socket.on('end', (data) => {
+    this.socketService.end.subscribe(data => {
       this.reloadGame();
       this.toastService.showSuccess("Game ended");
     });
-    this.socket.on('playerJoined', (data) => {
+    this.socketService.playerJoined.subscribe(data => {
       this.reloadGame();
       this.toastService.showSuccess("Player joined");
     });

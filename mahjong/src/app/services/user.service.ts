@@ -7,7 +7,7 @@ import { BehaviorSubject } from "rxjs/BehaviorSubject";
 @Injectable()
 export class UserService {
 
-  private baseUrl = 'http://mahjongmayhem.herokuapp.com';  // URL to web api
+  private baseUrl = 'https://mahjongmayhem.herokuapp.com';  // URL to web api
   
   // private user: User = {
   //       _id: 'raa.guerand@student.avans.nl',

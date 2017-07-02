@@ -16,10 +16,7 @@ import { UserService } from '../services/user.service';
 import { UserDependendComponent } from "app/core/UserDependend.base";
 import { TileService } from '../services/tile.service';
 import { ToastService } from "app/services/toast.service";
-
-//Socket
-import * as io from '../../socket.io.js';
-
+import { SocketService } from "app/services/socket.service";
 
 @Component({
   selector: 'app-play-game',
@@ -32,7 +29,6 @@ export class PlayGameComponent extends UserDependendComponent implements OnInit 
   tiles: Tile[]
   clickedTile1: Tile = null;
   clickedTile2: Tile = null;
-  private socket: any;
 
   constructor(
     private router: Router,
@@ -41,6 +37,7 @@ export class PlayGameComponent extends UserDependendComponent implements OnInit 
     private location: Location,
     userService: UserService,
     private tileService: TileService,
+    private socketService: SocketService,
     public toastService: ToastService
   ) {
     super(userService);
@@ -53,18 +50,14 @@ export class PlayGameComponent extends UserDependendComponent implements OnInit 
       .subscribe(game => {
         this.game = game;
         this.getTiles();
-        this.socket = io("http://mahjongmayhem.herokuapp.com?gameId=" + this.game._id);
-        this.setSocketMessages();
+        this.subscribeToSocket();
       });
   }
 
-  setSocketMessages() {
-    this.socket.on('start', (data) => {
-      console.log('Socket says GameStarted');
-      console.log(data);
-    });
-    this.socket.on('match', (data) => {
-      this.toastService.showInfo('Another player got a match!');
+  subscribeToSocket(): void{
+    this.socketService.connectToGame(this.game._id);
+    this.socketService.match.subscribe(data => {
+      this.toastService.showSuccess('Someone got a match!');
       this.removeTileById(data[0]._id);
       this.removeTileById(data[1]._id);
     });

@@ -9,7 +9,7 @@ import { UserDependendComponent } from "app/core/UserDependend.base";
 @Injectable()
 export class TileService extends UserDependendComponent {
 
-  private baseUrl = 'http://mahjongmayhem.herokuapp.com';
+  private baseUrl = 'https://mahjongmayhem.herokuapp.com';
 
   constructor
     (
@@ -36,12 +36,6 @@ export class TileService extends UserDependendComponent {
         return response.json() as Tile[];
     }).catch(error => self.handleError(error,self));
   }
-
-  
-
-  
-
-
 
    postMatch(gameId: string, tile1id: string, tile2id: string): Promise<void> {
     var self = this;

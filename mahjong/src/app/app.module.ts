@@ -27,6 +27,8 @@ import { SocketService } from "app/services/socket.service";
 //Utility
 import { MyGamesPipe } from "app/pipes/my-games.pipe";
 import { GameMatchesComponent } from './game-matches/game-matches.component';
+import { MyMatchesPipe } from "app/pipes/my-matches.pipe";
+import { MatchHistoryComponent } from './match-history/match-history.component';
 
 @NgModule({
   declarations: [
@@ -37,8 +39,10 @@ import { GameMatchesComponent } from './game-matches/game-matches.component';
     TileComponent,
     PlayGameComponent,
     MyGamesPipe,
+    MyMatchesPipe,
     ToastComponent,
-    GameMatchesComponent
+    GameMatchesComponent,
+    MatchHistoryComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +50,7 @@ import { GameMatchesComponent } from './game-matches/game-matches.component';
     HttpModule,
     AppRoutingModule,
   ],
-  providers: [GameService, UserService, TemplateService, ToastService,TileService, SocketService, MyGamesPipe],
+  providers: [GameService, UserService, TemplateService, ToastService,TileService,SocketService, MyGamesPipe, MyMatchesPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -25,7 +25,9 @@ import { SocketService } from "app/services/socket.service";
 export class MatchHistoryComponent extends UserDependendComponent implements OnInit {
 
  @Input() game: Game;
-  tiles: Tile[]
+  tiles: Tile[];
+  matches: Tile[];
+  previousStack: Tile[]; 
 
   constructor(
     private router: Router,
@@ -42,22 +44,98 @@ export class MatchHistoryComponent extends UserDependendComponent implements OnI
 
   ngOnInit() {
     super.ngOnInit();
+    this.previousStack = [];
     this.route.params
       .switchMap((params: Params) => this.gameService.getGame(params['id']))
       .subscribe(game => {
         this.game = game;
         this.getTiles();
+        this.getMatches();
+        
       });
+      
   }
 
     getTiles() {
     var self = this;
     self.tiles = [];
-    this.tileService.getTilesByGame(this.game._id, false).then(
+    this.tileService.getAllTilesByGame(this.game._id).then(
       function (response) {
         self.tiles = response;
       }
     )
+  }
+
+   getMatches() : void {
+    var self = this;
+    self.matches = [];
+    this.tileService.getTilesByGame(this.game._id, true).then(
+      function (response) {
+        self.matches = response;
+      }
+    );
+  }
+
+
+log(){
+  console.log('Current tile list');
+  console.log(this.tiles);
+  console.log('Current match list');
+  console.log(this.matches);
+  console.log('Current stack list');
+  console.log(this.previousStack);
+
+}
+
+
+  previous() {
+    //Get first two tiles 
+    var match1 = this.previousStack[0];
+    var match2 = this.previousStack[1];
+
+    //Remove them from the stack
+    console.log("a" + this.matches);
+    this.previousStack.pop();
+    this.previousStack.pop();
+    
+
+    //Re-add to tiles 
+    this.tiles.push(match1);
+    this.tiles.push(match2);
+
+    //Re-add to matches 
+    this.matches.push(match1);
+    this.matches.push(match2);
+
+    console.log("b" + this.matches.length);
+
+
+  }
+
+  next() {
+    //Get first two tiles 
+    var tile1 = this.matches.pop();
+    var tile2 = this.matches.pop();
+    console.log(tile1);
+    //Remove them from the tile arr
+    this.removeTileById(tile1._id);
+    this.removeTileById(tile2._id);
+
+    //Add them to the stack 
+    this.previousStack.push(tile1);
+    this.previousStack.push(tile2);
+
+    //Remove them from the matches array 
+    this.log();
+  }
+
+   removeTileById(id: string): void {
+    for (var i = 0; i < this.tiles.length; i++) {
+      if (this.tiles[i]._id == id) {
+        this.tiles.splice(i, 1);
+        return;
+      }
+    }
   }
 
 }

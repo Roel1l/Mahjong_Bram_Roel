@@ -29,6 +29,7 @@ import { MyGamesPipe } from "app/pipes/my-games.pipe";
 import { GameMatchesComponent } from './game-matches/game-matches.component';
 import { MyMatchesPipe } from "app/pipes/my-matches.pipe";
 import { MatchHistoryComponent } from './match-history/match-history.component';
+import { GameComponent } from './game/game.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { MatchHistoryComponent } from './match-history/match-history.component';
     MyMatchesPipe,
     ToastComponent,
     GameMatchesComponent,
-    MatchHistoryComponent
+    MatchHistoryComponent,
+    GameComponent
   ],
   imports: [
     BrowserModule,

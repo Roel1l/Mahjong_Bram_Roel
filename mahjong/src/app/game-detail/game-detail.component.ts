@@ -42,7 +42,7 @@ export class GameDetailComponent extends UserDependendComponent implements OnIni
 
   ngOnInit() {
     super.ngOnInit();
-    this.route.params
+    this.route.parent.params
       .switchMap((params: Params) => this.gameService.getGame(params['id']))
       .subscribe(game => {
         this.game = game;
@@ -51,7 +51,7 @@ export class GameDetailComponent extends UserDependendComponent implements OnIni
       });
   }
 
-  checkParticipation() {
+  checkParticipation(): void{
     var self = this;
 
     //Set to default values
@@ -70,7 +70,7 @@ export class GameDetailComponent extends UserDependendComponent implements OnIni
     }
   }
 
-  subscribeToSocket(): void {
+  subscribeToSocket(): void{
     this.socketService.connectToGame(this.game._id);
     this.socketService.start.subscribe(data => {
       this.reloadGame();
@@ -87,7 +87,7 @@ export class GameDetailComponent extends UserDependendComponent implements OnIni
   }
 
   reloadGame(): void {
-    this.route.params
+    this.route.parent.params
       .switchMap((params: Params) => this.gameService.getGame(params['id']))
       .subscribe(game => {
 
@@ -96,14 +96,10 @@ export class GameDetailComponent extends UserDependendComponent implements OnIni
       });
   }
 
-  goBack(): void {
-    this.location.back();
-  }
 
   startGame(): void {
     this.gameService.startGame(this.game._id).then(() => {
-      // this.router.navigate(['/games/' + this.game._id + '/play']);
-    })
+    });
   }
 
   playGame(): void {

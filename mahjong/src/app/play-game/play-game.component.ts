@@ -45,7 +45,7 @@ export class PlayGameComponent extends UserDependendComponent implements OnInit 
 
   ngOnInit() {
     super.ngOnInit();
-    this.route.params
+   this.route.parent.params
       .switchMap((params: Params) => this.gameService.getGame(params['id']))
       .subscribe(game => {
         this.game = game;

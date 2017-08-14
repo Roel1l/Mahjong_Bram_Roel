@@ -45,7 +45,7 @@ export class MatchHistoryComponent extends UserDependendComponent implements OnI
   ngOnInit() {
     super.ngOnInit();
     this.previousStack = [];
-    this.route.params
+    this.route.parent.params
       .switchMap((params: Params) => this.gameService.getGame(params['id']))
       .subscribe(game => {
         this.game = game;

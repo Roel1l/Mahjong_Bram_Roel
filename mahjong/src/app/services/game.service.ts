@@ -99,7 +99,7 @@ export class GameService extends UserDependendComponent {
     var req = new Request(reqOptions);
 
     return this.http.request(req).toPromise().then(function (response) {
-    }).catch(error => self.handleError(error, self));
+    });//.catch(error => self.handleError(error, self));
 
   }
 
@@ -183,7 +183,6 @@ export class GameService extends UserDependendComponent {
     var req = new Request(reqOptions);
     self.toastService.showSuccess("game left");
     return this.http.request(req).toPromise().then(function (response) {
-      console.log(response);
     }).catch(error => self.handleError(error, self));
 
   }

@@ -1,0 +1,10 @@
+<nav>
+  <a type="button" class="btn btn-info" (click)="goBack()">Back</a>
+  <div class="btn-group">
+    <a [routerLink]="['details']" type="button" class="btn btn-success">Details</a>
+    <a *ngIf="isInGame && game.state == 'playing'" [routerLink]="['play']" type="button" class="btn btn-warning">Play</a>
+    <a *ngIf="isInGame && game.state == 'playing'" [routerLink]="['matches']" type="button" class="btn btn-danger">Matches</a>
+    <a *ngIf="isInGame && game.state != 'open'" [routerLink]="['history']" type="button" class="btn btn-success">History</a>
+  </div>
+</nav>
+<router-outlet></router-outlet>

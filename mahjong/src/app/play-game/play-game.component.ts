@@ -106,13 +106,7 @@ export class PlayGameComponent extends UserDependendComponent implements OnInit 
       }
     }
   }
-  /*
-    TODO 
-    - dit is echt dikke stront beter zorgrn we er gewoon voor dat je tiles met neigbours uberhaupt niet aan kan klikken ofzo 
-    - Tile equality wordt bepaald aan de hand van naam/suit, is dit genoeg?
-    - Check toevoegen voor 2 keer zelfde tile aanklikken  <<NIET HIET MAAR IN HANDLECLICKED
-    - Loop breaken bij matchinvalid (return werkt niet, break kan niet kan wel wazige shit doen om het te stoppen maar had ik nu geen zin in)
-  */
+  
   validateMatch(a: Tile, b: Tile, allTiles: Tile[]): boolean {
 
     if (a == b) { console.log("Smerige cheater"); return false }; //Return false if user clicked the same tile twice

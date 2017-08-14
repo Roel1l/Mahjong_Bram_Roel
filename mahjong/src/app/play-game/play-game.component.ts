@@ -109,7 +109,7 @@ export class PlayGameComponent extends UserDependendComponent implements OnInit 
   
   validateMatch(a: Tile, b: Tile, allTiles: Tile[]): boolean {
 
-    if (a == b) { console.log("Smerige cheater"); return false }; //Return false if user clicked the same tile twice
+    if (a == b) { return false }; //Return false if user clicked the same tile twice
 
     var matchValid = true;          //Keep track of wether match is valid
     var aNeighBour = null;    //Used to detect if a tile has multiple neighbours

@@ -26,9 +26,21 @@ export class TileService extends UserDependendComponent {
     console.error('An error occurred', error); // for demo purposes only
   }
 
+   getAllTilesByGame(gameId: string): Promise<Tile[]> {
+    var self = this;
 
+    var url = this.baseUrl + "/games/" + gameId + "/tiles";
+    return this.http.get(url)
+      .toPromise()
+      .then(function (response) {
+        return response.json() as Tile[];
+    }).catch(error => self.handleError(error,self));
+  }
+
+  //matched or non matched Tiles
   getTilesByGame(gameId: string, matched: boolean): Promise<Tile[]> {
     var self = this;
+
     var url = this.baseUrl + "/games/" + gameId + "/tiles/?matched=" + matched;
     return this.http.get(url)
       .toPromise()

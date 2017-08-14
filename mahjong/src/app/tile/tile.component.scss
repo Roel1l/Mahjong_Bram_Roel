@@ -3,7 +3,7 @@
     Base tile layout
 */
 .clickedTile {
-    border:3px solid $border-color !important;
+    border:3px solid $hover-border-color !important;
 }
 
 
@@ -19,7 +19,7 @@
     border-radius: 10px;
     //  box-shadow: 0 10px 6px -6px black;
     &:hover{
-        border:3px solid $border-color;
+        border:3px solid $hover-border-color;
     }
 }
 

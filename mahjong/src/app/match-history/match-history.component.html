@@ -1,3 +1,3 @@
-<p>
-  match-history works!
-</p>
+  <ng-template  ngFor let-item [ngForOf]="tiles" let-i="index">
+        <tile-outlet [tile]="item"></tile-outlet>
+      </ng-template>

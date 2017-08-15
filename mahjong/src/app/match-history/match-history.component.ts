@@ -79,65 +79,19 @@ export class MatchHistoryComponent extends UserDependendComponent implements OnI
 
 
 log(){
-  // console.log('Current tile list');
-  // console.log(this.tiles);
-  // console.log('Current match list');
-  // console.log(this.matches);
-  // console.log('Current stack list');
-  // console.log(this.previousStack);
+
 
 }
 
 
   previous() {
-    // //Get first two tiles 
-    // var match1 = this.previousStack[0];
-    // var match2 = this.previousStack[1];
 
-    // //Remove them from the stack
-    // console.log("a" + this.matches);
-    // this.previousStack.pop();
-    // this.previousStack.pop();
-
-    // //Re-add to tiles 
-    // this.tiles.push(match1);
-    // this.tiles.push(match2);
-
-    // //Re-add to matches 
-    // this.matches.push(match1);
-    // this.matches.push(match2);
-
-    // console.log("b" + this.matches.length);
 
 
   }
 
   next() {
    
-    //Get first two tiles 
-    var tile1 = this.matches[0];
-    var tile2 = this.matches[1];
-
-    // //Remove them from the tile arr
-    this.removeTileById(tile1._id);
-    this.removeTileById(tile2._id);
-
-    // //Add them to the stack 
-    this.previousStack.push(tile1);
-    this.previousStack.push(tile2);
-
-    // //Remove them from the matches array 
-    this.matches.splice(0,2);
-    console.log(this.matches);
-  }
-
-   removeTileById(id: string): void {
-    for (var i = 0; i < this.tiles.length; i++) {
-      if (this.tiles[i]._id == id) {
-        this.tiles.splice(i, 1);
-        return;
-      }
-    }
   }
 
 }

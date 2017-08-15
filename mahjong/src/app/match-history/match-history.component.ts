@@ -24,10 +24,10 @@ import { SocketService } from "app/services/socket.service";
 })
 export class MatchHistoryComponent extends UserDependendComponent implements OnInit {
 
- @Input() game: Game;
-  tiles: Tile[];
-  matches: Tile[];
-  previousStack: Tile[]; 
+  @Input() game: Game;
+  tiles: Tile[];          //All tiles in the game, used to display the board 
+  matches: Tile[];        //All matches that where made
+  previousStack: Tile[];  //All matches that have been "processed" in the match history used for previous button 
 
   constructor(
     private router: Router,
@@ -51,47 +51,59 @@ export class MatchHistoryComponent extends UserDependendComponent implements OnI
         this.game = game;
         this.getTiles();
         this.getMatches();
-        
+        this.previousStack = [];
       });
-      
+
   }
 
-    getTiles() {
+  getTiles() {
     var self = this;
     self.tiles = [];
     this.tileService.getAllTilesByGame(this.game._id).then(
       function (response) {
         self.tiles = response;
+        console.log(self.tiles);
       }
     )
   }
 
-   getMatches() : void {
+  getMatches(): void {
     var self = this;
     self.matches = [];
     this.tileService.getTilesByGame(this.game._id, true).then(
       function (response) {
         self.matches = response;
-        console.log(self.matches)
       }
     );
   }
 
-
-log(){
-
-
-}
-
-
   previous() {
+    var match = this.previousStack.shift(); //Remove first entry from previousStack
+    this.matches.unshift(match);            //Add to tile/matches as first entry
+    this.tiles.unshift(match);
 
-
-
+    var match2 = this.previousStack.shift();
+    this.matches.unshift(match2);
+    this.tiles.unshift(match2);
   }
 
   next() {
-   
+    var match = this.matches.shift();     //Remove first entry from matches
+    this.removeTileById(match._id);       //Remove by id from tiles
+    this.previousStack.unshift(match);    //Add as first entry in previousStack
+
+    var match2 = this.matches.shift();
+    this.removeTileById(match2._id);
+    this.previousStack.unshift(match2);
+  }
+
+  removeTileById(id: string): void {
+    for (var i = 0; i < this.tiles.length; i++) {
+      if (this.tiles[i]._id == id) {
+        this.tiles.splice(i, 1);
+        return;
+      }
+    }
   }
 
 }

@@ -6,5 +6,4 @@ $brightnessIncrement: 0.25;
 .current{
    -webkit-filter: brightness($baseBrightness);
     filter: brightness($baseBrightness);
-    color: $base-text;
 }

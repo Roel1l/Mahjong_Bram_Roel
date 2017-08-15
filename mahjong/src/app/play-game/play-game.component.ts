@@ -26,7 +26,7 @@ import { SocketService } from "app/services/socket.service";
 export class PlayGameComponent extends UserDependendComponent implements OnInit {
 
   @Input() game: Game;
-  tiles: Tile[]
+  tiles: Tile[];
   clickedTile1: Tile = null;
   clickedTile2: Tile = null;
 

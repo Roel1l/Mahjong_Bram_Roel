@@ -25,7 +25,7 @@
 
        <div class="form-group">
         <label for="gameTemplate">Choose a Template</label>
-        <select [(ngModel)]="selectedTemplate" class="form-control" id="template" name="ding" required>
+        <select [(ngModel)]="selectedTemplate" class="form-control" id="template" name="ding" #t (change)="templateChanged(t.value)" required>
           <option *ngFor="let gameTemplate of templates" [value]="gameTemplate._id">{{gameTemplate._id}}</option>
         </select>
       </div>
@@ -35,4 +35,8 @@
       </div>
 
     </form>
+
+    <ng-template *ngIf="selectedTemplateTiles" ngFor let-item [ngForOf]="selectedTemplateTiles">
+        <preview-outlet [tile]="item"></preview-outlet>
+    </ng-template>
 </div>

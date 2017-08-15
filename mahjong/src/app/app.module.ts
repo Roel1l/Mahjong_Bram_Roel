@@ -30,6 +30,7 @@ import { GameMatchesComponent } from './game-matches/game-matches.component';
 import { MyMatchesPipe } from "app/pipes/my-matches.pipe";
 import { MatchHistoryComponent } from './match-history/match-history.component';
 import { GameComponent } from './game/game.component';
+import { PreviewTileComponent } from './preview-tile/preview-tile.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { GameComponent } from './game/game.component';
     ToastComponent,
     GameMatchesComponent,
     MatchHistoryComponent,
-    GameComponent
+    GameComponent,
+    PreviewTileComponent
   ],
   imports: [
     BrowserModule,

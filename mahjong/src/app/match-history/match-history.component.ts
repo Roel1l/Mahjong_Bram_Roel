@@ -76,6 +76,8 @@ export class MatchHistoryComponent extends UserDependendComponent implements OnI
     this.tileService.getTilesByGame(this.game._id, true).then(
       function (response) {
         self.matches = response;
+        self.matches.reverse();
+
       }
     );
   }

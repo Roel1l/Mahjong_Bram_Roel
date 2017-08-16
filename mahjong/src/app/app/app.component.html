@@ -1,5 +1,6 @@
 <nav>
     <ul>
+        <!--<button></button>-->
         <li class="create button"><a routerLink="/games/new">Create a new game</a></li>
         <li class="games button"><a routerLink="/games">All games</a></li>
         <li *ngIf="!user" class="login button"><a [attr.href]="authUrl">Login</a></li>

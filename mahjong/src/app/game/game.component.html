@@ -1,5 +1,5 @@
 <nav>
-  <a type="button" class="btn btn-info" (click)="goBack()">Back</a>
+  <a type="button" class="btn btn-primary" (click)="goBack()"><span class="glyphicon glyphicon-chevron-left"></span>Back</a>
   <div class="btn-group">
     <a [routerLink]="['details']" type="button" class="btn btn-success" [ngClass]="(currentSubRoute=='details')?'current':''">Details</a>
     <a *ngIf="isInGame && game.state == 'playing'" [routerLink]="['play']" type="button" class="btn btn-warning" [ngClass]="(currentSubRoute=='play')?'current':''">Play</a>

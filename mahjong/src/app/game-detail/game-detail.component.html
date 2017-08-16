@@ -28,7 +28,7 @@
   </ul>
   </div>
   <br />
-  <div>
+  <div [hidden]="user == null">
     <button  *ngIf="!isInGame && game.players.length < game.maxPlayers && game.state == 'open'" type="button" class="btn btn-success" (click)="joinGame()">Join</button>
     <button *ngIf="isAdmin && game.state == 'open' && game.players.length >= game.minPlayers" type="button" class="btn btn-success" (click)="startGame()">Start</button>
   </div>

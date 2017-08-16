@@ -31,7 +31,7 @@
       </div>
 
       <div [hidden]="model.minPlayers > 32 || model.minPlayers < 1 || model.maxPlayers > 32 || model.maxPlayers <= model.minPlayers">
-        <button type="button" class="btn btn-default" (click)="newGame()">New Game</button>
+        <button [disabled]="user == null" type="button" class="btn btn-default" (click)="newGame()">New Game</button>
       </div>
 
     </form>

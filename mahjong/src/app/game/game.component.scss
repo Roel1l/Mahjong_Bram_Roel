@@ -1,0 +1,9 @@
+@import '../styles/variables';
+
+$baseBrightness: 0.50;
+$brightnessIncrement: 0.25;
+
+.current{
+   -webkit-filter: brightness($baseBrightness);
+    filter: brightness($baseBrightness);
+}

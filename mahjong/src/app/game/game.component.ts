@@ -25,6 +25,7 @@ export class GameComponent extends UserDependendComponent implements OnInit {
 
   game: Game;
   isInGame: Boolean;
+  currentSubRoute: String;
 
   constructor(
     private router: Router,
@@ -40,6 +41,7 @@ export class GameComponent extends UserDependendComponent implements OnInit {
 
   ngOnInit() {
     super.ngOnInit();
+    this.router.events.subscribe(() => this.setSubRoute());
     this.route.params
       .switchMap((params: Params) => this.gameService.getGame(params['id']))
       .subscribe(game => {
@@ -67,6 +69,11 @@ export class GameComponent extends UserDependendComponent implements OnInit {
         this.game = game;
         this.checkParticipation();
       });
+  }
+
+  setSubRoute(): void{
+    var x = window.location.href.split('/');
+    this.currentSubRoute = x[x.length - 1];
   }
 
 

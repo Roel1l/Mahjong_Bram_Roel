@@ -12,6 +12,7 @@ import { TemplateService } from '../services/game-template.service';
 import { Game } from '../models/game';
 import { User } from '../models/user';
 import { GameTemplate } from '../models/game-template';
+import { Tile } from "app/models/tile";
 
 @Component({
   selector: 'app-new-game',
@@ -27,6 +28,7 @@ export class NewGameComponent implements OnInit {
      ){ }
 
   templates = [];
+  selectedTemplateTiles: any[];
   model = new Game(2, 10,'Ox');
   submitted = false;
   selectedTemplate: string;
@@ -62,5 +64,11 @@ export class NewGameComponent implements OnInit {
         }
          self.model = new Game(2, 10,self.templates[0]._id);
       });
+  }
+
+  templateChanged(x: any): void{
+    for (var template of this.templates) if(template._id == x) {
+       this.selectedTemplateTiles = template.tiles;
+    }
   }
 }

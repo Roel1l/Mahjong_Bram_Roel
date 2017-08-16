@@ -18,10 +18,10 @@ export class SocketService {
 
     public connectToGame(gameId){
         this.socket = io("http://mahjongmayhem.herokuapp.com?gameId=" + gameId);
-        this.setSocketMessages();
+        this.subscribeToSocketMessages();
     }
 
-    setSocketMessages(): void {
+    subscribeToSocketMessages(): void {
         this.socket.on('start', (data) => {
             this.start.next(data);
         });

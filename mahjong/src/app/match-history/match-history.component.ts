@@ -24,10 +24,10 @@ import { SocketService } from "app/services/socket.service";
 })
 export class MatchHistoryComponent extends UserDependendComponent implements OnInit {
 
- @Input() game: Game;
-  tiles: Tile[];
-  matches: Tile[];
-  previousStack: Tile[]; 
+  @Input() game: Game;
+  tiles: Tile[];          //All tiles in the game, used to display the board 
+  matches: Tile[];        //All matches that where made
+  previousStack: Tile[];  //All matches that have been "processed" in the match history used for previous button 
 
   constructor(
     private router: Router,
@@ -51,22 +51,23 @@ export class MatchHistoryComponent extends UserDependendComponent implements OnI
         this.game = game;
         this.getTiles();
         this.getMatches();
-        
+        this.previousStack = [];
       });
-      
+
   }
 
-    getTiles() {
+  getTiles() {
     var self = this;
     self.tiles = [];
     this.tileService.getAllTilesByGame(this.game._id).then(
       function (response) {
         self.tiles = response;
+        console.log(self.tiles);
       }
     )
   }
 
-   getMatches() : void {
+  getMatches(): void {
     var self = this;
     self.matches = [];
     this.tileService.getTilesByGame(this.game._id, true).then(
@@ -76,60 +77,27 @@ export class MatchHistoryComponent extends UserDependendComponent implements OnI
     );
   }
 
-
-log(){
-  console.log('Current tile list');
-  console.log(this.tiles);
-  console.log('Current match list');
-  console.log(this.matches);
-  console.log('Current stack list');
-  console.log(this.previousStack);
-
-}
-
-
   previous() {
-    //Get first two tiles 
-    var match1 = this.previousStack[0];
-    var match2 = this.previousStack[1];
+    var match = this.previousStack.shift(); //Remove first entry from previousStack
+    this.matches.unshift(match);            //Add to tile/matches as first entry
+    this.tiles.unshift(match);
 
-    //Remove them from the stack
-    console.log("a" + this.matches);
-    this.previousStack.pop();
-    this.previousStack.pop();
-    
-
-    //Re-add to tiles 
-    this.tiles.push(match1);
-    this.tiles.push(match2);
-
-    //Re-add to matches 
-    this.matches.push(match1);
-    this.matches.push(match2);
-
-    console.log("b" + this.matches.length);
-
-
+    var match2 = this.previousStack.shift();
+    this.matches.unshift(match2);
+    this.tiles.unshift(match2);
   }
 
   next() {
-    //Get first two tiles 
-    var tile1 = this.matches.pop();
-    var tile2 = this.matches.pop();
-    console.log(tile1);
-    //Remove them from the tile arr
-    this.removeTileById(tile1._id);
-    this.removeTileById(tile2._id);
+    var match = this.matches.shift();     //Remove first entry from matches
+    this.removeTileById(match._id);       //Remove by id from tiles
+    this.previousStack.unshift(match);    //Add as first entry in previousStack
 
-    //Add them to the stack 
-    this.previousStack.push(tile1);
-    this.previousStack.push(tile2);
-
-    //Remove them from the matches array 
-    this.log();
+    var match2 = this.matches.shift();
+    this.removeTileById(match2._id);
+    this.previousStack.unshift(match2);
   }
 
-   removeTileById(id: string): void {
+  removeTileById(id: string): void {
     for (var i = 0; i < this.tiles.length; i++) {
       if (this.tiles[i]._id == id) {
         this.tiles.splice(i, 1);

@@ -2,7 +2,7 @@
 
   <div>
     <select [(ngModel)]="selectedTemplate">
-      <option *ngFor="let template of templates" [value]="template">{{template}}</option>
+      <option *ngFor="let template of templates;  let i = index" [value]="template" >{{template}}</option>
   </select>
     <input [(ngModel)]="showMyGamesOnly" type="checkbox" /> Only display my games
   </div>

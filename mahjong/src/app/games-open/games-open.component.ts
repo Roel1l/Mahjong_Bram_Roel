@@ -24,7 +24,7 @@ export class GamesOpenComponent extends UserDependendComponent implements OnInit
 
   templates = ['Any', 'Dragon','Monkey','Ox','Ram','Rooster','Shanghai','Snake'];
   states = ['Any','Open','Playing','Finished'];
-  selectedTemplate: string = 'any';
+  selectedTemplate: string = 'Any';
   selectedState: string = 'open';
   showMyGamesOnly: boolean = false;
 

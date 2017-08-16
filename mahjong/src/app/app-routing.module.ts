@@ -12,7 +12,7 @@ import { GamesFinishedComponent } from "app/games-finished/games-finished.compon
 import { GamesOpenComponent } from "app/games-open/games-open.component";
 
 const routes: Routes = [
-  { path: '', redirectTo: '/games', pathMatch: 'full' },
+  { path: '', redirectTo: '/games/open', pathMatch: 'full' },
   {
     path: 'games', component: GamesComponent,
     children: [

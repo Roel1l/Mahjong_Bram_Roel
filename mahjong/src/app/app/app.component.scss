@@ -44,22 +44,22 @@ nav {
 
   /* Navigation Bar Button Colors */
   .games{
-    background: $games-button
+    background: $btn-info;
   }
 
   .create{
-    background: $create-button
+    background: $btn-primary;
   }
 
   .login{
     float: right;
-    background: $login-button
+    background: $btn-success;
   }
 
   .logout{
     cursor: pointer; cursor: hand;
     float: right;
-    background: $logout-button
+    background: $btn-danger;
   }
 
 }

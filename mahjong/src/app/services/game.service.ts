@@ -188,35 +188,4 @@ export class GameService extends UserDependendComponent {
   }
 
 
-
-  deleteGame(gameId: string): Promise<void> {
-    var self = this;
-    var basicOptions: RequestOptionsArgs = {
-      url: this.baseUrl + "/games/" + gameId,
-      method: RequestMethod.Delete,
-      search: null,
-      headers: new Headers(
-        {
-          //'Content-Type': 'application/json',
-          'x-username': this.user._id,
-          'x-token': this.user.token
-        }
-      ),
-      body: null
-    };
-
-    var reqOptions = new RequestOptions(basicOptions);
-    var req = new Request(reqOptions);
-
-    return this.http.request(req).toPromise().then(function (response) {
-      self.toastService.showSuccess("Game deleted");
-    }).catch(error => self.handleError(error, self));
-
-  }
-
-
-
-
-
-
 }

@@ -7,6 +7,9 @@ import { Location } from '@angular/common';
 import { GameService } from '../services/game.service';
 import { UserService } from '../services/user.service';
 import { TemplateService } from '../services/game-template.service';
+import { ToastService } from "app/services/toast.service";
+import { UserDependendComponent } from "app/core/UserDependend.base";
+
 
 //Models
 import { Game } from '../models/game';
@@ -19,13 +22,17 @@ import { Tile } from "app/models/tile";
   templateUrl: './new-game.component.html',
   styleUrls: ['./new-game.component.scss']
 })
-export class NewGameComponent implements OnInit {
+export class NewGameComponent extends UserDependendComponent implements OnInit {
 
    constructor(
      private router: Router,
      private gameService: GameService,
-     private templateService: TemplateService
-     ){ }
+     private templateService: TemplateService,
+     public toastService: ToastService,
+     userService: UserService   
+     ){ 
+       super(userService);
+     }
 
   templates = [];
   selectedTemplateTiles: any[];
@@ -34,6 +41,7 @@ export class NewGameComponent implements OnInit {
   selectedTemplate: string;
 
   onSubmit() { 
+    // if(this.user ==)
     this.submitted = true; 
     console.log('submit');
   }
@@ -51,6 +59,7 @@ export class NewGameComponent implements OnInit {
 
 
   ngOnInit() {
+    super.ngOnInit();
     this.getTemplates();
   }
 

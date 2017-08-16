@@ -28,6 +28,7 @@ export class MatchHistoryComponent extends UserDependendComponent implements OnI
   tiles: Tile[];          //All tiles in the game, used to display the board 
   matches: Tile[];        //All matches that where made
   previousStack: Tile[];  //All matches that have been "processed" in the match history used for previous button 
+  inputValue: number;
 
   constructor(
     private router: Router,
@@ -44,6 +45,8 @@ export class MatchHistoryComponent extends UserDependendComponent implements OnI
 
   ngOnInit() {
     super.ngOnInit();
+    this.inputValue = 0; 
+
     this.previousStack = [];
     this.route.parent.params
       .switchMap((params: Params) => this.gameService.getGame(params['id']))
@@ -104,6 +107,10 @@ export class MatchHistoryComponent extends UserDependendComponent implements OnI
         return;
       }
     }
+  }
+
+    updateInput(input) : void{
+    this.inputValue = input;
   }
 
 }

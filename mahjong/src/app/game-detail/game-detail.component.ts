@@ -121,9 +121,4 @@ export class GameDetailComponent extends UserDependendComponent implements OnIni
     });
   }
 
-  deleteGame(): void {
-    this.gameService.deleteGame(this.game._id).then(() => {
-      this.router.navigate(['/games']);
-    });
-  }
 }

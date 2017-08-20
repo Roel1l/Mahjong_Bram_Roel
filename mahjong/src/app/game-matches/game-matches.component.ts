@@ -1,5 +1,5 @@
 //Modules
-import { Component, Input, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 import 'rxjs/add/operator/switchMap';
@@ -38,7 +38,7 @@ export class GameMatchesComponent extends UserDependendComponent implements OnIn
     super(userService);
   }
 
-  @Input() game: Game;
+  game: Game;
   matches: Tile[];
   inputValue: number;
 

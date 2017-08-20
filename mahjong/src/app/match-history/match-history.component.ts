@@ -24,7 +24,7 @@ import { SocketService } from "app/services/socket.service";
 })
 export class MatchHistoryComponent extends UserDependendComponent implements OnInit {
 
-  @Input() game: Game;
+  game: Game;
   tiles: Tile[];          //All tiles in the game, used to display the board 
   matches: Tile[];        //All matches that where made
   previousStack: Tile[];  //All matches that have been "processed" in the match history used for previous button 

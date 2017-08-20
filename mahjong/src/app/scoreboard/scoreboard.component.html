@@ -1,0 +1,26 @@
+<div *ngIf="players" class="matchWrapper">
+  <h1>Matches</h1>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="table-container">
+        <table class="table table-filter">
+          <tbody>
+            <tr *ngFor="let match of (matches | myMatches : inputValue)">
+              <td>
+                <div class="media">
+                  <div class="media-body">
+                    <span class="media-meta pull-right">{{match.match.foundOn}}</span>
+                    <h4 class="title">
+                      {{match.tile.suit}} - {{match.tile.name}}
+                    </h4>
+                    <span class="pull-right pagado">{{match.match.foundBy}}</span>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

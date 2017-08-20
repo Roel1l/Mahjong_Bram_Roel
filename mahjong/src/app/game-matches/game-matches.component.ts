@@ -59,7 +59,6 @@ ngOnInit() {
   }
 
   subscribeToSocket(): void {
-    this.socketService.connectToGame(this.game._id);
     this.socketService.match.subscribe(data => {
       this.getMatches();
     });

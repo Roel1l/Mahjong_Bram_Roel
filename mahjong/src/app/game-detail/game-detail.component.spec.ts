@@ -1,13 +1,13 @@
+//Components
+import { GameDetailComponent } from "app/game-detail/game-detail.component";
+
+//Modules
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { GameDetailComponent } from './game-detail.component';
-
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from "app/app-routing.module";
 import { RouterTestingModule } from "@angular/router/testing";
+
+//services
 import { GameService } from "app/services/game.service";
 import { UserService } from "app/services/user.service";
 import { ToastService } from "app/services/toast.service";

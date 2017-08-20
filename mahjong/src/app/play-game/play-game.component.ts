@@ -55,7 +55,6 @@ export class PlayGameComponent extends UserDependendComponent implements OnInit 
   }
 
   subscribeToSocket(): void{
-    this.socketService.connectToGame(this.game._id);
     this.socketService.match.subscribe(data => {
       this.toastService.showSuccess('Someone got a match!');
       this.removeTileById(data[0]._id);

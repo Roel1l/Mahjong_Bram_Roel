@@ -71,7 +71,6 @@ export class GameDetailComponent extends UserDependendComponent implements OnIni
   }
 
   subscribeToSocket(): void{
-    this.socketService.connectToGame(this.game._id);
     this.socketService.start.subscribe(data => {
       this.reloadGame();
       this.toastService.showSuccess("Game started");

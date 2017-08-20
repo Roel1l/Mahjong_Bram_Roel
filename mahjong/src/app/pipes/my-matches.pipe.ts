@@ -14,7 +14,6 @@ export class MyMatchesPipe extends UserDependendComponent implements PipeTransfo
     }
 
     transform(allMatches: Tile[], input: number) {
-        console.log(input);
         var self = this;
         self.filteredMatches = new Array<Tile>();
       

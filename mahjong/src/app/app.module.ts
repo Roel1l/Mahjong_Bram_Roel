@@ -34,6 +34,8 @@ import { PreviewTileComponent } from './preview-tile/preview-tile.component';
 import { GamesOpenComponent } from './games-open/games-open.component';
 import { GamesPlayingComponent } from './games-playing/games-playing.component';
 import { GamesFinishedComponent } from './games-finished/games-finished.component';
+import { ScoreboardComponent } from './scoreboard/scoreboard.component';
+
 
 @NgModule({
   declarations: [
@@ -52,7 +54,9 @@ import { GamesFinishedComponent } from './games-finished/games-finished.componen
     PreviewTileComponent,
     GamesOpenComponent,
     GamesPlayingComponent,
-    GamesFinishedComponent
+    GamesFinishedComponent,
+    ScoreboardComponent
+
   ],
   imports: [
     BrowserModule,

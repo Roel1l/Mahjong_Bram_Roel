@@ -7,6 +7,7 @@ import { PlayGameComponent } from "app/play-game/play-game.component";
 import { GameMatchesComponent } from './game-matches/game-matches.component';
 import { GameComponent } from './game/game.component';
 import { MatchHistoryComponent } from './match-history/match-history.component';
+import { ScoreboardComponent } from "app/scoreboard/scoreboard.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/games', pathMatch: 'full' },
@@ -19,7 +20,8 @@ const routes: Routes = [
       { path: 'details', component: GameDetailComponent },
       { path: 'play', component: PlayGameComponent },
       { path: 'matches', component: GameMatchesComponent },
-      { path: 'history', component: MatchHistoryComponent }
+      { path: 'history', component: MatchHistoryComponent },
+      { path: 'score', component: ScoreboardComponent}
     ]
   }
 ];

@@ -22,18 +22,16 @@ import { SocketService } from "app/services/socket.service";
 })
 export class GameMatchesComponent  implements OnInit {
 
-   constructor(
-    private gameService: GameService,
-    private route: ActivatedRoute,
-    private tileService: TileService,
-    private socketService: SocketService,
-  ) {
-  
-  }
-
   game: Game;
   matches: Tile[];
   inputValue: number;
+
+   constructor(
+      private gameService: GameService,
+      private route: ActivatedRoute,
+      private tileService: TileService,
+      private socketService: SocketService,
+    ) {}
 
 ngOnInit() {
     this.inputValue = 0; 

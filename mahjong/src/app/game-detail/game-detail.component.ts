@@ -27,11 +27,12 @@ export class GameDetailComponent extends UserDependendComponent implements OnIni
   isInGame: Boolean;
   isAdmin: Boolean;
   loading: Boolean;
+  instanceNumber: Number;
 
   constructor(
     private router: Router,
     private gameService: GameService,
-    private route: ActivatedRoute,
+    public route: ActivatedRoute,
     private location: Location,
     userService: UserService,
     private socketService: SocketService,

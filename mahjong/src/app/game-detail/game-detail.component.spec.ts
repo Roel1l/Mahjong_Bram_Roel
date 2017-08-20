@@ -1,28 +1,38 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GameDetailComponent } from './game-detail.component';
-import { AppModule } from "app/app.module";
-import { configureTests } from "app/core/tests.configure";
+
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import { AppRoutingModule } from "app/app-routing.module";
+import { RouterTestingModule } from "@angular/router/testing";
+import { GameService } from "app/services/game.service";
+import { UserService } from "app/services/user.service";
+import { ToastService } from "app/services/toast.service";
+import { SocketService } from "app/services/socket.service";
 
 describe('GameDetailComponent', () => {
   let component: GameDetailComponent;
-  let fixture;
+  let fixture: ComponentFixture<GameDetailComponent>;
 
-  beforeEach(done => {
-    const configure = (testBed: TestBed) => {
-      testBed.configureTestingModule({
-        imports: [AppModule],
-      });
-    };
-
-    configureTests(configure).then(testBed => {
-      fixture = testBed.createComponent(GameDetailComponent);
-      fixture.detectChanges();
-      done();
-    });
-  });
-  it('should create', async(() => {
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      imports: [RouterTestingModule,HttpModule],
+      declarations: [ GameDetailComponent],
+      providers: [GameService, UserService,ToastService,SocketService]   
+    })
+    .compileComponents();
   }));
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(GameDetailComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
 });

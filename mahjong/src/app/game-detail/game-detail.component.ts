@@ -42,13 +42,13 @@ export class GameDetailComponent extends UserDependendComponent implements OnIni
 
   ngOnInit() {
     super.ngOnInit();
-    this.route.parent.params
-      .switchMap((params: Params) => this.gameService.getGame(params['id']))
-      .subscribe(game => {
-        this.game = game;
-        this.checkParticipation();
-        this.subscribeToSocket();
-      });
+    // this.route.parent.params
+    //   .switchMap((params: Params) => this.gameService.getGame(params['id']))
+    //   .subscribe(game => {
+    //     this.game = game;
+    //     this.checkParticipation();
+    //     this.subscribeToSocket();
+    //   });
   }
 
   checkParticipation(): void{

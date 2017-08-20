@@ -12,10 +12,7 @@ import { Tile } from '../models/tile';
 
 //Services
 import { GameService } from '../services/game.service';
-import { UserService } from '../services/user.service';
-import { UserDependendComponent } from "app/core/UserDependend.base";
 import { TileService } from '../services/tile.service';
-import { ToastService } from "app/services/toast.service";
 import { SocketService } from "app/services/socket.service";
 
 @Component({
@@ -23,19 +20,15 @@ import { SocketService } from "app/services/socket.service";
   templateUrl: './game-matches.component.html',
   styleUrls: ['./game-matches.component.scss']
 })
-export class GameMatchesComponent extends UserDependendComponent implements OnInit {
+export class GameMatchesComponent  implements OnInit {
 
    constructor(
-    private router: Router,
     private gameService: GameService,
     private route: ActivatedRoute,
-    private location: Location,
-    userService: UserService,
     private tileService: TileService,
     private socketService: SocketService,
-    public toastService: ToastService
   ) {
-    super(userService);
+  
   }
 
   game: Game;
@@ -43,7 +36,6 @@ export class GameMatchesComponent extends UserDependendComponent implements OnIn
   inputValue: number;
 
 ngOnInit() {
-    super.ngOnInit();
     this.inputValue = 0; 
 
     this.route.parent.params

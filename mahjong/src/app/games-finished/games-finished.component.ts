@@ -23,7 +23,7 @@ filteredGames: Game[];
 
   templates = ['Any', 'Dragon','Monkey','Ox','Ram','Rooster','Shanghai','Snake'];
   states = ['Any','Open','Playing','Finished'];
-  selectedTemplate: string = 'any';
+  selectedTemplate: string = 'Any';
   selectedState: string = 'finished';
   showMyGamesOnly: boolean = false;
 

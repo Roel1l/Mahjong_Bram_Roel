@@ -4,7 +4,6 @@ import { GameDetailComponent } from "app/game-detail/game-detail.component";
 //Modules
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpModule } from '@angular/http';
-import { AppRoutingModule } from "app/app-routing.module";
 import { RouterTestingModule } from "@angular/router/testing";
 
 //services

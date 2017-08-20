@@ -11,9 +11,7 @@ import { GameService } from "app/services/game.service";
 import { UserService } from "app/services/user.service";
 import { ToastService } from "app/services/toast.service";
 import { SocketService } from "app/services/socket.service";
-import { ActivatedRoute } from "@angular/router";
-import { Observable } from "rxjs/Observable";
-import 'rxjs/add/observable/of';
+
 
 
 describe('GameDetailComponent', () => {
@@ -21,10 +19,11 @@ describe('GameDetailComponent', () => {
   let fixture: ComponentFixture<GameDetailComponent>;
 
   beforeEach(async(() => {
+    
     TestBed.configureTestingModule({
       imports: [RouterTestingModule,HttpModule],
       declarations: [ GameDetailComponent],
-      providers: [GameService, UserService,ToastService,SocketService,ActivatedRoute]
+      providers: [GameService, UserService,ToastService,SocketService]
     })
     .compileComponents();
   }));

@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PreviewTileComponent } from './preview-tile.component';
+import { HttpModule } from '@angular/http';
+import { RouterTestingModule } from "@angular/router/testing";
+import { ToastService } from "app/services/toast.service";
 
 describe('PreviewTileComponent', () => {
   let component: PreviewTileComponent;
@@ -8,7 +11,9 @@ describe('PreviewTileComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PreviewTileComponent ]
+      imports: [RouterTestingModule,HttpModule],
+      declarations: [ PreviewTileComponent ],
+      providers: [ToastService]
     })
     .compileComponents();
   }));

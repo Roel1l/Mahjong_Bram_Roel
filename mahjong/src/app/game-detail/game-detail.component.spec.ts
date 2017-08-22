@@ -12,15 +12,18 @@ import { UserService } from "app/services/user.service";
 import { ToastService } from "app/services/toast.service";
 import { SocketService } from "app/services/socket.service";
 
+
+
 describe('GameDetailComponent', () => {
   let component: GameDetailComponent;
   let fixture: ComponentFixture<GameDetailComponent>;
 
   beforeEach(async(() => {
+    
     TestBed.configureTestingModule({
       imports: [RouterTestingModule,HttpModule],
       declarations: [ GameDetailComponent],
-      providers: [GameService, UserService,ToastService,SocketService]   
+      providers: [GameService, UserService,ToastService,SocketService]
     })
     .compileComponents();
   }));

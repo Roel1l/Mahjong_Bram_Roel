@@ -1,5 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 /* Master Styles */
+@import './app/styles/variables';
+
+
 h1 {
   color: #369;
   font-family: Arial, Helvetica, sans-serif;
@@ -28,10 +31,10 @@ body, input[text], button {
 
 /*Loader*/
 .loader {
-    border-top: 16px solid blue;
-    border-right: 16px solid green;
-    border-bottom: 16px solid red;
-    border-left: 16px solid pink;
+    border-top: 16px solid $loader-color1;
+    border-right: 16px solid $loader-color2;
+    border-bottom: 16px solid $loader-color3;
+    border-left: 16px solid $loader-color4;
     border-radius: 50%;
     width: 120px;
     height: 120px;

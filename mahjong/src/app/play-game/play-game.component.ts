@@ -16,10 +16,7 @@ import { UserService } from '../services/user.service';
 import { UserDependendComponent } from "app/core/UserDependend.base";
 import { TileService } from '../services/tile.service';
 import { ToastService } from "app/services/toast.service";
-
-//Socket
-import * as io from '../../socket.io.js';
-
+import { SocketService } from "app/services/socket.service";
 
 @Component({
   selector: 'app-play-game',
@@ -29,10 +26,9 @@ import * as io from '../../socket.io.js';
 export class PlayGameComponent extends UserDependendComponent implements OnInit {
 
   @Input() game: Game;
-  tiles: Tile[]
+  tiles: Tile[];
   clickedTile1: Tile = null;
   clickedTile2: Tile = null;
-  private socket: any;
 
   constructor(
     private router: Router,
@@ -41,6 +37,7 @@ export class PlayGameComponent extends UserDependendComponent implements OnInit 
     private location: Location,
     userService: UserService,
     private tileService: TileService,
+    private socketService: SocketService,
     public toastService: ToastService
   ) {
     super(userService);
@@ -48,25 +45,23 @@ export class PlayGameComponent extends UserDependendComponent implements OnInit 
 
   ngOnInit() {
     super.ngOnInit();
-    this.route.params
+   this.route.parent.params
       .switchMap((params: Params) => this.gameService.getGame(params['id']))
       .subscribe(game => {
         this.game = game;
         this.getTiles();
-        this.socket = io("http://mahjongmayhem.herokuapp.com?gameId=" + this.game._id);
-        this.setSocketMessages();
+        this.subscribeToSocket();
       });
   }
 
-  setSocketMessages() {
-    this.socket.on('start', (data) => {
-      console.log('Socket says GameStarted');
-      console.log(data);
-    });
-    this.socket.on('match', (data) => {
-      this.toastService.showInfo('Another player got a match!');
+  subscribeToSocket(): void{
+    this.socketService.match.subscribe(data => {
+      this.toastService.showSuccess('Someone got a match!');
       this.removeTileById(data[0]._id);
       this.removeTileById(data[1]._id);
+    });
+    this.socketService.end.subscribe(data => {
+      this.router.navigate(['/games/' + this.game._id]);
     });
   }
 
@@ -88,13 +83,15 @@ export class PlayGameComponent extends UserDependendComponent implements OnInit 
     else if (this.clickedTile2 == null) {
       this.clickedTile2 = tile;
       if (this.validateMatch(this.clickedTile1, this.clickedTile2, this.tiles)) {
-        this.tileService.matchTile(this.game._id, this.clickedTile1._id, this.clickedTile2._id);
+        this.tileService.postMatch(this.game._id, this.clickedTile1._id, this.clickedTile2._id);
         this.removeTileById(this.clickedTile1._id);
         this.removeTileById(this.clickedTile2._id);
       }
       else {
         this.toastService.showError("Invalid Match");
       }
+      this.clickedTile1.tileIsClicked = false;
+      this.clickedTile2.tileIsClicked = false;
       this.clickedTile1 = null;
       this.clickedTile2 = null;
     }
@@ -108,16 +105,10 @@ export class PlayGameComponent extends UserDependendComponent implements OnInit 
       }
     }
   }
-  /*
-    TODO 
-    - dit is echt dikke stront beter zorgrn we er gewoon voor dat je tiles met neigbours uberhaupt niet aan kan klikken ofzo 
-    - Tile equality wordt bepaald aan de hand van naam/suit, is dit genoeg?
-    - Check toevoegen voor 2 keer zelfde tile aanklikken  <<NIET HIET MAAR IN HANDLECLICKED
-    - Loop breaken bij matchinvalid (return werkt niet, break kan niet kan wel wazige shit doen om het te stoppen maar had ik nu geen zin in)
-  */
+  
   validateMatch(a: Tile, b: Tile, allTiles: Tile[]): boolean {
 
-    if (a == b) { console.log("Smerige cheater"); return false }; //Return false if user clicked the same tile twice
+    if (a == b) { return false }; //Return false if user clicked the same tile twice
 
     var matchValid = true;          //Keep track of wether match is valid
     var aNeighBour = null;    //Used to detect if a tile has multiple neighbours

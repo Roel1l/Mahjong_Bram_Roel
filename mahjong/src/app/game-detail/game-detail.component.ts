@@ -12,10 +12,8 @@ import { User } from '../models/user';
 //Services
 import { GameService } from '../services/game.service';
 import { UserService } from '../services/user.service';
+import { SocketService } from '../services/socket.service';
 import { UserDependendComponent } from "app/core/UserDependend.base";
-
-//Socket
-import * as io from '../../socket.io.js';
 import { ToastService } from "app/services/toast.service";
 
 @Component({
@@ -29,14 +27,15 @@ export class GameDetailComponent extends UserDependendComponent implements OnIni
   isInGame: Boolean;
   isAdmin: Boolean;
   loading: Boolean;
-  private socket: any;
+  instanceNumber: Number;
 
   constructor(
     private router: Router,
     private gameService: GameService,
-    private route: ActivatedRoute,
+    public route: ActivatedRoute,
     private location: Location,
     userService: UserService,
+    private socketService: SocketService,
     private toastService: ToastService
   ) {
     super(userService);
@@ -44,17 +43,16 @@ export class GameDetailComponent extends UserDependendComponent implements OnIni
 
   ngOnInit() {
     super.ngOnInit();
-    this.route.params
+    this.route.parent.params
       .switchMap((params: Params) => this.gameService.getGame(params['id']))
       .subscribe(game => {
         this.game = game;
-        this.socket = io("https://mahjongmayhem.herokuapp.com?gameId=" + this.game._id);
         this.checkParticipation();
-        this.setSocketMessages();
+        this.subscribeToSocket();
       });
   }
 
-  checkParticipation() {
+  checkParticipation(): void{
     var self = this;
 
     //Set to default values
@@ -73,23 +71,23 @@ export class GameDetailComponent extends UserDependendComponent implements OnIni
     }
   }
 
-  setSocketMessages() {
-    this.socket.on('start', (data) => {
+  subscribeToSocket(): void{
+    this.socketService.start.subscribe(data => {
       this.reloadGame();
       this.toastService.showSuccess("Game started");
     });
-    this.socket.on('end', (data) => {
+    this.socketService.end.subscribe(data => {
       this.reloadGame();
       this.toastService.showSuccess("Game ended");
     });
-    this.socket.on('playerJoined', (data) => {
+    this.socketService.playerJoined.subscribe(data => {
       this.reloadGame();
       this.toastService.showSuccess("Player joined");
     });
   }
 
   reloadGame(): void {
-    this.route.params
+    this.route.parent.params
       .switchMap((params: Params) => this.gameService.getGame(params['id']))
       .subscribe(game => {
 
@@ -98,14 +96,10 @@ export class GameDetailComponent extends UserDependendComponent implements OnIni
       });
   }
 
-  goBack(): void {
-    this.location.back();
-  }
 
   startGame(): void {
     this.gameService.startGame(this.game._id).then(() => {
-      // this.router.navigate(['/games/' + this.game._id + '/play']);
-    })
+    });
   }
 
   playGame(): void {
@@ -127,9 +121,4 @@ export class GameDetailComponent extends UserDependendComponent implements OnIni
     });
   }
 
-  deleteGame(): void {
-    this.gameService.deleteGame(this.game._id).then(() => {
-      this.router.navigate(['/games']);
-    });
-  }
 }

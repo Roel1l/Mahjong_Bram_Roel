@@ -1,5 +1,5 @@
 //Components
-import { GameDetailComponent } from "app/game-detail/game-detail.component";
+import { ScoreboardComponent } from './scoreboard.component';
 
 //Modules
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
@@ -11,25 +11,23 @@ import { GameService } from "app/services/game.service";
 import { UserService } from "app/services/user.service";
 import { ToastService } from "app/services/toast.service";
 import { SocketService } from "app/services/socket.service";
+import { TileService } from "app/services/tile.service";
 
-
-
-describe('GameDetailComponent', () => {
-  let component: GameDetailComponent;
-  let fixture: ComponentFixture<GameDetailComponent>;
+describe('ScoreboardComponent', () => {
+  let component: ScoreboardComponent;
+  let fixture: ComponentFixture<ScoreboardComponent>;
 
   beforeEach(async(() => {
-    
     TestBed.configureTestingModule({
       imports: [RouterTestingModule,HttpModule],
-      declarations: [ GameDetailComponent],
-      providers: [GameService, UserService,ToastService,SocketService]
+      declarations: [ ScoreboardComponent ],
+      providers: [GameService, UserService,ToastService,SocketService,TileService]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GameDetailComponent);
+    fixture = TestBed.createComponent(ScoreboardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

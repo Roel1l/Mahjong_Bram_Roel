@@ -25,14 +25,18 @@
 
        <div class="form-group">
         <label for="gameTemplate">Choose a Template</label>
-        <select [(ngModel)]="selectedTemplate" class="form-control" id="template" name="ding" required>
+        <select [(ngModel)]="selectedTemplate" class="form-control" id="template" name="ding" #t (change)="templateChanged(t.value)" required>
           <option *ngFor="let gameTemplate of templates" [value]="gameTemplate._id">{{gameTemplate._id}}</option>
         </select>
       </div>
 
       <div [hidden]="model.minPlayers > 32 || model.minPlayers < 1 || model.maxPlayers > 32 || model.maxPlayers <= model.minPlayers">
-        <button type="button" class="btn btn-default" (click)="newGame()">New Game</button>
+        <button [disabled]="user == null" type="button" class="btn btn-default" (click)="newGame()">New Game</button>
       </div>
 
     </form>
+
+    <ng-template *ngIf="selectedTemplateTiles" ngFor let-item [ngForOf]="selectedTemplateTiles">
+        <preview-outlet [tile]="item"></preview-outlet>
+    </ng-template>
 </div>

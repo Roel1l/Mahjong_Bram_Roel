@@ -1,7 +1,12 @@
 @import '../styles/variables';
 /*
-    Base tile layout
+    BASE TILE PROPERTIES
 */
+.clickedTile {
+    border:3px solid $hover-border-color !important;
+}
+
+
 .piece{
     position: absolute;
     width: $tile-width;
@@ -14,16 +19,12 @@
     border-radius: 10px;
     //  box-shadow: 0 10px 6px -6px black;
     &:hover{
-        border:2px solid $border-color;
+        border:3px solid $hover-border-color;
     }
 }
 
-.selected{
-     border:10px solid $border-color;
-}
-
 /*
-    Tile shading to differentiate between layers
+    TILE SHADING TO DIFFERENTIATE LAYERS
 */
 $baseBrightness: 0.50;
 $brightnessIncrement: 0.25;
@@ -48,9 +49,8 @@ $brightnessIncrement: 0.25;
     filter: brightness($baseBrightness+$brightnessIncrement*4);
 }
 
-/*
-    All tile sprites for template one 
-*/
+////////////////////////////////TEMPLATE ONE////////////////////////////////
+
 //Used to account for the white space in the image
 $base-left: -76.5px;  
 $base-top: -10px;
@@ -235,8 +235,28 @@ $extra-margin: 3px; //Compensate in rows that are very far to the right
 #t_143{ //Bamboo
     background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*12+$extra-margin $base-top+$tile-top*6;
 }
+////////////////////////////////END TEMPLATE ONE////////////////////////////////
+
+////////////////////////////////TEMPLATE TWO////////////////////////////////
+
+// //Used to account for the white space in the image
+// $base-left: -76.5px;  
+// $base-top: -10px;
+
+// //Reference to the tiles size in the spritesheet
+// $tile-left: -62px;
+// $tile-top: -82.5px;
+// $extra-margin: 3px; //Compensate in rows that are very far to the right
 
 
+
+ $base-left2: -76.5px;  
+ $base-top2: -10px;
+
+////////////////////////////////CIRCLES 1-9////////////////////////////////
+#t2_0,#t2_1,#t2_2,#t2_3{
+    background: url(../core/Tiles_sprite2.png) $base-left2 $base-top2;
+}
 
 
 

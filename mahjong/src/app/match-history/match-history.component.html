@@ -1,0 +1,44 @@
+<div *ngIf="tiles && previousStack && matches">
+
+ <div class="btn-group btn-group-lg">
+    <button [disabled]="previousStack.length <2" type="button" class="btn btn-primary" (click)="previous()"> <span class="glyphicon glyphicon-chevron-left"></span> Previous step</button>
+    <button [disabled]="matches.length <= 0" type="button" class="btn btn-primary" (click)="next()">Next step <span class="glyphicon glyphicon-chevron-right"></span></button> 
+  </div>
+
+  <ng-template ngFor let-item [ngForOf]="tiles" let-i="index">
+    <tile-outlet [tile]="item"></tile-outlet>
+  </ng-template>
+
+  <div class="matchWrapper">
+  <h1>Matches</h1>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="btn-group">
+        <button type="button" class="btn btn-success btn-filter" (click)="updateInput(0)">All matches</button>
+        <button type="button" class="btn btn-warning btn-filter" (click)="updateInput(1)">My matches</button>
+        <button type="button" class="btn btn-danger btn-filter" (click)="updateInput(2)">Enemy matches</button>
+      </div>
+      <div class="table-container">
+        <table class="table table-filter">
+          <tbody>
+            <tr *ngFor="let match of (previousStack | myMatches : inputValue)">
+              <td>
+                <div class="media">
+                  <div class="media-body">
+                    <span class="media-meta pull-right">{{match.match.foundOn}}</span>
+                    <h4 class="title">
+                      {{match.tile.suit}} - {{match.tile.name}}
+                    </h4>
+                    <span class="pull-right pagado">{{match.match.foundBy}}</span>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>

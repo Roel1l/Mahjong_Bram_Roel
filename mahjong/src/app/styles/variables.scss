@@ -1,5 +1,6 @@
 //Tiles
 $border-color : black;
+$hover-border-color: darkred;
 $text-color : black;
 $tile-width: 62px;
 $tile-heigth: 82.5px;
@@ -23,6 +24,19 @@ $playing-background-color-light: #f4d442;
 $base-background-color: #2a2c30;
 $base-text: #eee;
 $hover-text: black;
+
+//Bootstrap button colour hex 
+$btn-primary: #428bca;
+$btn-info: #5bc0de;
+$btn-danger: #d9534f;
+$btn-success: #5cb85c;
+$btn-warning: #ffbb33;
+
+//Loader
+$loader-color1: #230136;
+$loader-color2: #390754;
+$loader-color3: #7D5D8F; 
+$loader-color4: #AAA2AE;
 
 $box-shadow: 10px 10px 5px grey;
 $box-shadow-light: 10px 10px 5px lightgrey;

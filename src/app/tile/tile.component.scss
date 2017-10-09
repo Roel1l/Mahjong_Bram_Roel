@@ -1,0 +1,434 @@
+@import '../styles/variables';
+/*
+    BASE TILE PROPERTIES
+*/
+.clickedTile {
+    border:3px solid $hover-border-color !important;
+}
+
+
+.piece{
+    position: absolute;
+    width: $tile-width;
+    height: $tile-heigth;
+    border:1px solid $border-color;
+    text-align: center;
+    vertical-align: middle;
+    color: $text-color;
+    font-weight: bold;
+    border-radius: 10px;
+    //  box-shadow: 0 10px 6px -6px black;
+    &:hover{
+        border:3px solid $hover-border-color;
+    }
+}
+
+/*
+    TILE SHADING TO DIFFERENTIATE LAYERS
+*/
+$baseBrightness: 0.50;
+$brightnessIncrement: 0.25;
+.layer0{
+      -webkit-filter: brightness($baseBrightness);
+    filter: brightness($baseBrightness);
+}
+.layer1{
+      -webkit-filter: brightness($baseBrightness+$brightnessIncrement);
+    filter: brightness($baseBrightness+$brightnessIncrement);
+}
+.layer2{
+     -webkit-filter: brightness($baseBrightness+$brightnessIncrement*2);
+    filter: brightness($baseBrightness+$brightnessIncrement*2);
+}
+.layer3{
+     -webkit-filter: brightness($baseBrightness+$brightnessIncrement*3);
+    filter: brightness($baseBrightness+$brightnessIncrement*3);
+}
+.layer4{
+       -webkit-filter: brightness($baseBrightness+$brightnessIncrement*4);
+    filter: brightness($baseBrightness+$brightnessIncrement*4);
+}
+
+////////////////////////////////TEMPLATE ONE////////////////////////////////
+
+//Used to account for the white space in the image
+$base-left: -76.5px;  
+$base-top: -10px;
+
+//Reference to the tiles size in the spritesheet
+$tile-left: -62px;
+$tile-top: -82.5px;
+$extra-margin: 3px; //Compensate in rows that are very far to the right
+
+
+////////////////////////////////CIRCLES 1-9////////////////////////////////
+#t1_0,#t1_1,#t1_2,#t1_3{
+    background: url(../core/Tiles_sprite1.jpg) $base-left $base-top;
+}
+
+#t1_4,#t1_5,#t1_6,#t1_7{
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left $base-top;
+}
+
+#t1_8,#t1_9,#t1_10,#t1_11{
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*2 $base-top;
+}
+
+#t1_12,#t1_13,#t1_14,#t1_15{
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*3 $base-top;
+}
+
+#t1_16,#t1_17,#t1_18,#t1_19{
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*4 $base-top;
+}
+
+#t1_20,#t1_21,#t1_22,#t1_23{
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*5 $base-top;
+}
+
+#t1_24,#t1_25,#t1_26,#t1_27{
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*6 $base-top;
+}
+
+#t1_28,#t1_29,#t1_30,#t1_31{
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*7 $base-top;
+}
+
+#t1_32,#t1_33,#t1_34,#t1_35{
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*8 $base-top;
+}
+
+////////////////////////////////BAMBOOZLE 1-9////////////////////////////////
+#t1_36,#t1_37,#t1_38,#t1_39{
+    background: url(../core/Tiles_sprite1.jpg) $base-left $base-top+$tile-top*4;
+}
+
+#t1_40,#t1_41,#t1_42,#t1_43{
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left $base-top+$tile-top*4;
+}
+
+#t1_44,#t1_45,#t1_46,#t1_47{
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*2 $base-top+$tile-top*4;
+}
+
+#t1_48,#t1_49,#t1_50,#t1_51{
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*3 $base-top+$tile-top*4;
+}
+
+#t1_52,#t1_53,#t1_54,#t1_55{
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*4 $base-top+$tile-top*4;
+}
+
+#t1_56,#t1_57,#t1_58,#t1_59{
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*5 $base-top+$tile-top*4;
+}
+
+#t1_60,#t1_61,#t1_62,#t1_63{
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*6 $base-top+$tile-top*4;
+}
+
+#t1_64,#t1_65,#t1_66,#t1_67{
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*7 $base-top+$tile-top*4;
+}
+
+#t1_68,#t1_69,#t1_70,#t1_71{
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*8 $base-top+$tile-top*4;
+}
+
+////////////////////////////////CHARACTERS 1-9////////////////////////////////
+#t1_72,#t1_73,#t1_74,#t1_75{
+    background: url(../core/Tiles_sprite1.jpg) $base-left $base-top+$tile-top*8;
+}
+
+#t1_76,#t1_77,#t1_78,#t1_79{
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left $base-top+$tile-top*8;
+}
+
+#t1_80,#t1_81,#t1_82,#t1_83{
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*2 $base-top+$tile-top*8;
+}
+
+#t1_84,#t1_85,#t1_86,#t1_87{
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*3 $base-top+$tile-top*8;
+}
+
+#t1_88,#t1_89,#t1_90,#t1_91{
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*4 $base-top+$tile-top*8;
+}
+
+#t1_92,#t1_93,#t1_94,#t1_95{
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*5 $base-top+$tile-top*8;
+}
+
+#t1_96,#t1_97,#t1_98,#t1_99{
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*6 $base-top+$tile-top*8;
+}
+
+#t1_100,#t1_101,#t1_102,#t1_103{
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*7 $base-top+$tile-top*8;
+}
+
+#t1_104,#t1_105,#t1_106,#t1_107{
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*8 $base-top+$tile-top*8;
+}
+
+////////////////////////////////WIND////////////////////////////////
+#t1_108,#t1_109,#t1_110,#t1_111{ //North
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*12+$extra-margin ($base-top - 3px);
+}
+
+#t1_112,#t1_113,#t1_114,#t1_115{ //East
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*9 ($base-top - 3px);
+}
+
+#t1_116,#t1_117,#t1_118,#t1_119{ //South
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*11 ($base-top - 3px);
+}
+
+#t1_120,#t1_121,#t1_122,#t1_123{ //West
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*10 ($base-top - 3px);
+}
+
+////////////////////////////////DRAGONS////////////////////////////////
+#t1_124,#t1_125,#t1_126,#t1_127{ //Red
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*9 $base-top+$tile-top*8;
+}
+
+#t1_128,#t1_129,#t1_130,#t1_131{ //Green
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*10 $base-top+$tile-top*8;
+}
+
+#t1_132,#t1_133,#t1_134,#t1_135{ //White
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*11 $base-top+$tile-top*8;
+}
+
+////////////////////////////////SEASONS////////////////////////////////
+#t1_136{ //Summer
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*11+$extra-margin $base-top+$tile-top*6;
+}
+
+#t1_137{ //Winter
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*11++$extra-margin $base-top+$tile-top*4;
+}
+
+#t1_138{ //Spring
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*11+$extra-margin $base-top+$tile-top*7;
+}
+
+#t1_139{ //Autumn
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*11+$extra-margin $base-top+$tile-top*5;
+}
+
+////////////////////////////////FLOWER////////////////////////////////
+#t1_140{ //Plum
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*12+$extra-margin $base-top+$tile-top*6;
+}
+
+#t1_141{ //Orchid
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*12+$extra-margin $base-top+$tile-top*6;
+}
+
+#t1_142{ //Chrystantememe
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*12+$extra-margin $base-top+$tile-top*6;
+}
+
+#t1_143{ //Bamboo
+    background: url(../core/Tiles_sprite1.jpg) $base-left+$tile-left*12+$extra-margin $base-top+$tile-top*6;
+}
+////////////////////////////////END TEMPLATE ONE////////////////////////////////
+
+//---------------------------------------------------------------------------------------//
+
+////////////////////////////////TEMPLATE TWO////////////////////////////////
+
+// //Used to account for the white space in the image
+$base-top2: -5px;
+
+// //Reference to the tiles size in the spritesheet
+$tile-left2: -72px;
+$tile-top2: -89px;
+$extra-margin2: -5px;
+
+////////////////////////////////CIRCLES 1-9////////////////////////////////
+ $circle-base-left2: -5px;  
+#t2_0,#t2_1,#t2_2,#t2_3{
+    background: url(../core/Tiles_sprite2.png) $circle-base-left2  $base-top2+$tile-top2*2;
+}
+
+#t2_4,#t2_5,#t2_6,#t2_7{
+    background: url(../core/Tiles_sprite2.png) $circle-base-left2+$tile-left2 $base-top2+$tile-top2*2;
+}
+
+#t2_8,#t2_9,#t2_10,#t2_11{
+    background: url(../core/Tiles_sprite2.png) $circle-base-left2+$tile-left2*2 $base-top2+$tile-top2*2;
+}
+
+#t2_12,#t2_13,#t2_14,#t2_15{
+    background: url(../core/Tiles_sprite2.png) $circle-base-left2+$tile-left2*3 $base-top2+$tile-top2*2;
+}
+
+#t2_16,#t2_17,#t2_18,#t2_19{
+    background: url(../core/Tiles_sprite2.png) $circle-base-left2+$tile-left2*4-3 $base-top2+$tile-top2*2;
+}
+
+#t2_20,#t2_21,#t2_22,#t2_23{
+    background: url(../core/Tiles_sprite2.png) $circle-base-left2+$tile-left2*5-5  $base-top2+$tile-top2*2;
+}
+
+#t2_24,#t2_25,#t2_26,#t2_27{
+    background: url(../core/Tiles_sprite2.png) $circle-base-left2+$tile-left2*6-5  $base-top2+$tile-top2*2;
+}
+
+#t2_28,#t2_29,#t2_30,#t2_31{
+    background: url(../core/Tiles_sprite2.png) $circle-base-left2+$tile-left2*7-5  $base-top2+$tile-top2*2;
+}
+
+#t2_32,#t2_33,#t2_34,#t2_35{
+    background: url(../core/Tiles_sprite2.png) $circle-base-left2+$tile-left2*8-6  $base-top2+$tile-top2*2;
+}
+
+////////////////////////////////BAMBOOZLE 1-9////////////////////////////////
+ $bamboo-base-left2: -6px;  
+#t2_36,#t2_37,#t2_38,#t2_39{
+    background: url(../core/Tiles_sprite2.png) $bamboo-base-left2  $base-top2+$tile-top2;
+}
+
+#t2_40,#t2_41,#t2_42,#t2_43{
+   background: url(../core/Tiles_sprite2.png) $bamboo-base-left2+$tile-left2 $base-top2+$tile-top2;
+}
+
+#t2_44,#t2_45,#t2_46,#t2_47{
+    background: url(../core/Tiles_sprite2.png) $bamboo-base-left2+$tile-left2*2 $base-top2+$tile-top2;
+}
+
+#t2_48,#t2_49,#t2_50,#t2_51{
+    background: url(../core/Tiles_sprite2.png) $bamboo-base-left2+$tile-left2*3 $base-top2+$tile-top2;
+}
+
+#t2_52,#t2_53,#t2_54,#t2_55{
+    background: url(../core/Tiles_sprite2.png) $bamboo-base-left2+$tile-left2*4-1 $base-top2+$tile-top2;
+}
+
+#t2_56,#t2_57,#t2_58,#t2_59{
+    background: url(../core/Tiles_sprite2.png) $bamboo-base-left2+$tile-left2*5-2 $base-top2+$tile-top2;
+}
+
+#t2_60,#t2_61,#t2_62,#t2_63{
+    background: url(../core/Tiles_sprite2.png) $bamboo-base-left2+$tile-left2*6-3 $base-top2+$tile-top2;
+}
+
+#t2_64,#t2_65,#t2_66,#t2_67{
+    background: url(../core/Tiles_sprite2.png) $bamboo-base-left2+$tile-left2*7-4 $base-top2+$tile-top2;
+}
+
+#t2_68,#t2_69,#t2_70,#t2_71{
+    background: url(../core/Tiles_sprite2.png) $bamboo-base-left2+$tile-left2*8-5 $base-top2+$tile-top2;
+}
+
+////////////////////////////////CHARACTERS 1-9////////////////////////////////
+ $char-base-left2: -4px;  
+#t2_72,#t2_73,#t2_74,#t2_75{
+    background: url(../core/Tiles_sprite2.png) $char-base-left2 $base-top2;
+}
+
+#t2_76,#t2_77,#t2_78,#t2_79{
+    background: url(../core/Tiles_sprite2.png) $char-base-left2+$tile-left2 $base-top2;
+}
+
+#t2_80,#t2_81,#t2_82,#t2_83{
+    background: url(../core/Tiles_sprite2.png) $char-base-left2+$tile-left2*2-1 $base-top2;
+}
+
+#t2_84,#t2_85,#t2_86,#t2_87{
+    background: url(../core/Tiles_sprite2.png) $char-base-left2+$tile-left2*3-3 $base-top2;
+}
+
+#t2_88,#t2_89,#t2_90,#t2_91{
+    background: url(../core/Tiles_sprite2.png) $char-base-left2+$tile-left2*4-5 $base-top2 + 2;
+}
+
+#t2_92,#t2_93,#t2_94,#t2_95{
+    background: url(../core/Tiles_sprite2.png) $char-base-left2+$tile-left2*5-7 $base-top2;
+}
+
+#t2_96,#t2_97,#t2_98,#t2_99{
+    background: url(../core/Tiles_sprite2.png) $char-base-left2+$tile-left2*6-9 $base-top2 + 2;
+}
+
+#t2_100,#t2_101,#t2_102,#t2_103{
+    background: url(../core/Tiles_sprite2.png) $char-base-left2+$tile-left2*7-7 $base-top2;
+}
+
+#t2_104,#t2_105,#t2_106,#t2_107{
+    background: url(../core/Tiles_sprite2.png) $char-base-left2+$tile-left2*8-10 $base-top2 + 2;
+}
+
+////////////////////////////////WIND////////////////////////////////
+#t2_108,#t2_109,#t2_110,#t2_111{ //North
+     background: url(../core/Tiles_sprite2.png) $char-base-left2+$tile-left2*9-10 $base-top2 + 2;
+}
+
+#t2_112,#t2_113,#t2_114,#t2_115{ //East
+    background: url(../core/Tiles_sprite2.png) $char-base-left2+$tile-left2*10-10 $base-top2 + 2;
+}
+
+#t2_116,#t2_117,#t2_118,#t2_119{ //South
+    background: url(../core/Tiles_sprite2.png) $char-base-left2+$tile-left2*11-10 $base-top2 + 2;
+}
+
+#t2_120,#t2_121,#t2_122,#t2_123{ //West
+    background: url(../core/Tiles_sprite2.png) $char-base-left2+$tile-left2*12-10 $base-top2 + 2;
+}
+
+////////////////////////////////DRAGONS////////////////////////////////
+#t2_124,#t2_125,#t2_126,#t2_127{ //Red
+    background: url(../core/Tiles_sprite2.png) $bamboo-base-left2+$tile-left2*13-10 $base-top2+$tile-top2;
+}
+
+#t2_128,#t2_129,#t2_130,#t2_131{ //Green
+    background: url(../core/Tiles_sprite2.png) $char-base-left2+$tile-left2*13-12 $base-top2 + 2;
+}
+
+#t2_132,#t2_133,#t2_134,#t2_135{ //White
+    background: url(../core/Tiles_sprite2.png) $circle-base-left2+$tile-left2*13-13  $base-top2+$tile-top2*2;
+}
+
+////////////////////////////////SEASONS////////////////////////////////
+#t2_136{ //Summer
+    background: url(../core/Tiles_sprite2.png) $bamboo-base-left2+$tile-left2*9-5 $base-top2+$tile-top2;
+}
+
+#t2_137{ //Winter
+   background: url(../core/Tiles_sprite2.png) $bamboo-base-left2+$tile-left2*10-7 $base-top2+$tile-top2 +2;
+}
+
+#t2_138{ //Spring
+   background: url(../core/Tiles_sprite2.png) $bamboo-base-left2+$tile-left2*11-9 $base-top2+$tile-top2 +1;
+}
+
+#t2_139{ //Autumn
+    background: url(../core/Tiles_sprite2.png) $bamboo-base-left2+$tile-left2*12-11 $base-top2+$tile-top2 +2;
+}
+
+////////////////////////////////FLOWER////////////////////////////////
+#t2_140{ //Plum
+   background: url(../core/Tiles_sprite2.png) $circle-base-left2+$tile-left2*9-8  $base-top2+$tile-top2*2;
+}
+
+#t2_141{ //Orchid
+    background: url(../core/Tiles_sprite2.png) $circle-base-left2+$tile-left2*10-8  $base-top2+$tile-top2*2 -2;
+}
+
+#t2_142{ //Chrystantememe
+    background: url(../core/Tiles_sprite2.png) $circle-base-left2+$tile-left2*11-11  $base-top2+$tile-top2*2 -2;
+}
+
+#t2_143{ //Bamboo
+      background: url(../core/Tiles_sprite2.png) $circle-base-left2+$tile-left2*12-11  $base-top2+$tile-top2*2 -2;
+}
+
+
+
+
+
+

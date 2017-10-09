@@ -1,0 +1,7 @@
+<div class="gameboardWrapper">
+<ng-template ngFor let-item [ngForOf]="tiles" let-i="index">
+  <tile-outlet (tileClicked)="handleTileClicked($event)" [tile]="item"></tile-outlet>
+</ng-template>
+</div>
+<app-scoreboard></app-scoreboard>
+<app-game-matches ></app-game-matches>

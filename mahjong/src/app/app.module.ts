@@ -23,6 +23,7 @@ import { TemplateService } from './services/game-template.service';
 import { ToastService } from './services/toast.service'; 
 import { TileService } from './services/tile.service';
 import { SocketService } from "app/services/socket.service";
+import { ThemeService } from "app/services/theme-service";
 
 //Utility
 import { MyGamesPipe } from "app/pipes/my-games.pipe";
@@ -31,7 +32,11 @@ import { MyMatchesPipe } from "app/pipes/my-matches.pipe";
 import { MatchHistoryComponent } from './match-history/match-history.component';
 import { GameComponent } from './game/game.component';
 import { PreviewTileComponent } from './preview-tile/preview-tile.component';
+import { GamesOpenComponent } from './games-open/games-open.component';
+import { GamesPlayingComponent } from './games-playing/games-playing.component';
+import { GamesFinishedComponent } from './games-finished/games-finished.component';
 import { ScoreboardComponent } from './scoreboard/scoreboard.component';
+
 
 @NgModule({
   declarations: [
@@ -48,7 +53,11 @@ import { ScoreboardComponent } from './scoreboard/scoreboard.component';
     MatchHistoryComponent,
     GameComponent,
     PreviewTileComponent,
+    GamesOpenComponent,
+    GamesPlayingComponent,
+    GamesFinishedComponent,
     ScoreboardComponent
+
   ],
   imports: [
     BrowserModule,
@@ -56,7 +65,7 @@ import { ScoreboardComponent } from './scoreboard/scoreboard.component';
     HttpModule,
     AppRoutingModule,
   ],
-  providers: [GameService, UserService, TemplateService, ToastService,TileService,SocketService, MyGamesPipe, MyMatchesPipe],
+  providers: [GameService, UserService, TemplateService, ToastService,TileService,SocketService, MyGamesPipe, MyMatchesPipe, ThemeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

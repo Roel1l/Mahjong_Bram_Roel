@@ -18,56 +18,27 @@ import { UserDependendComponent } from "app/core/UserDependend.base";
   templateUrl: './games.component.html',
   styleUrls: ['./games.component.scss']
 })
-export class GamesComponent extends UserDependendComponent implements OnInit  {
-  
-  filteredGames: Game[];
+export class GamesComponent extends UserDependendComponent implements OnInit {
 
-  templates = ['Any', 'Dragon','Monkey','Ox','Ram','Rooster','Shanghai','Snake'];
-  states = ['Any','Open','Playing','Finished'];
-  selectedTemplate: string = 'any';
-  selectedState: string = 'any';
-  showMyGamesOnly: boolean = false;
+  currentSubRoute: String;
 
   constructor(
     private router: Router,
     private gameService: GameService,
-    private templateService: TemplateService,
+    private location: Location,
     userService: UserService
-   ) 
-   {
-     super(userService);
-   }
+  ) {
+    super(userService);
+  }
 
   ngOnInit() {
     super.ngOnInit();
-    this.getGames();
-    this.getTemplates();
+    this.router.events.subscribe(() => this.setSubRoute());
   }
 
-  getGames(): void {
-    var self = this;
-  
-    this.gameService.getGames().then(
-      function (games) {
-        self.filteredGames = games;
-      });
+  setSubRoute(): void{
+    var x = window.location.href.split('/');
+    this.currentSubRoute = x[x.length - 1];
   }
-
-  getTemplates(): void {
-    var self = this;
-    this.templateService.getTemplates().then(
-      function (templates) {
-        self.templates = [];
-        self.templates.push("Any");
-        for (var template of templates) {
-          self.templates.push(template._id);
-        }
-      });
-  }
-
-  goToDetail(game: Game): void {
-    this.router.navigate(['/games', game._id]);
-  }
-
 
 }

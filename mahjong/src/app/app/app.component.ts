@@ -5,6 +5,7 @@ import { UserService } from "app/services/user.service";
 import { User } from '../models/user';
 import {Location} from '@angular/common';
 import { ToastService } from '../services/toast.service';
+import { ThemeService } from "app/services/theme-service";
 
 @Component({
   selector: 'app-root',
@@ -20,7 +21,8 @@ export class AppComponent extends UserDependendComponent implements OnInit {
     private location: Location,
     userService: UserService,
     private activatedRoute: ActivatedRoute,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private themeService: ThemeService
   ) {
     super(userService); 
   };
@@ -63,6 +65,11 @@ export class AppComponent extends UserDependendComponent implements OnInit {
        var x: string[] = this.location.path().split('?');
        this.location.replaceState(x[0]);
     }
+  }
+  
+
+  changeTheme() :void {
+    this.themeService.changeTheme();
   }
 
   logout(): void {

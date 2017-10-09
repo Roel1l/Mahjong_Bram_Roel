@@ -5,6 +5,9 @@ import { GameMatchesComponent } from './game-matches.component';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpModule } from '@angular/http';
 import { RouterTestingModule } from "@angular/router/testing";
+import { ActivatedRoute, Params } from '@angular/router';
+import { Observable } from "rxjs/Observable";
+import 'rxjs/add/observable/of';
 
 //services
 import { GameService } from "app/services/game.service";
@@ -26,7 +29,12 @@ describe('GameMatchesComponent', () => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule,HttpModule],
       declarations: [ GameMatchesComponent,MyMatchesPipe],
-      providers: [GameService, UserService,ToastService,SocketService,TileService] 
+      providers: [
+        {
+          provide: ActivatedRoute, useValue: {
+            parent: { params: Observable.of({ id: 'test' })}
+          }
+        },GameService, UserService,ToastService,SocketService,TileService] 
     })
     .compileComponents();
   }));

@@ -1,28 +1,6 @@
-<div *ngIf="filteredGames" >
-
-  <div>
-    <select [(ngModel)]="selectedTemplate">
-      <option *ngFor="let template of templates" [value]="template">{{template}}</option>
-  </select>
-    <select [(ngModel)]="selectedState">
-      <option *ngFor="let state of states" [value]="state">{{state}}</option>
-  </select>
-    <input [(ngModel)]="showMyGamesOnly" type="checkbox" /> Only display my games
-  </div>
-
-  <div class="grid grid-pad">
-    <a *ngFor="let game of (filteredGames | myGames : selectedTemplate:selectedState:showMyGamesOnly)" class="col-1-4 gameModuleWrapper">
-      <div (click)="goToDetail(game)" class="gameModule {{game.state}}">
-        <h4>{{game.gameTemplate.id}} ({{game.state}})</h4>
-        <h4>nr. of players: {{game.players.length}}/{{game.maxPlayers}}</h4>
-        <h4>Created by: {{game.createdBy.name}}</h4>
-      </div>
-    </a>
-  </div>
-
-</div>
-
-<!--Loader-->
-<div *ngIf="!filteredGames">
-  <div id="loader" class="loader"></div>
-</div>
+<nav class="btn-group">
+  <a [routerLink]="['open']" type="button" class="btn btn-success" [ngClass]="(currentSubRoute=='open')?'current':''">Open</a>
+  <a [routerLink]="['playing']" type="button" class="btn btn-warning" [ngClass]="(currentSubRoute=='playing')?'current':''">Playing</a>
+  <a [routerLink]="['finished']" type="button" class="btn btn-danger" [ngClass]="(currentSubRoute=='finished')?'current':''">Finished</a>
+</nav>
+<router-outlet></router-outlet>

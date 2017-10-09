@@ -53,7 +53,7 @@ export class NewGameComponent extends UserDependendComponent implements OnInit {
 
      this.gameService.createGame(this.model)
     .then(game => {
-      this.router.navigate(['/games', game._id]);
+      this.router.navigate(['/game', game._id]);
     });
   }
 

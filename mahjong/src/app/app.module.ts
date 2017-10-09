@@ -32,7 +32,11 @@ import { MyMatchesPipe } from "app/pipes/my-matches.pipe";
 import { MatchHistoryComponent } from './match-history/match-history.component';
 import { GameComponent } from './game/game.component';
 import { PreviewTileComponent } from './preview-tile/preview-tile.component';
+import { GamesOpenComponent } from './games-open/games-open.component';
+import { GamesPlayingComponent } from './games-playing/games-playing.component';
+import { GamesFinishedComponent } from './games-finished/games-finished.component';
 import { ScoreboardComponent } from './scoreboard/scoreboard.component';
+
 
 @NgModule({
   declarations: [
@@ -49,7 +53,11 @@ import { ScoreboardComponent } from './scoreboard/scoreboard.component';
     MatchHistoryComponent,
     GameComponent,
     PreviewTileComponent,
+    GamesOpenComponent,
+    GamesPlayingComponent,
+    GamesFinishedComponent,
     ScoreboardComponent
+
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,72 @@
+@import '../styles/variables';
+
+/*
+  Wraps each game module in the list
+*/
+.gameModuleWrapper {
+  float: left;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  width: 25%;
+
+  :last-of-type{
+  padding-right: 0;
+  }
+}
+
+/*
+  Game module
+*/
+.gameModule {
+  padding: 15px;
+  text-align: center;
+  color: $base-text;
+  min-width: 120px;
+  background-color: $base-background-color;
+  border-radius: 10px;
+  min-height: 125px;
+  box-shadow: $box-shadow;
+
+  &.playing {
+  background-color: $playing-background-color;
+    &:hover {
+      box-shadow: $box-shadow-light;
+      background-color: $playing-background-color-light;
+      cursor: pointer;
+      color:$hover-text;
+    }
+  }
+
+  &.open {
+    background-color: $open-background-color;
+      &:hover {
+      box-shadow: $box-shadow-light;
+      background-color: $open-background-color-light;
+      cursor: pointer;
+      color:$hover-text;
+    }
+  }  
+
+}
+
+.grid-pad {
+  padding: 10px 0;
+}
+.grid-pad > [class*='col-']:last-of-type {
+  padding-right: 20px;
+}
+
+/*
+Other stuff
+*/
+a {
+  text-decoration: none;
+}
+
+
+
+
+
+
+
+

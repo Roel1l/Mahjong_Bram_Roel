@@ -1,3 +1,3 @@
 <div *ngIf="tile" (click)="clickTile()" >
-    <div [ngClass]="{'clickedTile': tile.tileIsClicked }" id="t_{{tile.tile._id}}" class="piece layer{{tile.zPos}}" [style.z-index]="tile.zPos" [style.margin-top.px]="tile.yPos*82.5/2 + 30" [style.margin-left.px]="tile.xPos*61.5/2"></div>
+    <div [ngClass]="{'clickedTile': tile.tileIsClicked }" id="t{{currentTheme}}_{{tile.tile._id}}" class="piece layer{{tile.zPos}}" [style.z-index]="tile.zPos" [style.margin-top.px]="tile.yPos*82.5/2 + 30" [style.margin-left.px]="tile.xPos*61.5/2"></div>
 </div>

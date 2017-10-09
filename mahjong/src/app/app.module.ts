@@ -23,6 +23,7 @@ import { TemplateService } from './services/game-template.service';
 import { ToastService } from './services/toast.service'; 
 import { TileService } from './services/tile.service';
 import { SocketService } from "app/services/socket.service";
+import { ThemeService } from "app/services/theme-service";
 
 //Utility
 import { MyGamesPipe } from "app/pipes/my-games.pipe";
@@ -64,7 +65,7 @@ import { ScoreboardComponent } from './scoreboard/scoreboard.component';
     HttpModule,
     AppRoutingModule,
   ],
-  providers: [GameService, UserService, TemplateService, ToastService,TileService,SocketService, MyGamesPipe, MyMatchesPipe],
+  providers: [GameService, UserService, TemplateService, ToastService,TileService,SocketService, MyGamesPipe, MyMatchesPipe, ThemeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

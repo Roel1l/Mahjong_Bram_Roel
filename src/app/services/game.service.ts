@@ -18,11 +18,6 @@ export class GameService extends UserDependendComponent {
     super.ngOnInit();
   }
 
-  handleError(error: any, ts: GameService): void {
-    //ts.toastService.showError("An error occurred, Check browser logs for more info.");
-    console.error('An error occurred', error); // for demo purposes only
-  }
-
   /*
     Used to generate Headers object with username and token
     More stuff can be appended by using the return value of this method.append()
@@ -46,7 +41,7 @@ export class GameService extends UserDependendComponent {
       //use responses json.data method to extract json from the response
       .then(function (response) {
         return response.json() as Game[];
-      }).catch(error => self.handleError(error, self));
+      }).catch(error => {throw error;});
 
   }
 
@@ -59,7 +54,7 @@ export class GameService extends UserDependendComponent {
       //use responses json.data method to extract json from the response
       .then(function (response) {
         return response.json() as Game[];
-      }).catch(error => self.handleError(error, self));
+      }).catch(error => {throw error;});
 
   }
 
@@ -72,7 +67,7 @@ export class GameService extends UserDependendComponent {
       //use responses json.data method to extract json from the response
       .then(function (response) {
         return response.json() as Game;
-      }).catch(error => self.handleError(error, self));
+      }).catch(error => {throw error;});
 
   }
 
@@ -123,7 +118,7 @@ export class GameService extends UserDependendComponent {
     var req = new Request(reqOptions);
     self.toastService.showSuccess("Game joined");
     return this.http.request(req).toPromise().then(function (response) {
-    }).catch(error => self.handleError(error, self));
+    }).catch(error => {throw error;});
 
   }
 
@@ -156,7 +151,7 @@ export class GameService extends UserDependendComponent {
     return this.http.request(req).toPromise().then(function (response) {
       self.toastService.showSuccess("Game created.");
       return response.json() as Game;
-    }).catch(error => self.handleError(error, self));
+    }).catch(error => {throw error;});
 
   }
 
@@ -183,7 +178,7 @@ export class GameService extends UserDependendComponent {
     var req = new Request(reqOptions);
     self.toastService.showSuccess("game left");
     return this.http.request(req).toPromise().then(function (response) {
-    }).catch(error => self.handleError(error, self));
+    }).catch(error => {throw error;});
 
   }
 
